@@ -1,6 +1,6 @@
 
 class KeyboardView extends Mn.LayoutView
-  template: require './templates/keyboard'
+  template: require './templates/hotkey_editor'
   className: 'row'
 
   ui:
