@@ -11,7 +11,7 @@ class KeyChild extends Mn.LayoutView
 
 class KeySelector extends Mn.CollectionView
   tagName: 'ul'
-  className: 'list-unstyled key--list px-3 py-3 d-flex justify-content-center align-items-center'
+  className: 'list-unstyled key--list px-3 py-3 d-flex justify-content-between align-items-center'
   childView: KeyChild
 
 # # # # #

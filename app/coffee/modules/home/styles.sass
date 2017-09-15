@@ -1,12 +1,11 @@
 // KeySelector Styles
 ul.list-unstyled.key--list
-  border: 2px solid #666
+  border: 2px solid $gray-500
 
   li.key--child
-    border: 2px solid #666
+    border: 2px solid $gray-500
     height: 4rem
     width: 4rem
-    margin: 0 1rem
 
     color: #333
     background-color #f3f3f3
@@ -15,3 +14,22 @@ ul.list-unstyled.key--list
       color: #f3f3f3
       background-color: #333
 
+
+// Hotkey Editor Styles
+$hotkey_child_size: 3rem
+$hotkey_child_margin_x: 0.25rem
+
+.hotkey--child
+  font-size: 80%
+  width: $hotkey_child_size
+  height: $hotkey_child_size
+  margin: $hotkey_child_margin_x
+
+  &.x2
+    width: 2*$hotkey_child_size
+
+  &.x2-5
+    width: 8.5rem
+
+  &.space
+    width: 5*$hotkey_child_size

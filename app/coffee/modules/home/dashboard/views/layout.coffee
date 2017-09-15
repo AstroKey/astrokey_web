@@ -1,4 +1,4 @@
-KeySelector = require('./keySelector')
+DeviceLayout = require('./deviceLayout')
 KeyEditor = require('./keyEditor')
 
 # # # # #
@@ -12,10 +12,9 @@ class DeviceLayoutView extends Marionette.LayoutView
     controlsRegion: '[data-region=controls]'
 
   onRender: ->
-    keySelector = new KeySelector({ collection: @model.get('keys') })
-    keySelector.on 'childview:selected', (view) => @showControlsView(view.model)
-    @deviceRegion.show(keySelector)
-    @model.get('keys').first().trigger('selected')
+    deviceView = new DeviceLayout({ model: @model })
+    deviceView.on 'key:selected', (keyModel) => @showControlsView(keyModel)
+    @deviceRegion.show(deviceView)
 
   showControlsView: (keyModel) ->
     @controlsRegion.show new KeyEditor({ model: keyModel })

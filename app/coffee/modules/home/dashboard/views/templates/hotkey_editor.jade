@@ -1,12 +1,12 @@
 mixin keyboardKey(opts)
-  button.btn.btn-secondary(data-click='key' data-key=opts.key)= opts.key
+  button.btn.btn-outline-primary.hotkey--child(data-click='key' data-key=opts.key class=opts.css)= opts.key
 
 //- // // // // //
 
-.col-lg-12
-  .row
+.d-flex.flex-column
+  .row.my-1
     .col-lg-12
-      +keyboardKey({ key: 'TAB' })
+      +keyboardKey({ key: 'TAB', css: 'x2' })
       +keyboardKey({ key: 'Q' })
       +keyboardKey({ key: 'W' })
       +keyboardKey({ key: 'E' })
@@ -21,9 +21,9 @@ mixin keyboardKey(opts)
       +keyboardKey({ key: ']' })
       +keyboardKey({ key: '\\' })
 
-  .row
+  .row.my-1
     .col-lg-12
-      +keyboardKey({ key: 'CAPS' })
+      +keyboardKey({ key: 'CAPS', css: 'x2' })
       +keyboardKey({ key: 'A' })
       +keyboardKey({ key: 'S' })
       +keyboardKey({ key: 'D' })
@@ -35,11 +35,11 @@ mixin keyboardKey(opts)
       +keyboardKey({ key: 'L' })
       +keyboardKey({ key: ';' })
       +keyboardKey({ key: "'" })
-      +keyboardKey({ key: 'RETURN' })
+      +keyboardKey({ key: 'RETURN', css: 'x2' })
 
-  .row
+  .row.my-1
     .col-lg-12
-      +keyboardKey({ key: 'SHIFT' })
+      +keyboardKey({ key: 'SHIFT', css: 'x2-5' })
       +keyboardKey({ key: 'Z' })
       +keyboardKey({ key: 'X' })
       +keyboardKey({ key: 'C' })
@@ -50,14 +50,14 @@ mixin keyboardKey(opts)
       +keyboardKey({ key: ',' })
       +keyboardKey({ key: '.' })
       +keyboardKey({ key: '/' })
-      +keyboardKey({ key: 'SHIFT' })
+      +keyboardKey({ key: 'SHIFT', css: 'x2-5' })
 
-  .row
+  .row.my-1
     .col-lg-12
       +keyboardKey({ key: 'CTRL' })
       +keyboardKey({ key: 'ALT' })
       +keyboardKey({ key: 'CMD' })
-      +keyboardKey({ key: 'SPACE' })
+      +keyboardKey({ key: 'SPACE', css: 'space' })
       +keyboardKey({ key: 'CMD' })
       +keyboardKey({ key: 'ALT' })
       +keyboardKey({ key: 'FN' })
