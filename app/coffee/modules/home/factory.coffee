@@ -6,10 +6,14 @@ DeviceData = require('./data')
 class DeviceFactory extends Marionette.Service
 
   radioRequests:
-    'device collection': 'getCollection'
+    'device model':       'getModel'
+    'device collection':  'getCollection'
 
   initialize: ->
     @cachedCollection = new Entities.Collection(DeviceData, { parse: true })
+
+  getModel: (id) ->
+    return @cachedCollection.get(id)
 
   getCollection: ->
     return @cachedCollection
