@@ -1,5 +1,9 @@
 mixin keyboardKey(opts)
-  button.btn.btn-outline-primary.hotkey--child(data-click='key' data-key=opts.key class=opts.css)= opts.key
+  button.btn.btn-outline-primary.hotkey--child( data-click='key' data-key=opts.key class=opts.css )
+    if opts.icon
+      i.fa.fa-fw( class=opts.icon )
+    else
+      = opts.key
 
 //- // // // // //
 
@@ -62,4 +66,8 @@ mixin keyboardKey(opts)
       +keyboardKey({ key: 'ALT' })
       +keyboardKey({ key: 'FN' })
       +keyboardKey({ key: 'CTRL' })
+      +keyboardKey({ key: 'LEFT-ARROW', icon: 'fa-chevron-left' })
+      +keyboardKey({ key: 'UP-ARROW', icon: 'fa-chevron-up' })
+      +keyboardKey({ key: 'DOWN-ARROW', icon: 'fa-chevron-down' })
+      +keyboardKey({ key: 'RIGHT-ARROW', icon: 'fa-chevron-right' })
 
