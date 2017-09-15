@@ -6,13 +6,8 @@
 # manages toggling the SidebarComponent's view
 class HeaderView extends Marionette.LayoutView
   template: require './templates/header'
-  className: 'nav navbar navbar-static-top navbar-light'
-
-  events:
-    'click .navbar-brand': 'toggleSidebar'
-
-  toggleSidebar: ->
-    Backbone.Radio.channel('sidebar').trigger('toggle')
+  className: 'navbar fixed-top'
+  tagName: 'nav'
 
 # # # # #
 

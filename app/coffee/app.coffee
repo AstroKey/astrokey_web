@@ -23,7 +23,6 @@ class Application extends Marionette.Service
   # And initializes sidebar module
   onReady: ->
     Backbone.history.start()
-    Backbone.Radio.channel('sidebar').trigger('reset')
 
   # Redirection interface
   # Used accross the application to redirect

@@ -4,9 +4,9 @@ LayoutView  = require './views/layout'
 
 class DashboardRoute extends require 'hn_routing/lib/route'
 
-  title: 'Keymaker Alpha'
+  title: 'AstroKey Web'
 
-  breadcrumbs: [{ text: 'Dashboard'}]
+  breadcrumbs: [{ text: 'Device' }]
 
   render: ->
     @container.show new LayoutView({ model: @model })
