@@ -18,7 +18,7 @@
     "backbone.radio": "~1.0",
     "backbone.syphon": "~0.6",
     "bluebird": "~3.0",
-    "bootstrap": "4.0.0-alpha.6",
+    "bootstrap": "4.0.0-beta",
     "bourbon": "~4.2",
     "browserify": "~10.2.4",
     "coffee-script": "~1.9.3",
