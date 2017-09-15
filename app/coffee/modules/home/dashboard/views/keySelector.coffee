@@ -1,7 +1,7 @@
 
 class KeyChild extends Mn.LayoutView
   tagName: 'li'
-  className: 'list-group-item'
+  className: 'key--child d-flex justify-content-center align-items-center'
   template: require('./templates/key_child')
 
   behaviors:
@@ -11,7 +11,7 @@ class KeyChild extends Mn.LayoutView
 
 class KeySelector extends Mn.CollectionView
   tagName: 'ul'
-  className: 'list-group'
+  className: 'list-unstyled key--list px-3 py-3 d-flex justify-content-center align-items-center'
   childView: KeyChild
 
 # # # # #
