@@ -1,45 +1,28 @@
-
-
-class DashboardView extends Mn.LayoutView
-  template: require './templates/layout'
-  className: 'container-fluid'
-
-  ui:
-    key: '[data-click=key]'
-
-  events:
-    'click @ui.key': 'onKeyClick'
-
-  # Maintains key state
-  # TODO - should be backbone models?
-  keys: []
-
-  # KeyClick callback
-  onKeyClick: (e) ->
-
-    # Caches el and key
-    el  = $(e.currentTarget)
-    key = el.data('key')
-
-    # Toggle ON
-    if @keys.indexOf(key) < 0
-      el.addClass('active')
-      @keys.push(key)
-
-    # TOGGLE OFF
-    else
-      el.removeClass('active')
-      @keys = _.without(@keys, key)
-
-    # Blurs focus from clicked key
-    el.blur()
-
-    console.log @keys
-
-    return
+KeySelector = require('./keySelector')
+KeyEditor = require('./keyEditor')
 
 # # # # #
 
-module.exports = DashboardView
+class DeviceLayoutView extends Marionette.LayoutView
+  template: require './templates/layout'
+  className: 'container-fluid'
+
+  regions:
+    deviceRegion: '[data-region=device]'
+    controlsRegion: '[data-region=controls]'
+
+  onRender: ->
+    keySelector = new KeySelector({ collection: @model.get('keys') })
+    keySelector.on 'childview:selected', (view) => @showControlsView(view.model)
+    @deviceRegion.show(keySelector)
+    @model.get('keys').first().trigger('selected')
+
+  showControlsView: (keyModel) ->
+    @controlsRegion.show new KeyEditor({ model: keyModel })
+
+# # # # #
+
+module.exports = DeviceLayoutView
+
 
 
