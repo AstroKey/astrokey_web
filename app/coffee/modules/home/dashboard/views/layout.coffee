@@ -5,7 +5,7 @@ KeyEditor = require('./keyEditor')
 
 class DeviceLayoutView extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid'
+  className: 'container-fluid h-100'
 
   regions:
     deviceRegion: '[data-region=device]'

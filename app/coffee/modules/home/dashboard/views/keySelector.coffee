@@ -1,7 +1,8 @@
 
 class KeyChild extends Mn.LayoutView
   tagName: 'li'
-  className: 'key--child d-flex justify-content-center align-items-center'
+  # className: 'key--child d-flex justify-content-center align-items-center'
+  className: 'btn btn-outline-dark key--child d-flex justify-content-center align-items-center'
   template: require('./templates/key_child')
 
   behaviors:

@@ -5,7 +5,7 @@ LedEditor = require('./ledEditor')
 # # # # #
 
 class KeyEditor extends require 'hn_views/lib/nav'
-  className: 'row'
+  className: 'row h-100'
   template: require('./templates/key_editor')
 
   navItems: [
