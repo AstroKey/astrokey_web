@@ -5,7 +5,7 @@ module.exports = [
   {
     id: 'device_1',
     label: 'Alex\'s AstroKey',
-    status_code: 1, # 1 == connected
+    status_code: 1,
     keys: [
       { id: 'key_1', order: 1 }
       { id: 'key_2', order: 2 }

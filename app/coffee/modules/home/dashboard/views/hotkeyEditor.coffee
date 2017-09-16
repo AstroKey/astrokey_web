@@ -3,6 +3,9 @@ class KeyboardView extends Mn.LayoutView
   template: require './templates/hotkey_editor'
   className: 'row d-flex justify-content-center'
 
+  behaviors:
+    KeyboardControls: {}
+
   ui:
     key: '[data-click=key]'
 
@@ -12,6 +15,15 @@ class KeyboardView extends Mn.LayoutView
   # Maintains key state
   # TODO - should be backbone models?
   keys: []
+
+  onKeyAction: (e) ->
+    # console.log(e.keyCode)
+
+    if e.type == 'keyup'
+      @$("[data-keycode=#{e.keyCode}]").removeClass('active')
+
+    else
+      @$("[data-keycode=#{e.keyCode}]").addClass('active')
 
   # KeyClick callback
   onKeyClick: (e) ->
