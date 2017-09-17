@@ -1,1 +1,36 @@
-// Home module styles go here
+
+// Layout Styles
+// .device--region
+.controls--region
+  border-left: 1px solid $gray-800
+
+// KeySelector Styles
+ul.list-unstyled.key--list
+  border: 1px solid $gray-800
+
+  li.key--child
+    height: 4rem
+    width: 4rem
+
+
+// Hotkey Editor Styles
+$hotkey_child_size: 3rem
+$hotkey_child_margin_x: 0.25rem
+
+.hotkey--child
+  font-size: 80%
+  width: $hotkey_child_size
+  height: $hotkey_child_size
+  margin: 0 $hotkey_child_margin_x
+
+  &.h_5
+    height: .5 * $hotkey_child_size
+
+  &.x2
+    width: 2*$hotkey_child_size
+
+  &.x2-5
+    width: 8.5rem
+
+  &.space
+    width: 5*$hotkey_child_size
