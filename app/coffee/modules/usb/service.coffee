@@ -1,4 +1,9 @@
 
+# NOTE: MUST CALL usb.requestDevice before usb.getDevices
+# navigator.usb.requestDevice({ filters: [{ vendorId: 0x03eb, }]}).then(function(device){
+#    console.log(device);
+# });
+
 # UsbService class definition
 # Responsible for managing USB devices
 # - fetch all devices
