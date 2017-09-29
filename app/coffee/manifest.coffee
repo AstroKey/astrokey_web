@@ -32,6 +32,11 @@ new FlashComponent({ container: AppLayout.flash })
 
 # # # # #
 
+# Services
+require('./modules/usb/service')
+
+# # # # #
+
 # Modules
 # Modules represent collections of endpoints in the application.
 # They have routes and entities (models and collections)
