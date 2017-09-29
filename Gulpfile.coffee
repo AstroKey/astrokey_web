@@ -41,9 +41,11 @@ paths =
       nodeModules + 'backbone.radio/build/backbone.radio.js'
       nodeModules + 'backbone.syphon/lib/backbone.syphon.js'
       nodeModules + 'marionette-service/dist/marionette-service.js'
-      nodeModules + 'tether/dist/js/tether.min.js'
+      # nodeModules + 'tether/dist/js/tether.min.js'
+      nodeModules + 'popper.js/dist/umd/popper.min.js'
       nodeModules + 'bootstrap/dist/js/bootstrap.min.js'
       nodeModules + 'bluebird/js/browser/bluebird.min.js'
+      nodeModules + 'sortablejs/Sortable.js'
     ]
 
 # Import Plugins

@@ -32,12 +32,17 @@ new FlashComponent({ container: AppLayout.flash })
 
 # # # # #
 
+# Services
+require('./modules/usb/service')
+
+# # # # #
+
 # Modules
 # Modules represent collections of endpoints in the application.
 # They have routes and entities (models and collections)
 # Each route represents an endpoint, or 'page' in the app.
-HomeModule = require './modules/home/router'
-new HomeModule({ container: AppLayout.main })
+MainModule = require './modules/main/router'
+new MainModule({ container: AppLayout.main })
 
 # # # # # #
 
