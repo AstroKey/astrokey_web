@@ -3,8 +3,8 @@ DashboardRoute = require './dashboard/route'
 
 # # # # #
 
-# HomeRouter class definition
-class HomeRouter extends require 'hn_routing/lib/router'
+# MainRouter class definition
+class MainRouter extends require 'hn_routing/lib/router'
 
   routes:
     '(/)': 'dashboard'
@@ -14,4 +14,4 @@ class HomeRouter extends require 'hn_routing/lib/router'
 
 # # # # #
 
-module.exports = HomeRouter
+module.exports = MainRouter
