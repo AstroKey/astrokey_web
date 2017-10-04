@@ -14,13 +14,13 @@ class SimpleNav extends Mn.LayoutView
     contentRegion: '[data-region=content]'
 
   onRender: ->
-    def = _.where(@navItems, { default: true })[0]
+    def = _.where(_.result(@, 'navItems'), { default: true })[0]
     return unless def
     @triggerMethod("navigate:#{def.trigger}")
 
   serializeData: ->
     data = super
-    _.extend(data, { navItems: @navItems })
+    _.extend(data, { navItems: _.result(@, 'navItems') })
     return data
 
   onNavItemClick: (e) =>
@@ -36,9 +36,14 @@ class KeyEditor extends SimpleNav
   template: require('./templates/key_editor')
 
   navItems: [
-    { icon: 'fa-keyboard-o',  text: 'Hotkey',  trigger: 'hotkey', default: true }
+    { icon: 'fa-keyboard-o',  text: 'Hotkey',  trigger: 'hotkey' }
     { icon: 'fa-file-text-o', text: 'Text',    trigger: 'text' }
   ]
+
+  onRender: ->
+    astrokey = @model.get('config')
+    return @onNavigateText() if astrokey.type == 'text'
+    return @onNavigateHotkey()
 
   onNavigateHotkey: ->
     @contentRegion.show new HotkeyEditor({ model: @model })
