@@ -8,8 +8,12 @@ class DashboardRoute extends require 'hn_routing/lib/route'
 
   breadcrumbs: [{ text: 'Device' }]
 
+  fetch: ->
+    @deviceModel = Radio.channel('device').request('model', 'device_1')
+
   render: ->
-    @container.show new LayoutView({ model: @model })
+    console.log(@deviceModel); # Debug
+    @container.show new LayoutView({ model: @deviceModel })
 
 # # # # #
 

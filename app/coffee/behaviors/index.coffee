@@ -6,3 +6,7 @@ module.exports =
   ModelEvents:      require 'hn_behaviors/lib/modelEvents'
   BindInputs:       require 'hn_behaviors/lib/bindInputs'
   Tooltips:         require 'hn_behaviors/lib/tooltips'
+  SelectableChild:  require './selectableChild'
+  KeyboardControls:  require './keyboardControls'
+  SortableChild:    require './sortableChild'
+  SortableList:     require './sortableList'
