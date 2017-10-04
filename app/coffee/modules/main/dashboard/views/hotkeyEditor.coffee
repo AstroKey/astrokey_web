@@ -3,8 +3,9 @@ class KeyboardView extends Mn.LayoutView
   template: require './templates/hotkey_editor'
   className: 'row d-flex justify-content-center'
 
-  behaviors:
-    KeyboardControls: {}
+  # TODO - is this in-spec?
+  # behaviors:
+  #   KeyboardControls: {}
 
   ui:
     key: '[data-click=key]'
