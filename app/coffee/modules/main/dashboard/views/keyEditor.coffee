@@ -3,7 +3,35 @@ HotkeyEditor = require('./hotkeyEditor')
 
 # # # # #
 
-class KeyEditor extends require 'hn_views/lib/nav'
+class SimpleNav extends Mn.LayoutView
+
+  events:
+    'click [data-trigger]': 'onNavItemClick'
+
+  navItems: []
+
+  regions:
+    contentRegion: '[data-region=content]'
+
+  onRender: ->
+    def = _.where(@navItems, { default: true })[0]
+    return unless def
+    @triggerMethod("navigate:#{def.trigger}")
+
+  serializeData: ->
+    data = super
+    _.extend(data, { navItems: @navItems })
+    return data
+
+  onNavItemClick: (e) =>
+    console.log @
+    el = $(e.currentTarget)
+    el.addClass('active').siblings().removeClass('active')
+    @triggerMethod("navigate:#{el.data('trigger')}")
+
+# # # # #
+
+class KeyEditor extends SimpleNav
   className: 'row h-100'
   template: require('./templates/key_editor')
 
@@ -12,14 +40,10 @@ class KeyEditor extends require 'hn_views/lib/nav'
     { icon: 'fa-file-text-o', text: 'Text',    trigger: 'text' }
   ]
 
-  navEvents:
-    'hotkey': 'hotkeyEditor'
-    'text':   'textEditor'
-
-  hotkeyEditor: ->
+  onNavigateHotkey: ->
     @contentRegion.show new HotkeyEditor({ model: @model })
 
-  textEditor: ->
+  onNavigateText: ->
     @contentRegion.show new TextEditor({ model: @model })
 
 # # # # #
