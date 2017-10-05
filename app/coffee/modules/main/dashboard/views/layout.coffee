@@ -1,6 +1,6 @@
 DeviceLayout = require('./deviceLayout')
 KeyEditor = require('./keyEditor')
-KeyDetail = require('./keyDetail')
+# KeyDetail = require('./keyDetail')
 # LedEditor = require('./ledEditor')
 
 # # # # #
@@ -22,7 +22,7 @@ class DeviceLayoutView extends Marionette.LayoutView
 
   showControlsView: (keyModel) ->
     @controlsRegion.show new KeyEditor({ model: keyModel })
-    @keyRegion.show new KeyDetail({ model: keyModel })
+    # @keyRegion.show new KeyDetail({ model: keyModel })
     # @ledRegion.show new LedEditor({ model: keyModel })
 
 # # # # #
