@@ -1,8 +1,11 @@
 
-# NOTE: MUST CALL usb.requestDevice before usb.getDevices
-# navigator.usb.requestDevice({ filters: [{ vendorId: 0x03eb, }]}).then(function(device){
-#    console.log(device);
-# });
+# Filters used to query WebUSB devices
+# TODO - update filters to query devices by AstroKey VendorID
+requestDeviceFilters = [
+  { vendorId: 0x03eb }
+]
+
+# # # #
 
 # UsbService class definition
 # Responsible for managing USB devices
@@ -12,10 +15,28 @@ class UsbService extends Marionette.Service
   radioRequests:
     'usb devices': 'getDevices'
 
+  # getDevices
   getDevices: ->
-    return navigator.usb.getDevices().then (devices) =>
-      console.log(devices)
 
-# # # # #
+    # Returns a Promise to manage asynchonous behavior
+    return new Promise (resolve, reject) =>
+
+      # Step 1 - Request device
+      navigator.usb.requestDevice({ filters: requestDeviceFilters })
+      .then( (device) =>
+
+        # TODO - remove
+        console.log device
+
+        # Step 2 - Get Devices
+        # TODO - verify this workflow
+        return navigator.usb.getDevices().then((d) =>
+          console.log(d)
+        )
+
+      )
+
+
+# # # #
 
 module.exports = new UsbService()

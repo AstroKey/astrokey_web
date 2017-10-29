@@ -4,15 +4,20 @@
 .controls--region
   border-left: 1px solid $gray-800
 
-// KeySelector Styles
+// // // //
+
+// AstroKey Selector Styles
+$astrokey_child_size: 4rem
+
 ul.list-unstyled.key--list
   border: 1px solid $gray-800
 
   li.key--child
-    height: 3rem
-    width: 3rem
+    height: $astrokey_child_size
+    width: $astrokey_child_size
 
     span
+      display: none
       font-size: 0.5rem
       position: relative
       bottom: 0
