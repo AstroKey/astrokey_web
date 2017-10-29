@@ -17,14 +17,14 @@ class KeyboardView extends Mn.LayoutView
   # TODO - should be backbone models?
   keys: []
 
-  onKeyAction: (e) ->
-    # console.log(e.keyCode)
+  # onKeyAction: (e) ->
+  #   # console.log(e.keyCode)
 
-    if e.type == 'keyup'
-      @$("[data-keycode=#{e.keyCode}]").removeClass('active')
+  #   if e.type == 'keyup'
+  #     @$("[data-keycode=#{e.keyCode}]").removeClass('active')
 
-    else
-      @$("[data-keycode=#{e.keyCode}]").addClass('active')
+  #   else
+  #     @$("[data-keycode=#{e.keyCode}]").addClass('active')
 
   # KeyClick callback
   onKeyClick: (e) ->
@@ -35,12 +35,12 @@ class KeyboardView extends Mn.LayoutView
 
     # Toggle ON
     if @keys.indexOf(key) < 0
-      el.addClass('active')
+      # el.addClass('active')
       @keys.push(key)
 
     # TOGGLE OFF
     else
-      el.removeClass('active')
+      # el.removeClass('active')
       @keys = _.without(@keys, key)
 
     # Blurs focus from clicked key
