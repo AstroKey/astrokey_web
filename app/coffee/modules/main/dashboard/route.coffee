@@ -1,5 +1,4 @@
 LayoutView  = require './views/layout'
-KeyboardKeys  = require '../keys'
 
 # # # # #
 
@@ -10,11 +9,12 @@ class DashboardRoute extends require 'hn_routing/lib/route'
   breadcrumbs: [{ text: 'Device' }]
 
   fetch: ->
+  	@keys = Radio.channel('device').request('collection')
     @deviceModel = Radio.channel('device').request('model', 'device_1')
 
   render: ->
     console.log(@deviceModel); # Debug
-    @container.show new LayoutView({ model: @deviceModel, keys: KeyboardKeys })
+    @container.show new LayoutView({ model: @deviceModel, keys: @keys })
 
 # # # # #
 

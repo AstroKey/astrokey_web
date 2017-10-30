@@ -1,6 +1,6 @@
 
-# KeyModel class definition
-class KeyModel extends Backbone.RelationalModel
+# AstrokeyModel class definition
+class AstrokeyModel extends Backbone.RelationalModel
 
   # Default attributes
   defaults:
@@ -8,8 +8,8 @@ class KeyModel extends Backbone.RelationalModel
 
 # # # # #
 
-class KeyCollection extends Backbone.Collection
-  model: KeyModel
+class AstrokeyCollection extends Backbone.Collection
+  model: AstrokeyModel
   comparator: 'order'
 
 # # # # #
@@ -21,8 +21,8 @@ class DeviceModel extends Backbone.RelationalModel
   relations: [
       type:           Backbone.HasMany
       key:            'keys'
-      relatedModel:   KeyModel
-      collectionType: KeyCollection
+      relatedModel:   AstrokeyModel
+      collectionType: AstrokeyCollection
   ]
 
 # # # # #
