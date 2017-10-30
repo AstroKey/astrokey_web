@@ -3,8 +3,7 @@
 class KeyModel extends Backbone.RelationalModel
 
   # Default attributes
-  defaults:
-    order: null
+  defaults: {}
 
 # # # # #
 

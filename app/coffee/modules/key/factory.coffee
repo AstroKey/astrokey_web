@@ -3,7 +3,7 @@ KeyData = require('./keys')
 
 # # # # #
 
-class DeviceFactory extends Marionette.Service
+class KeyFactory extends Marionette.Service
 
   radioRequests:
     'key model':       'getModel'
@@ -20,4 +20,4 @@ class DeviceFactory extends Marionette.Service
 
 # # # # #
 
-module.exports = new DeviceFactory()
+module.exports = new KeyFactory()

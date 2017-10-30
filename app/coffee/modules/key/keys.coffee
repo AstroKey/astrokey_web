@@ -1,7 +1,5 @@
 
-# Dummy Device Data for UI development
-# TODO - pull from WebUSB
-
+# Key JSON definitions
 module.exports = [
     { row: 'r4', key: '~', keycode: 192 }
     { row: 'r4', key: '1', keycode: 49 }
@@ -70,7 +68,7 @@ module.exports = [
     { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18 }
 ]
 
-# Scratch 
+# Scratch
 
 # { key: 'LEFT-ARROW', icon: 'fa-chevron-left' }
 # { key: 'UP-ARROW', icon: 'fa-chevron-up' }
