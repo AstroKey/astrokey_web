@@ -1,7 +1,7 @@
 
 class MacroChild extends Mn.LayoutView
   tagName: 'li'
-  className: 'btn btn-outline-dark macro--child d-flex justify-content-center align-items-center my-2'
+  className: 'macro--child d-flex justify-content-center align-items-center my-2'
   template: require('./templates/macro_child')
 
   behaviors:
@@ -14,9 +14,6 @@ class MacroEmpty extends Mn.LayoutView
   className: 'btn btn-outline-dark macro--child d-flex justify-content-center align-items-center my-2'
   template: require('./templates/macro_empty')
 
-  behaviors:
-    SortableChild: {}
-
 # # # # #
 
 class MacroList extends Mn.CollectionView
@@ -25,8 +22,35 @@ class MacroList extends Mn.CollectionView
   childView: MacroChild
   emptyView: MacroEmpty
 
-  behaviors:
-    SortableList: {}
+  # behaviors:
+  #   SortableList: {}
+
+  onRender: ->
+
+    # Sorts the collection
+    @collection.sort()
+
+    # Initializes Sortable container
+    Sortable.create @el,
+      animation:    0
+      handle:       '.macro--child'
+      ghostClass:   'ghost'  # Class name for the drop placeholder
+      chosenClass:  'chosen'  # Class name for the chosen item
+      dragClass:    'drag'  # Class name for the dragging item
+      onEnd: (e) => @reorderCollection()
+
+  # reorderCollection
+  # Invoked after sorting has completed
+  reorderCollection: =>
+
+    # Triggers order events on CollectionView childView $els
+    order = 1
+    for el in @el.children
+      $(el).trigger('sorted',order)
+      order++
+
+    # @collection.sort()
+    @render()
 
 # # # # #
 

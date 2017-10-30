@@ -1,4 +1,5 @@
 Entities = require('./entities')
+DefaultMacros = require('./default_macros')
 
 # # # # #
 
@@ -8,7 +9,7 @@ class MacroFactory extends Marionette.Service
     'macro collection':  'getCollection'
 
   initialize: ->
-    @cachedCollection = new Entities.Collection()
+    @cachedCollection = new Entities.Collection(DefaultMacros, { parse: true })
 
   getCollection: ->
     return @cachedCollection

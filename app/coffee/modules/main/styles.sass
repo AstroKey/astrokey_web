@@ -80,6 +80,8 @@ ul.list-unstyled.macro--list
   li.macro--child
     height: $macro_size
     width: $macro_size
+    border: .25rem solid #999
+    margin: 0 .25rem
 
     span
       display: none
@@ -88,9 +90,14 @@ ul.list-unstyled.macro--list
       bottom: 0
       left: 0
 
+    &.ghost
+      opacity: 0
 
-// ////////////////
-.sortable-ghost
-  @extend .btn
-  @extend .btn-primary
+    &.chosen
+      background-color: #f3f3f3
+      opacity: 0.5
+
+    &.drag
+      background-color: #999
+      border: .25rem dotted #000
 

@@ -33,8 +33,14 @@ class DeviceLayoutView extends Marionette.LayoutView
 
     # Handles KeySelection event
     keyboardView.on 'key:selected', (key) =>
-      console.log 'KEY SELECTED'
-      console.log key
+
+      # Clones the original object
+      key = _.clone(key)
+
+      # Adds the correct `order` attribute
+      key.order = @options.macros.length + 1
+
+      # Adds the key to the MacroCollection
       @options.macros.add(key)
 
     # Shows the keyboardView
