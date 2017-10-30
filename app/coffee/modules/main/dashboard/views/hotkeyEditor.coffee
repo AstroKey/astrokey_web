@@ -14,7 +14,7 @@ class KeyboardView extends Mn.LayoutView
     'click @ui.key': 'onKeyClick'
 
   # Maintains key state
-  # TODO - should be backbone models?
+  # TODO - should be backbone collection, passed in as option
   keys: []
 
   # onKeyAction: (e) ->
@@ -25,6 +25,17 @@ class KeyboardView extends Mn.LayoutView
 
   #   else
   #     @$("[data-keycode=#{e.keyCode}]").addClass('active')
+
+  # Passes key objects to UI
+  templateHelpers: ->
+    console.log @options.keys
+    return {
+      r0: _.where(@options.keys, { row: 'r0'})
+      r1: _.where(@options.keys, { row: 'r1'})
+      r2: _.where(@options.keys, { row: 'r2'})
+      r3: _.where(@options.keys, { row: 'r3'})
+      r4: _.where(@options.keys, { row: 'r4'})
+    }
 
   # KeyClick callback
   onKeyClick: (e) ->

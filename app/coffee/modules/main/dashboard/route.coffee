@@ -1,4 +1,5 @@
 LayoutView  = require './views/layout'
+KeyboardKeys  = require '../keys'
 
 # # # # #
 
@@ -13,7 +14,7 @@ class DashboardRoute extends require 'hn_routing/lib/route'
 
   render: ->
     console.log(@deviceModel); # Debug
-    @container.show new LayoutView({ model: @deviceModel })
+    @container.show new LayoutView({ model: @deviceModel, keys: KeyboardKeys })
 
 # # # # #
 
