@@ -6,7 +6,9 @@ mixin positionSelect(opts)
 //- i.fa.fa-fw.fa-bars.handle.p-2
 
 .key.justify-content-center.align-items-center.mb-2
-  = key
+  .content= key
+  .hover
+    i.fa.fa-fw.fa-lg.fa-times
 
 .position
   each pos in positions

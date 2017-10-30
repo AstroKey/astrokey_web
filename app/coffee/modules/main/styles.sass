@@ -91,7 +91,11 @@ ul.list-unstyled.macro--list
       height: $macro_size
       width: $macro_size
       border: .25rem solid #999
+      color: #333
       display: flex
+
+      .hover
+        display: none
 
     .position
       display: flex
@@ -112,4 +116,13 @@ ul.list-unstyled.macro--list
     &.drag
       background-color: #999
       border: .25rem dotted #000
+
+    &:hover
+      .key
+        border: .25rem solid $warning
+        color: $warning
+        .content
+          display: none
+        .hover
+          display: block
 
