@@ -21,14 +21,13 @@ class DeviceLayoutView extends Marionette.LayoutView
 
   showControlsView: (keyModel) ->
 
-    # @controlsRegion.show new KeyEditor({ model: keyModel, keys: @options.keys })
-
     # Gets the current macro assigned to the keyModel
     # macroCollection = keyModel.getMacroCollection()
     @macroRegion.show new MacroList({ collection: @options.macros })
 
     # Instantaiates new KeyboardView
     # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
+    # @controlsRegion.show new KeyEditor({ model: keyModel, keys: @options.keys })
     keyboardView = new KeyboardView({ model: keyModel, keys: @options.keys })
 
     # Handles KeySelection event
