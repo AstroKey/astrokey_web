@@ -35,6 +35,9 @@ new FlashComponent({ container: AppLayout.flash })
 # Services
 require('./modules/usb/service')
 
+# Factories
+require('./modules/key/factory')
+
 # # # # #
 
 # Modules

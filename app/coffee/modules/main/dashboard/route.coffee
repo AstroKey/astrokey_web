@@ -9,7 +9,7 @@ class DashboardRoute extends require 'hn_routing/lib/route'
   breadcrumbs: [{ text: 'Device' }]
 
   fetch: ->
-  	@keys = Radio.channel('device').request('collection')
+    @keys = Radio.channel('key').request('collection')
     @deviceModel = Radio.channel('device').request('model', 'device_1')
 
   render: ->

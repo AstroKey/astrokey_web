@@ -29,12 +29,15 @@ class KeyboardView extends Mn.LayoutView
   # Passes key objects to UI
   templateHelpers: ->
     console.log @options.keys
+
+    keys = @options.keys.toJSON()
+
     return {
-      r0: _.where(@options.keys, { row: 'r0'})
-      r1: _.where(@options.keys, { row: 'r1'})
-      r2: _.where(@options.keys, { row: 'r2'})
-      r3: _.where(@options.keys, { row: 'r3'})
-      r4: _.where(@options.keys, { row: 'r4'})
+      r0: _.where(keys, { row: 'r0'})
+      r1: _.where(keys, { row: 'r1'})
+      r2: _.where(keys, { row: 'r2'})
+      r3: _.where(keys, { row: 'r3'})
+      r4: _.where(keys, { row: 'r4'})
     }
 
   # KeyClick callback

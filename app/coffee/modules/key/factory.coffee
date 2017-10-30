@@ -1,5 +1,5 @@
 Entities = require('./entities')
-KeyData = require('./data')
+KeyData = require('./keys')
 
 # # # # #
 
