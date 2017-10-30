@@ -78,14 +78,7 @@ ul.list-unstyled.macro--list
   border: 1px solid $gray-800
 
   li.macro--child
-    margin: 0 .25rem
-
-    // span
-    //   display: none
-    //   font-size: 0.5rem
-    //   position: relative
-    //   bottom: 0
-    //   left: 0
+    display: flex
 
     .key
       height: $macro_size
@@ -94,8 +87,25 @@ ul.list-unstyled.macro--list
       color: #333
       display: flex
 
-      .hover
-        display: none
+      .inner
+        height: 100%
+        width: 100%
+        justify-content: center
+        align-items: center
+
+        &.content
+          display: flex
+
+        &.hover
+          display: none
+
+      &:hover
+        border: .25rem solid theme-color('warning')
+        color: theme-color('warning')
+        .inner.content
+          display: none
+        .inner.hover
+          display: flex
 
     .position
       display: flex
@@ -107,22 +117,18 @@ ul.list-unstyled.macro--list
           color: #000000
 
     &.ghost
-      opacity: 0
+      .key
+        border: .25rem dotted #000
+      .position
+        opacity: 0
 
     &.chosen
-      background-color: #f3f3f3
-      opacity: 0.5
+      .key
+        background-color: $gray-100
+
+        .hover
+          display: none !important
 
     &.drag
-      background-color: #999
-      border: .25rem dotted #000
-
-    &:hover
-      .key
-        border: .25rem solid $warning
-        color: $warning
-        .content
-          display: none
-        .hover
-          display: block
-
+      .position
+        opacity: 0

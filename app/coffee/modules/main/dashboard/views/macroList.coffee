@@ -1,23 +1,23 @@
 
 class MacroChild extends Mn.LayoutView
   tagName: 'li'
-  className: 'macro--child d-flex flex-column justify-content-center align-items-center my-2'
+  className: 'macro--child flex-column justify-content-center align-items-center my-2'
   template: require('./templates/macro_child')
 
   behaviors:
     SortableChild: {}
 
-  ui:
-    positionBtn: '[data-position]'
-
   modelEvents:
     'change:position': 'render'
 
   events:
-    'click @ui.positionBtn:not(.active)': 'onPositionClick'
+    'click .key': 'removeMacro'
+    'click [data-position]:not(.active)': 'onPositionClick'
+
+  removeMacro: ->
+    @model.collection.remove(@model)
 
   onPositionClick: (e) ->
-    console.log 'CLICKED POSITION'
 
     # Caches clicked el
     el = $(e.currentTarget)
@@ -30,12 +30,11 @@ class MacroChild extends Mn.LayoutView
     # Sets the position attribute on the model
     @model.set('position', position)
 
-
   templateHelpers: ->
     positions = [
-      { position: -1, css: 'fa-long-arrow-up' }
+      { position: -1, css: 'fa-long-arrow-down' }
       { position: 0, css: 'fa-arrows-v' }
-      { position: 1, css: 'fa-long-arrow-down' }
+      { position: 1, css: 'fa-long-arrow-up' }
     ]
 
     position = @model.get('position')
@@ -48,7 +47,7 @@ class MacroChild extends Mn.LayoutView
 
 class MacroEmpty extends Mn.LayoutView
   tagName: 'li'
-  className: 'btn btn-outline-dark macro--child d-flex justify-content-center align-items-center my-2'
+  className: 'btn btn-outline-dark macro--child justify-content-center align-items-center my-2'
   template: require('./templates/macro_empty')
 
 # # # # #
@@ -70,10 +69,11 @@ class MacroList extends Mn.CollectionView
     # Initializes Sortable container
     Sortable.create @el,
       animation:    0
-      handle:       '.handle'
+      handle:       '.key'
       ghostClass:   'ghost'  # Class name for the drop placeholder
       chosenClass:  'chosen'  # Class name for the chosen item
       dragClass:    'drag'  # Class name for the dragging item
+      fallbackTolerance: 100
       onEnd: (e) => @reorderCollection()
 
   # reorderCollection
