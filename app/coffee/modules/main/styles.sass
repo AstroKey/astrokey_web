@@ -4,15 +4,20 @@
 .controls--region
   border-left: 1px solid $gray-800
 
-// KeySelector Styles
+// // // //
+
+// AstroKey Selector Styles
+$astrokey_child_size: 4rem
+
 ul.list-unstyled.key--list
   border: 1px solid $gray-800
 
   li.key--child
-    height: 3rem
-    width: 3rem
+    height: $astrokey_child_size
+    width: $astrokey_child_size
 
     span
+      display: none
       font-size: 0.5rem
       position: relative
       bottom: 0
@@ -20,24 +25,113 @@ ul.list-unstyled.key--list
 
 // // // //
 
-// Hotkey Editor Styles
-$hotkey_child_size: 3rem
-$hotkey_child_margin_x: 0.25rem
+// Keyboard Body Styles
+// .keyboard--body
+//   width: 80%
 
-.hotkey--child
+// Keyboard Row Styles
+.keyboard--row
+  display: flex
+  justify-content: space-between
+  width: 100%
+
+// Key Selector Styles
+$keyboard_key_child_size: 3.5rem
+$keyboard_key_margin: 0.25rem
+
+.keyboard--key
+  display: flex
   font-size: 80%
-  width: $hotkey_child_size
-  height: $hotkey_child_size
-  margin: 0 $hotkey_child_margin_x
+  width: $keyboard_key_child_size
+  height: $keyboard_key_child_size
+  margin: $keyboard_key_margin
+  justify-content: center
+  align-items: center
 
-  &.h_5
-    height: .5 * $hotkey_child_size
+  &.w1_25
+    width: 1.25*$keyboard_key_child_size
 
-  &.x2
-    width: 2*$hotkey_child_size
+  &.w1_5
+    width: 1.5*$keyboard_key_child_size
 
-  &.x2-5
-    width: 8.5rem
+  &.w1_75
+    width: 1.75*$keyboard_key_child_size
+
+  &.w2_0
+    width: 2*$keyboard_key_child_size
+
+  &.w2_25
+    width: 2.25*$keyboard_key_child_size
+
+  &.w2_75
+    width: 2.75*$keyboard_key_child_size
 
   &.space
-    width: 5*$hotkey_child_size
+    width: 6.25*$keyboard_key_child_size
+
+// // // //
+// Macro Styles
+
+$macro_size: 4rem
+
+ul.list-unstyled.macro--list
+  border-bottom: 1px solid $gray-800
+
+  li.macro--child
+    display: flex
+    margin: 0 .25rem
+
+    .key
+      height: $macro_size
+      width: $macro_size
+      border: .25rem solid $gray-100
+      color: #333
+      display: flex
+      font-weight: 400
+
+      .inner
+        height: 100%
+        width: 100%
+        justify-content: center
+        align-items: center
+
+        &.content
+          display: flex
+          flex-direction: column
+
+        &.hover
+          display: none
+
+      &:hover
+        border: .25rem solid theme-color('warning')
+        color: theme-color('warning')
+        .inner.content
+          display: none
+        .inner.hover
+          display: flex
+
+    .position
+      display: flex
+
+      i.position--select
+        color: #dddddd
+
+        &.active
+          color: #000000
+
+    &.ghost
+      .key
+        border: .25rem dotted #000
+      .position
+        opacity: 0
+
+    &.chosen
+      .key
+        background-color: $gray-100
+
+        .hover
+          display: none !important
+
+    &.drag
+      .position
+        opacity: 0

@@ -1,0 +1,16 @@
+mixin positionSelect(opts)
+  i.fa.fa-lg.mx-1.position--select( class=opts.css, data-position=opts.position )
+
+//- // // //
+
+.key.d-flex.mb-2
+  .inner.content
+    .shift= key
+    .text-lowercase= key
+  .inner.hover
+    i.fa.fa-fw.fa-lg.fa-times
+
+.position
+  each pos in positions
+    +positionSelect(pos)
+

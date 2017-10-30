@@ -1,19 +1,18 @@
 
 class KeyChild extends Mn.LayoutView
   tagName: 'li'
-  # className: 'key--child d-flex justify-content-center align-items-center'
-  className: 'btn btn-outline-dark key--child d-flex justify-content-center align-items-center sortable'
+  className: 'btn btn-outline-dark key--child d-flex justify-content-center align-items-center my-2'
   template: require('./templates/key_child')
 
   behaviors:
     SelectableChild: {}
-    SortableChild: {}
+  #   SortableChild: {}
 
 # # # # #
 
 class KeySelector extends Mn.CollectionView
   tagName: 'ul'
-  className: 'list-unstyled key--list px-3 py-3 my-2 d-flex justify-content-between align-items-center'
+  className: 'list-unstyled key--list px-4 py-3 my-2 d-flex justify-content-between align-items-center flex-column'
   childView: KeyChild
 
   behaviors:
