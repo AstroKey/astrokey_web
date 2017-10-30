@@ -31,8 +31,8 @@ class KeyboardView extends Mn.LayoutView
     # Finds the model of the key that was selected
     key = @options.keys.findWhere({ keycode: keycode })
 
-    console.log key
-    console.log key.toJSON()
+    # Triggers 'key:selected' event
+    @trigger 'key:selected', key.toJSON()
 
     # Blurs focus from clicked key
     el.blur()

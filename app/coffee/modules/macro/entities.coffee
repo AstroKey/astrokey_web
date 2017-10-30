@@ -4,7 +4,7 @@ class MacroModel extends Backbone.RelationalModel
 
   # Default attributes
   defaults:
-  	order: 0
+    order: 0
     position: 0
 
 # # # # #

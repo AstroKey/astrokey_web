@@ -37,6 +37,7 @@ require('./modules/usb/service')
 
 # Factories
 require('./modules/key/factory')
+require('./modules/macro/factory')
 
 # # # # #
 

@@ -10,11 +10,12 @@ class DashboardRoute extends require 'hn_routing/lib/route'
 
   fetch: ->
     @keys = Radio.channel('key').request('collection')
+    @macros = Radio.channel('macro').request('collection')
     @deviceModel = Radio.channel('device').request('model', 'device_1')
 
   render: ->
     console.log(@deviceModel); # Debug
-    @container.show new LayoutView({ model: @deviceModel, keys: @keys })
+    @container.show new LayoutView({ model: @deviceModel, keys: @keys, macros: @macros })
 
 # # # # #
 

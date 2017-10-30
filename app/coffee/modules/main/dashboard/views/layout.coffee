@@ -20,17 +20,25 @@ class DeviceLayoutView extends Marionette.LayoutView
     @deviceRegion.show(deviceView)
 
   showControlsView: (keyModel) ->
+
     # @controlsRegion.show new KeyEditor({ model: keyModel, keys: @options.keys })
 
     # Gets the current macro assigned to the keyModel
     # macroCollection = keyModel.getMacroCollection()
-    # macros = macroCollection.toJSON()
-    # TODO - currently using mock
-    MacroList
+    @macroRegion.show new MacroList({ collection: @options.macros })
 
-    # Shows the keyboard view
+    # Instantaiates new KeyboardView
     # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
-    @controlsRegion.show new KeyboardView({ model: keyModel, keys: @options.keys })
+    keyboardView = new KeyboardView({ model: keyModel, keys: @options.keys })
+
+    # Handles KeySelection event
+    keyboardView.on 'key:selected', (key) =>
+      console.log 'KEY SELECTED'
+      console.log key
+      @options.macros.add(key)
+
+    # Shows the keyboardView
+    @controlsRegion.show keyboardView
 
 # # # # #
 
