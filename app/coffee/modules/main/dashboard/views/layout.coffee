@@ -2,7 +2,6 @@ DeviceLayout = require('./deviceLayout')
 KeyEditor = require('./keyEditor')
 KeyboardView = require('./KeyboardView')
 # KeyDetail = require('./keyDetail')
-# LedEditor = require('./ledEditor')
 
 # # # # #
 
@@ -22,9 +21,12 @@ class DeviceLayoutView extends Marionette.LayoutView
     @deviceRegion.show(deviceView)
 
   showControlsView: (keyModel) ->
-    # @controlsRegion.show new KeyEditor({ model: keyModel })
+    # @controlsRegion.show new KeyEditor({ model: keyModel, keys: @options.keys })
     # @keyRegion.show new KeyDetail({ model: keyModel })
     # @ledRegion.show new LedEditor({ model: keyModel })
+
+    # Shows the keyboard view
+    # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
     @controlsRegion.show new KeyboardView({ model: keyModel, keys: @options.keys })
 
 # # # # #
