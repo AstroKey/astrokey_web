@@ -1,1 +1,14 @@
-.btn.btn-primary-outline.sortable= key
+mixin positionSelect(opts)
+  i.fa.fa-lg.fa-fw.position--select( class=opts.css, data-position=opts.position )
+
+//- // // //
+
+//- i.fa.fa-fw.fa-bars.handle.p-2
+
+.key.justify-content-center.align-items-center.mb-2
+  = key
+
+.position
+  each pos in positions
+    +positionSelect(pos)
+

@@ -78,17 +78,29 @@ ul.list-unstyled.macro--list
   border: 1px solid $gray-800
 
   li.macro--child
-    height: $macro_size
-    width: $macro_size
-    border: .25rem solid #999
     margin: 0 .25rem
 
-    span
-      display: none
-      font-size: 0.5rem
-      position: relative
-      bottom: 0
-      left: 0
+    // span
+    //   display: none
+    //   font-size: 0.5rem
+    //   position: relative
+    //   bottom: 0
+    //   left: 0
+
+    .key
+      height: $macro_size
+      width: $macro_size
+      border: .25rem solid #999
+      display: flex
+
+    .position
+      display: flex
+
+      i.position--select
+        color: #dddddd
+
+        &.active
+          color: #000000
 
     &.ghost
       opacity: 0
