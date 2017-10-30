@@ -1,5 +1,5 @@
 TextEditor = require('./textEditor')
-HotkeyEditor = require('./hotkeyEditor')
+KeyboardView = require('./KeyboardView')
 
 # # # # #
 
@@ -46,7 +46,7 @@ class KeyEditor extends SimpleNav
     return @onNavigateHotkey()
 
   onNavigateHotkey: ->
-    @contentRegion.show new HotkeyEditor({ model: @model })
+    @contentRegion.show new KeyboardView({ model: @model })
 
   onNavigateText: ->
     @contentRegion.show new TextEditor({ model: @model })
