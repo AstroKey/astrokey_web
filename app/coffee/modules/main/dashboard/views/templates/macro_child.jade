@@ -4,7 +4,9 @@ mixin positionSelect(opts)
 //- // // //
 
 .key.d-flex.mb-2
-  .inner.content= key
+  .inner.content
+    .shift= key
+    .text-lowercase= key
   .inner.hover
     i.fa.fa-fw.fa-lg.fa-times
 

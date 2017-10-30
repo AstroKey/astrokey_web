@@ -75,7 +75,7 @@ $keyboard_key_margin: 0.25rem
 $macro_size: 4rem
 
 ul.list-unstyled.macro--list
-  border: 1px solid $gray-800
+  border-bottom: 1px solid $gray-800
 
   li.macro--child
     display: flex
@@ -84,9 +84,10 @@ ul.list-unstyled.macro--list
     .key
       height: $macro_size
       width: $macro_size
-      border: .25rem solid #999
+      border: .25rem solid $gray-100
       color: #333
       display: flex
+      font-weight: 400
 
       .inner
         height: 100%
@@ -96,6 +97,7 @@ ul.list-unstyled.macro--list
 
         &.content
           display: flex
+          flex-direction: column
 
         &.hover
           display: none
