@@ -8,11 +8,17 @@ mixin keyboardKey(opts)
     if opts.icon
       i.fa.fa-fw( class=opts.icon )
     else
-      = opts.key
+
+      if opts.key && opts.shift
+        .shift= opts.shift
+        .plain= opts.key
+
+      else
+        .plain= opts.key
 
 //- // // // //
 
-.keyboard--body
+.keyboard--body.mt-4
   +keyboardRow()
     each key in r4
       +keyboardKey(key)
