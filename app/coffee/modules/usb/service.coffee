@@ -2,7 +2,7 @@
 # Filters used to query WebUSB devices
 # TODO - update filters to query devices by AstroKey VendorID
 requestDeviceFilters = [
-  { vendorId: 0x03eb }
+  { vendorId: 0x10c4 }
 ]
 
 # # # #

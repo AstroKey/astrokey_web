@@ -5,8 +5,13 @@ mixin positionSelect(opts)
 
 .key.d-flex.mb-2
   .inner.content
-    .shift= key
-    .text-lowercase= key
+    if key && shift
+      .shift= shift
+      = key
+
+    else
+      .plain= key
+
   .inner.hover
     i.fa.fa-fw.fa-lg.fa-times
 
