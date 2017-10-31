@@ -123,11 +123,19 @@ ul.list-unstyled.macro--list
     .position
       display: flex
 
-      i.position--select
-        color: #dddddd
+      span.position--select
+        color: $gray-800
 
-        &.active
-          color: #000000
+        // TODO - different colors for different positions?
+        &.position_-1
+          color: theme-color('warning')
+
+        &.position_0
+          // color: theme-color('primary')
+          color: $gray-600
+
+        &.position_1
+          color: theme-color('success')
 
     &.ghost
       .key

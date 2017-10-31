@@ -27,8 +27,15 @@ class MacroChild extends Mn.LayoutView
 
     console.log position
 
+    if position == -1
+      new_position = 0
+    if position == 0
+      new_position = 1
+    if position == 1
+      new_position = -1
+
     # Sets the position attribute on the model
-    @model.set('position', position)
+    @model.set('position', new_position)
 
   templateHelpers: ->
     positions = [
@@ -38,10 +45,10 @@ class MacroChild extends Mn.LayoutView
     ]
 
     position = @model.get('position')
-    activePosition = _.findWhere(positions, { position: position })
-    activePosition.css += ' active'
-
-    return { positions }
+    active_position = _.findWhere(positions, { position: position })
+    return { active_position }
+    # activePosition.css += ' active'
+    # return { positions }
 
 # # # # #
 

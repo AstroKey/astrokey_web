@@ -3,6 +3,7 @@ class KeyboardView extends Mn.LayoutView
   template: require './templates/hotkey_editor'
   className: 'row d-flex justify-content-center'
 
+  # TODO - activate this behavior conditionally
   # behaviors:
   #   KeyboardControls: {}
 
@@ -25,22 +26,22 @@ class KeyboardView extends Mn.LayoutView
     }
 
   # KeyboardControls behavior callback
-  # onKeyAction: (e) ->
-  #   # console.log e
+  onKeyAction: (e) ->
+    # console.log e
 
-  #   e.preventDefault()
+    e.preventDefault()
 
-  #   key = @options.keys.findWhere({ keycode: e.keyCode })
+    key = @options.keys.findWhere({ keycode: e.keyCode })
 
-  #   # console.log key
+    # console.log key
 
-  #   if e.type == 'keydown'
-  #     @trigger 'key:selected', key.toJSON()
+    if e.type == 'keydown'
+      @trigger 'key:selected', key.toJSON()
 
-  #   if e.type == 'keyup'
-  #     @$("[data-keycode=#{e.keyCode}]").removeClass('active')
-  #   else
-  #     @$("[data-keycode=#{e.keyCode}]").addClass('active')
+    if e.type == 'keyup'
+      @$("[data-keycode=#{e.keyCode}]").removeClass('active')
+    else
+      @$("[data-keycode=#{e.keyCode}]").addClass('active')
 
   # KeyClick callback
   onKeyClick: (e) ->
