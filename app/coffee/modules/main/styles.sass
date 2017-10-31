@@ -94,7 +94,8 @@ ul.list-unstyled.macro--list
     .key
       height: $macro_size
       width: $macro_size
-      border: .25rem solid $gray-300
+      border: .25rem solid $gray-600
+      border-radius: 0.5rem
       color: #333
       display: flex
       font-weight: 400
@@ -126,12 +127,10 @@ ul.list-unstyled.macro--list
       span.position--select
         color: $gray-800
 
-        // TODO - different colors for different positions?
         &.position_-1
-          color: theme-color('warning')
+          color: theme-color('danger')
 
         &.position_0
-          // color: theme-color('primary')
           color: $gray-600
 
         &.position_1
