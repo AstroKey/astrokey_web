@@ -30,7 +30,7 @@ class DeviceLayout extends Mn.LayoutView
   template: require('./templates/device_layout')
 
   regions:
-    statusRegion: '[data-region=status]'
+    # statusRegion: '[data-region=status]'
     keysRegion:   '[data-region=keys]'
 
   onRender: ->
@@ -40,7 +40,7 @@ class DeviceLayout extends Mn.LayoutView
     @model.get('keys').first().trigger('selected')
 
     # Status View
-    @statusRegion.show new DeviceStatusView({ model: @model })
+    # @statusRegion.show new DeviceStatusView({ model: @model })
 
 # # # # #
 

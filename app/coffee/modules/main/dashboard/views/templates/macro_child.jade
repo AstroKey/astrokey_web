@@ -1,7 +1,7 @@
 mixin positionSelect(opts)
-  span.fa-stack.fa-lg.position--select( class=`position_${opts.position}` )
-    i.fa.fa-circle.fa-stack-2x
-    i.fa.fa-stack-1x.fa-inverse( class=opts.css, data-position=opts.position )
+  span.fa-stack.fa-lg.position--select( class=`position_${opts.position}`, data-toggle='tooltip' title=opts.tooltip, data-placement='bottom' )
+    i.fa.fa-circle-thin.fa-stack-2x
+    i.fa.fa-stack-1x( class=opts.css, data-position=opts.position )
 
 //- // // //
 

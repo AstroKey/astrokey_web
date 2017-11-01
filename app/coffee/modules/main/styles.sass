@@ -1,8 +1,12 @@
 
 // Layout Styles
-// .device--region
+.device--region
+  display: flex
+  align-content: center
+  justify-content: center
+
 .controls--region
-  border-left: 3px solid
+  border-left: 1px solid
   border-color: theme-color('secondary')
 
 // // // //
@@ -12,6 +16,7 @@ $astrokey_child_size: 4rem
 
 ul.list-unstyled.key--list
   border: 1px solid theme-color('secondary')
+  border-radius: 1.5rem
 
   li.key--child
     height: $astrokey_child_size
@@ -23,6 +28,9 @@ ul.list-unstyled.key--list
       position: relative
       bottom: 0
       left: 0
+
+    &:first-child
+      margin-top: 5rem !important
 
 // // // //
 
@@ -117,7 +125,7 @@ ul.list-unstyled.macro--list
           display: none
 
       &.special
-        color: theme-color('info')
+        color: lighten(theme-color('info'), 35%)
 
     .position
       display: flex
@@ -127,31 +135,35 @@ ul.list-unstyled.macro--list
         cursor: pointer
 
         &.position_-1
-          color: theme-color('warning')
+          color: lighten(theme-color('warning'), 25%)
 
           &:hover
-            color: darken(theme-color('warning'), 10%)
+            color: theme-color('warning')
 
         &.position_0
-          color: $gray-600
+          // color: $gray-600
+          color: lighten(theme-color('success'), 25%)
 
           &:hover
-            color: darken($gray-600, 10%)
+            color: theme-color('success')
 
         &.position_1
-          color: theme-color('success')
+          color: lighten(theme-color('primary'), 25%)
 
           &:hover
-            color: darken(theme-color('success'), 10%)
+            color: theme-color('primary')
 
     // TODO - how to get this working?
     &.hovered
       .key
-        color: theme-color('danger')
+        color: lighten(theme-color('danger'), 25%)
         .inner.content
           display: none
         .inner.hover
           display: flex
+
+    &.drag-start
+      opacity: 0
 
     &.ghost
       .key

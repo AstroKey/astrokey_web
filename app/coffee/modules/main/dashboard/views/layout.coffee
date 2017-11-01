@@ -1,7 +1,5 @@
 DeviceLayout = require('./deviceLayout')
-KeyboardView = require('./keyboardView')
-MacroList = require('./macroList')
-# KeyEditor = require('./keyEditor')
+KeyEditor = require('./keyEditor')
 
 # # # # #
 
@@ -11,39 +9,20 @@ class DeviceLayoutView extends Marionette.LayoutView
 
   regions:
     deviceRegion:   '[data-region=device]'
-    macroRegion:    '[data-region=macro]'
-    controlsRegion: '[data-region=controls]'
+    editorRegion: '[data-region=editor]'
 
   onRender: ->
     deviceView = new DeviceLayout({ model: @model })
     deviceView.on 'key:selected', (keyModel) => @showControlsView(keyModel)
     @deviceRegion.show(deviceView)
 
+  # TODO - all of this must be encapsulated in a MacroEditorView
   showControlsView: (keyModel) ->
-
-    # Gets the current macro assigned to the keyModel
-    # macroCollection = keyModel.getMacroCollection()
-    @macroRegion.show new MacroList({ collection: @options.macros })
 
     # Instantaiates new KeyboardView
     # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
-    # @controlsRegion.show new KeyEditor({ model: keyModel, keys: @options.keys })
-    keyboardView = new KeyboardView({ model: keyModel, keys: @options.keys })
-
-    # Handles KeySelection event
-    keyboardView.on 'key:selected', (key) =>
-
-      # Clones the original object
-      key = _.clone(key)
-
-      # Adds the correct `order` attribute
-      key.order = @options.macros.length + 1
-
-      # Adds the key to the MacroCollection
-      @options.macros.add(key)
-
-    # Shows the keyboardView
-    @controlsRegion.show keyboardView
+    # TODO - macros should hang off the keyModel
+    @editorRegion.show new KeyEditor({ model: keyModel, keys: @options.keys, macros: @options.macros })
 
 # # # # #
 

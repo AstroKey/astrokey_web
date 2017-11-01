@@ -1,5 +1,5 @@
 TextEditor = require('./textEditor')
-KeyboardView = require('./KeyboardView')
+MacroEditor = require('./macroEditor')
 
 # # # # #
 
@@ -36,20 +36,26 @@ class KeyEditor extends SimpleNav
   template: require('./templates/key_editor')
 
   navItems: [
-    { icon: 'fa-keyboard-o',  text: 'Hotkey',  trigger: 'hotkey' }
-    { icon: 'fa-file-text-o', text: 'Text',    trigger: 'text' }
+    { icon: 'fa-keyboard-o',  text: 'Macro',  trigger: 'macro' }
+    { icon: 'fa-file-text-o', text: 'Text',   trigger: 'text' }
+    { icon: 'fa-asterisk',    text: 'Key',    trigger: 'key' }
   ]
 
   onRender: ->
     astrokey = @model.get('config')
     return @onNavigateText() if astrokey.type == 'text'
-    return @onNavigateHotkey()
+    return @onNavigateKey() if astrokey.type == 'key'
+    return @onNavigateMacro()
 
-  onNavigateHotkey: ->
-    @contentRegion.show new KeyboardView({ model: @model })
+  onNavigateMacro: ->
+    @contentRegion.show new MacroEditor({ model: @model, keys: @options.keys, macros: @options.macros })
 
   onNavigateText: ->
     @contentRegion.show new TextEditor({ model: @model })
+
+  onNavigateKey: ->
+    @contentRegion.show new MacroEditor({ model: @model, keys: @options.keys, macros: @options.macros })
+
 
 # # # # #
 

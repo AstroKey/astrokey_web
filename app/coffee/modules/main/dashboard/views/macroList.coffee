@@ -11,7 +11,8 @@ class MacroChild extends Mn.LayoutView
     'change:position': 'render'
 
   events:
-    # 'dragstart': 'onDragStart'
+    'drag': 'onDrag'
+    'dragstart': 'onDragStart'
     'mouseover .key': 'onMouseOver'
     'mouseout .key': 'onMouseOut'
     'click .key': 'removeMacro'
@@ -25,13 +26,18 @@ class MacroChild extends Mn.LayoutView
     @$el.removeClass('hovered')
     # console.log 'onMouseOut'
 
-  # onDragStart: ->
-  #   @$el.removeClass('hovered')
-  #   setTimeout( =>
-  #     @$el.siblings('.macro--child').removeClass('hovered')
-  #   , 1000)
+  onDragStart: ->
+    @$el.addClass('drag-start')
 
-  #   console.log 'onDragStart'
+  onDrag: ->
+    @$el.removeClass('drag-start hovered')
+    # @$el.removeClass('hovered')
+    # setTimeout( =>
+    #   @$el.removeClass('hovered')
+    #   @$el.siblings('.macro--child').removeClass('hovered')
+    # , 1000)
+
+    console.log 'onDragStart'
 
   removeMacro: ->
     @model.collection.remove(@model)
@@ -44,14 +50,13 @@ class MacroChild extends Mn.LayoutView
     # Isolates position data from element
     position = el.data('position')
 
-    console.log position
-
+    # Determines next position
     if position == -1
-      new_position = 0
-    if position == 0
       new_position = 1
-    if position == 1
+    if position == 0
       new_position = -1
+    if position == 1
+      new_position = 0
 
     # Sets the position attribute on the model
     @model.set('position', new_position)
