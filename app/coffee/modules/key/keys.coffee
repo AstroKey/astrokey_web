@@ -128,31 +128,3 @@ module.exports = [
 
 ]
 
-# Scratch
-
-# { row: 'nav_r0', key: 'LEFT-ARROW', keycode: 57, icon: 'fa-chevron-left' }
-# { row: 'nav_r0', key: 'UP-ARROW', keycode: 57, icon: 'fa-chevron-up' }
-# { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 57, icon: 'fa-chevron-down' }
-# { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 57, icon: 'fa-chevron-right' }
-
-# { key: 'ESC', keycode: 27 }
-# { key: 'F1' }
-# { key: 'F2' }
-# { key: 'F3' }
-# { key: 'F4' }
-# { key: 'F5' }
-# { key: 'F6' }
-# { key: 'F7' }
-# { key: 'F8' }
-# { key: 'F9' }
-# { key: 'F10' }
-# { key: 'F11' }
-# { key: 'F12' }
-# { key: 'P' }
-
-# { key: 'MEDIA_PREV', icon: 'fa-backward' }
-# { key: 'MEDIA_PLAY', icon: 'fa-play' }
-# { key: 'MEDIA_NEXT', icon: 'fa-forward' }
-# { key: 'VOL_MUTE', icon: 'fa-volume-off' }
-# { key: 'VOL_DOWN', icon: 'fa-volume-down' }
-# { key: 'VOL_UP', icon: 'fa-volume-up' }
