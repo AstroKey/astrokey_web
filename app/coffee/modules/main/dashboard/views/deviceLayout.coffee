@@ -34,13 +34,15 @@ class DeviceLayout extends Mn.LayoutView
     keysRegion:   '[data-region=keys]'
 
   onRender: ->
+
+    # Instantiates new KeySelector View
     keySelector = new KeySelector({ collection: @model.get('keys') })
     keySelector.on 'childview:selected', (view) => @trigger('key:selected', view.model)
     keySelector.on 'childview:deselected', (view) => @trigger('key:deselected')
     @keysRegion.show(keySelector)
-    # @model.get('keys').first().trigger('selected')
 
     # Status View
+    # TODO - status & connection view
     # @statusRegion.show new DeviceStatusView({ model: @model })
 
 # # # # #

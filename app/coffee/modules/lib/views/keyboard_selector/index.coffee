@@ -1,9 +1,9 @@
-SimpleNav = require 'lib/views/simple_nav'
-KeyboardView = require('./keyboardView')
-NumpadView = require('./numpadView')
-FunctionKeyboard = require('./functionKeyboard')
-MediaKeyboard = require('./mediaKeyboard')
-NavKeyboard = require('./navKeyboard')
+SimpleNav = require('lib/views/simple_nav')
+FullKeyboard = require('lib/views/keyboard_full')
+NumpadView = require('lib/views/keyboard_numpad')
+FunctionKeyboard = require('lib/views/keyboard_function')
+MediaKeyboard = require('lib/views/keyboard_media')
+NavKeyboard = require('lib/views/keyboard_nav')
 
 # # # # #
 
@@ -28,7 +28,7 @@ class KeyboardSelector extends SimpleNav
     @contentRegion.show keyboardView
 
   onNavigateKeyboard: ->
-    @showKeyboardView(new KeyboardView({ model: @model, keys: @options.keys }))
+    @showKeyboardView(new FullKeyboard({ model: @model, keys: @options.keys }))
 
   onNavigateNumpad: ->
     @showKeyboardView(new NumpadView({ model: @model, keys: @options.keys }))

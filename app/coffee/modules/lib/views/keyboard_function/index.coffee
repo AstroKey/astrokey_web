@@ -1,9 +1,8 @@
-AbstractKeyboardView = require('./abstractKeyboardView')
+AbstractKeyboardView = require('lib/views/keyboard_abstract')
 
 # # # #
 
 class FunctionKeyboard extends AbstractKeyboardView
-  template: require './templates/function_keyboard'
 
   # Passes key objects to UI
   templateHelpers: ->

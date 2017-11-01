@@ -1,6 +1,7 @@
 
 class AbstractKeyboardView extends Mn.LayoutView
   className: 'row d-flex justify-content-center'
+  template: require './templates/keyboard_abstract'
 
   # TODO - activate this behavior conditionally
   # behaviors:

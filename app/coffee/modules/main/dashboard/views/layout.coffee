@@ -45,10 +45,10 @@ class LayoutView extends Marionette.LayoutView
     editorSelector.on 'show:macro:editor', => @showEditorView(keyModel, 'macro')
 
     # Shows Text Editor
-    editorSelector.on 'show:text:editor', => @showEditorView(keyModel, 'macro') # TODO - TextEditor
+    editorSelector.on 'show:text:editor', => @showEditorView(keyModel, 'text')
 
     # Shows Key Editor
-    editorSelector.on 'show:key:editor', => @showEditorView(keyModel, 'macro') # TODO - KeyEditor
+    editorSelector.on 'show:key:editor', => @showEditorView(keyModel, 'key')
 
     # Shows the EditorSelector view
     @selectorRegion.show(editorSelector)

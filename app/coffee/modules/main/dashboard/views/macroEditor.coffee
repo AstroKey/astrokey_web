@@ -1,4 +1,4 @@
-KeyboardSelector = require('./keyboardSelector')
+KeyboardSelector = require('lib/views/keyboard_selector')
 MacroList = require('./macroList')
 
 # # # # #
