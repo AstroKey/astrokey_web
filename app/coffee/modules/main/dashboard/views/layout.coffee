@@ -15,7 +15,7 @@ class HelpView extends Marionette.LayoutView
 
 class DeviceLayoutView extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid h-100'
+  className: 'container-fluid h-100 device--layout'
 
   regions:
     deviceRegion: '[data-region=device]'
@@ -34,7 +34,10 @@ class DeviceLayoutView extends Marionette.LayoutView
     @deviceRegion.show(deviceView)
 
   showHelpView: ->
-    console.log 'SHOW HELP VIEW'
+
+    @$el.removeClass('active')
+
+    # Instantiates a new HelpView and shows it in @selectorRegion
     @selectorRegion.show new HelpView()
 
   showEditorSelector: (keyModel) ->
@@ -45,16 +48,19 @@ class DeviceLayoutView extends Marionette.LayoutView
     # Shows Macro Editor
     editorSelector.on 'show:macro:editor', =>
       console.log 'show:macro:editor'
+      @$el.addClass('active')
       @editorRegion.show new MacroEditor({ model: keyModel, keys: @options.keys, macros: @options.macros })
 
     # Shows Text Editor
     editorSelector.on 'show:text:editor', =>
       console.log 'show:text:editor'
+      @$el.addClass('active')
       @editorRegion.show new MacroEditor({ model: keyModel, keys: @options.keys, macros: @options.macros })
 
     # Shows Key Editor
     editorSelector.on 'show:key:editor', =>
       console.log 'show:key:editor'
+      @$el.addClass('active')
       @editorRegion.show new MacroEditor({ model: keyModel, keys: @options.keys, macros: @options.macros })
 
     # Shows the EditorSelector view
