@@ -75,7 +75,7 @@ class MacroEmpty extends Mn.LayoutView
 
 class MacroList extends Mn.CollectionView
   tagName: 'ul'
-  className: 'list-unstyled macro--list px-4 py-3 my-2 d-flex justify-content-center align-items-center flex-row'
+  className: 'list-unstyled macro--list px-4 my-2 d-flex justify-content-center align-items-center flex-row flex-wrap'
   childView: MacroChild
   emptyView: MacroEmpty
 

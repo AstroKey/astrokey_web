@@ -7,6 +7,24 @@ class KeyChild extends Mn.LayoutView
   behaviors:
     SelectableChild: { deselect: true }
 
+  templateHelpers: ->
+
+    # Isolates AstroKeyConfig model
+    config = @model.get('config')
+
+    # Macro
+    if config.get('type') == 'macro'
+      return { label: 'Macro' }
+
+    # Text
+    if config.get('type') == 'text'
+      return { label: 'Text' }
+
+    # Key
+    # TODO - DISPLAY KEY IN VIEW
+    if config.get('type') == 'key'
+      return { label: 'Key' }
+
 # # # # #
 
 class KeySelector extends Mn.CollectionView

@@ -12,12 +12,10 @@ class EditorSelector extends SimpleNav
     { icon: 'fa-asterisk',    text: 'Key',    trigger: 'key' }
   ]
 
-  # TODO - highlight the currently assigned editor
-  # onRender: ->
-  #   astrokey = @model.get('config')
-  #   return @onNavigateText() if astrokey.type == 'text'
-  #   return @onNavigateKey() if astrokey.type == 'key'
-  #   return @onNavigateMacro()
+  onRender: ->
+    configModel = @model.get('config')
+    trigger = configModel.get('type')
+    return @$("[data-trigger=#{trigger}]").addClass('active')
 
   onNavigateMacro: ->
     @trigger 'show:macro:editor'

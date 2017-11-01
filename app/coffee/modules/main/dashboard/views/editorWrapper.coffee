@@ -10,9 +10,9 @@ class EditorWrapper extends Marionette.LayoutView
   regions:
     contentRegion: '[data-region=content]'
 
-  triggers:
-    'click [data-click=save]':    'save'
-    'click [data-click=cancel]':  'cancel'
+  events:
+    'click [data-click=save]':    'onSave'
+    'click [data-click=cancel]':  'onCancel'
 
   editors:
     macro:  MacroEditor
@@ -20,8 +20,40 @@ class EditorWrapper extends Marionette.LayoutView
     key:    MacroEditor
 
   onRender: ->
+
+    # Fetches the EditorView prototype
     EditorView = @editors[@options.editor]
-    @contentRegion.show new EditorView({ model: @model, keys: @options.keys, macros: @options.macros })
+
+    # Isolates Config
+    config = @model.get('config')
+
+    # Caches the current configuration to be restored when this view is cancelled out
+    @cachedConfig = config.toJSON()
+
+    # Isolates MacroCollection
+    macros = config.get('macros')
+
+    # Requests KeyCollection from the KeyFactory
+    keys = Radio.channel('key').request('collection')
+
+    # Shows the view in @contentRegion
+    # QUESTION - PASS IN KEY (@model?)
+    @contentRegion.show new EditorView({ model: config, keys: keys, macros: macros })
+
+  # onSave
+  onSave: ->
+
+    # Triggers 'save' event, closing this view
+    return @trigger 'save'
+
+  # onCancel
+  onCancel: ->
+
+    # Resets config attributes
+    @model.get('config').set(@cachedConfig)
+
+    # Triggers 'cancel' event, closing this view
+    return @trigger 'cancel'
 
 # # # # #
 
