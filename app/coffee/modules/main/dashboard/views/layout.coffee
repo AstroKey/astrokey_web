@@ -11,6 +11,16 @@ class EditorWrapper extends Marionette.LayoutView
   template: require './templates/editor_wrapper'
   className: 'row'
 
+  regions:
+    contentRegion: '[data-region=content]'
+
+  triggers:
+    'click [data-click=save]':    'save'
+    'click [data-click=cancel]':  'cancel'
+
+  onRender: ->
+    @contentRegion.show new @options.editor({ model: @model, keys: @options.keys, macros: @options.macros })
+
 # # # # #
 
 class HelpView extends Marionette.LayoutView
@@ -52,25 +62,33 @@ class DeviceLayoutView extends Marionette.LayoutView
     editorSelector = new EditorSelector({ model: keyModel })
 
     # Shows Macro Editor
-    editorSelector.on 'show:macro:editor', =>
-      console.log 'show:macro:editor'
-      @$el.addClass('active')
-      @editorRegion.show new MacroEditor({ model: keyModel, keys: @options.keys, macros: @options.macros })
+    editorSelector.on 'show:macro:editor', => @showEditorView(keyModel, MacroEditor)
 
     # Shows Text Editor
-    editorSelector.on 'show:text:editor', =>
-      console.log 'show:text:editor'
-      @$el.addClass('active')
-      @editorRegion.show new MacroEditor({ model: keyModel, keys: @options.keys, macros: @options.macros })
+    editorSelector.on 'show:text:editor', => @showEditorView(keyModel, MacroEditor) # TODO - TextEditor
 
     # Shows Key Editor
-    editorSelector.on 'show:key:editor', =>
-      console.log 'show:key:editor'
-      @$el.addClass('active')
-      @editorRegion.show new MacroEditor({ model: keyModel, keys: @options.keys, macros: @options.macros })
+    editorSelector.on 'show:key:editor', => @showEditorView(keyModel, MacroEditor) # TODO - KeyEditor
 
     # Shows the EditorSelector view
     @selectorRegion.show(editorSelector)
+
+  showEditorView: (keyModel, view) ->
+    @$el.addClass('active')
+
+    # Instantiates new EditorWrapper view
+    editorWrapper = new EditorWrapper({ model: keyModel, keys: @options.keys, macros: @options.macros, editor: view })
+
+    # Handles 'cancel' event
+    editorWrapper.on 'cancel', =>
+      @$el.removeClass('active')
+
+    # Handles 'save' event
+    editorWrapper.on 'save', =>
+      console.log 'SAVE KEY MODEL SETTINGS'
+
+    # Shows the EditorWrapper view in @editorRegion
+    @editorRegion.show(editorWrapper)
 
 # # # # #
 
