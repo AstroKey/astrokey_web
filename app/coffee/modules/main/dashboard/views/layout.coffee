@@ -6,6 +6,12 @@ MacroEditor = require('./macroEditor')
 # TODO - define EDITORWRAPPER view that accepts and editor, and wraps it in save/close controls
 
 # # # # #
+# TODO - abstract EditorWrapper into a different file when its ready
+class EditorWrapper extends Marionette.LayoutView
+  template: require './templates/editor_wrapper'
+  className: 'row'
+
+# # # # #
 
 class HelpView extends Marionette.LayoutView
   template: require './templates/help_view'
