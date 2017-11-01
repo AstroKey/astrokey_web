@@ -37,11 +37,23 @@ class EditorWrapper extends Marionette.LayoutView
     keys = Radio.channel('key').request('collection')
 
     # Shows the view in @contentRegion
-    # QUESTION - PASS IN KEY (@model?)
     @contentRegion.show new EditorView({ model: config, keys: keys, macros: macros })
 
   # onSave
   onSave: ->
+
+    # Serializes data from any form elements in this view
+    data = Backbone.Syphon.serialize(@)
+
+    # Clear unused type-specific attributes
+    data.macros = [] if data.type != 'macro'
+    data.text_value = '' if data.type != 'text'
+
+    # Applies the attributes to the config model
+    @model.get('config').set(data)
+
+    # Triggers change event on @model to re-render the currently hidden AstroKey element
+    @model.trigger('config:updated')
 
     # Triggers 'save' event, closing this view
     return @trigger 'save'

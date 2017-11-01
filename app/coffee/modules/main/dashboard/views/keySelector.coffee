@@ -7,6 +7,12 @@ class KeyChild extends Mn.LayoutView
   behaviors:
     SelectableChild: { deselect: true }
 
+  modelEvents:
+    'config:updated': 'onModelChange'
+
+  onModelChange: ->
+    return @render()
+
   templateHelpers: ->
 
     # Isolates AstroKeyConfig model

@@ -4,7 +4,7 @@ class TextEditor extends Marionette.LayoutView
   template: require('./templates/text_editor')
 
   onRender: ->
-    Backbone.Syphon.deserialize(@, @model.attributes)
+    Backbone.Syphon.deserialize(@, { type: 'text', text_value: @model.get('text_value') })
 
 # # # # #
 
