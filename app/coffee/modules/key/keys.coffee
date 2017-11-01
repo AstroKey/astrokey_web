@@ -16,7 +16,7 @@ module.exports = [
     { row: 'r4', key: '=', shift: '+', keycode: 187 }
     { row: 'r4', key: 'BACKSPACE', keycode: 8, css: 'w2_0' }
 
-    { row: 'r3', key: 'TAB', keycode: 9, css: 'w1_5' }
+    { row: 'r3', key: 'TAB', keycode: 9, css: 'w1_5', special: true }
     { row: 'r3', key: 'Q', keycode: 81 }
     { row: 'r3', key: 'W', keycode: 87 }
     { row: 'r3', key: 'E', keycode: 69 }
@@ -31,7 +31,7 @@ module.exports = [
     { row: 'r3', key: ']', shift: '}', keycode: 221 }
     { row: 'r3', key: '\\', shift: '|', keycode: 220, css: 'w1_5' }
 
-    { row: 'r2', key: 'CAPS', css: 'w1_75', keycode: 20 }
+    { row: 'r2', key: 'CAPS', css: 'w1_75', keycode: 20, special: true }
     { row: 'r2', key: 'A', keycode: 65 }
     { row: 'r2', key: 'S', keycode: 83 }
     { row: 'r2', key: 'D', keycode: 68 }
@@ -43,9 +43,9 @@ module.exports = [
     { row: 'r2', key: 'L', keycode: 76 }
     { row: 'r2', key: ';', shift: ':', keycode: 186 }
     { row: 'r2', key: "'", shift: '"', keycode: 222 }
-    { row: 'r2', key: 'RETURN', css: 'w2_25', keycode: 13 }
+    { row: 'r2', key: 'RETURN', css: 'w2_25', keycode: 13, special: true }
 
-    { row: 'r1', key: 'SHIFT', css: 'w2_25', keycode: 16 }
+    { row: 'r1', key: 'SHIFT', css: 'w2_25', keycode: 16, special: true }
     { row: 'r1', key: 'Z', keycode: 90 }
     { row: 'r1', key: 'X', keycode: 88 }
     { row: 'r1', key: 'C', keycode: 67 }
@@ -56,16 +56,16 @@ module.exports = [
     { row: 'r1', key: ',', shift: '<', keycode: 188 }
     { row: 'r1', key: '.', shift: '>', keycode: 190 }
     { row: 'r1', key: '/', shift: '?', keycode: 191 }
-    { row: 'r1', key: 'SHIFT', css: 'w2_75', keycode: 16 }
+    { row: 'r1', key: 'SHIFT', css: 'w2_75', keycode: 16, special: true }
 
-    { row: 'r0', key: 'CTRL', css: 'w1_25', keycode: 17 }
-    { row: 'r0', key: 'M', css: 'w1_25', keycode: 91 }
-    { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18 }
-    { row: 'r0', key: 'SPACE', css: 'space', keycode: 32 }
-    { row: 'r0', key: 'CTRL', css: 'w1_25', keycode: 17 }
-    { row: 'r0', key: 'M', css: 'w1_25', keycode: 18 }
-    { row: 'r0', key: 'P', css: 'w1_25', keycode: 93 }
-    { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18 }
+    { row: 'r0', key: 'CTRL', css: 'w1_25', keycode: 17, special: true }
+    { row: 'r0', key: 'M', css: 'w1_25', keycode: 91, special: true }
+    { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18, special: true }
+    { row: 'r0', key: 'SPACE', css: 'space', keycode: 32, special: true }
+    { row: 'r0', key: 'CTRL', css: 'w1_25', keycode: 17, special: true }
+    { row: 'r0', key: 'M', css: 'w1_25', keycode: 18, special: true }
+    { row: 'r0', key: 'P', css: 'w1_25', keycode: 93, special: true }
+    { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18, special: true }
 ]
 
 # Scratch

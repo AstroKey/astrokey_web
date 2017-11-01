@@ -2,7 +2,8 @@
 // Layout Styles
 // .device--region
 .controls--region
-  border-left: 1px solid $gray-800
+  border-left: 3px solid
+  border-color: theme-color('secondary')
 
 // // // //
 
@@ -10,7 +11,7 @@
 $astrokey_child_size: 4rem
 
 ul.list-unstyled.key--list
-  border: 1px solid $gray-800
+  border: 1px solid theme-color('secondary')
 
   li.key--child
     height: $astrokey_child_size
@@ -85,20 +86,22 @@ $keyboard_key_margin: 0.25rem
 $macro_size: 4rem
 
 ul.list-unstyled.macro--list
-  border-bottom: 1px solid $gray-800
+  height: 11rem
 
   li.macro--child
     display: flex
-    margin: 0 .25rem
+    padding: 0 .25rem
 
     .key
       height: $macro_size
       width: $macro_size
-      border: .25rem solid $gray-600
-      border-radius: 0.5rem
-      color: #333
+      border: .15rem solid theme-color('secondary')
+      border-radius: 1rem
+      color: theme-color('light')
       display: flex
+      font-size: 1.25rem
       font-weight: 400
+      cursor: pointer
 
       .inner
         height: 100%
@@ -113,26 +116,21 @@ ul.list-unstyled.macro--list
         &.hover
           display: none
 
-      &:hover
-        border: .25rem solid theme-color('warning')
-        color: theme-color('warning')
-        .inner.content
-          display: none
-        .inner.hover
-          display: flex
+      &.special
+        color: theme-color('info')
 
     .position
       display: flex
 
       span.position--select
-        color: $gray-800
+        color: $gray-500
         cursor: pointer
 
         &.position_-1
-          color: theme-color('danger')
+          color: theme-color('warning')
 
           &:hover
-            color: darken(theme-color('danger'), 10%)
+            color: darken(theme-color('warning'), 10%)
 
         &.position_0
           color: $gray-600
@@ -146,19 +144,37 @@ ul.list-unstyled.macro--list
           &:hover
             color: darken(theme-color('success'), 10%)
 
+    // TODO - how to get this working?
+    &.hovered
+      .key
+        color: theme-color('danger')
+        .inner.content
+          display: none
+        .inner.hover
+          display: flex
+
     &.ghost
       .key
-        border: .25rem dotted #000
-      .position
-        opacity: 0
+        // border: .25rem solid theme-color('warning')
+        border-width: .3rem
+        border-color: #f3f3f3
+        border-style: dashed
+        color: theme-color('warning')
+        // .inner.content
+        //   display: none
+        // .inner.hover
+        //   display: flex
 
-    &.chosen
-      .key
-        background-color: $gray-100
+    // &.chosen
+    //   .key
+    //     background-color: $gray-100
 
-        .hover
-          display: none !important
+    //     .hover
+    //       display: none !important
 
-    &.drag
-      .position
-        opacity: 0
+    // &.drag
+    //   .position
+    //     opacity: 0
+
+    &.empty
+      font-size: 1.5rem

@@ -4,7 +4,7 @@ mixin keyboardRow()
     block
 
 mixin keyboardKey(opts)
-  button.btn.btn-outline-dark.keyboard--key( data-keycode=opts.keycode data-click='key' data-key=opts.key class=opts.css )
+  button.btn.btn-outline-secondary.keyboard--key( data-keycode=opts.keycode data-click='key' data-key=opts.key class=opts.css )
     if opts.icon
       i.fa.fa-fw( class=opts.icon )
     else

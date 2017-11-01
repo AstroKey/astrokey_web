@@ -5,7 +5,7 @@ mixin positionSelect(opts)
 
 //- // // //
 
-.key.d-flex.mb-2
+.key.d-flex( class=typeof special === "undefined" ? "" : "special" )
   .inner.content
     if key && shift
       .shift= shift
@@ -17,6 +17,5 @@ mixin positionSelect(opts)
   .inner.hover
     i.fa.fa-fw.fa-lg.fa-times
 
-.position
+.position.mt-2
   +positionSelect(active_position)
-

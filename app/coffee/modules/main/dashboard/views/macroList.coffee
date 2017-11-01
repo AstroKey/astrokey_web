@@ -11,8 +11,27 @@ class MacroChild extends Mn.LayoutView
     'change:position': 'render'
 
   events:
+    # 'dragstart': 'onDragStart'
+    'mouseover .key': 'onMouseOver'
+    'mouseout .key': 'onMouseOut'
     'click .key': 'removeMacro'
     'click [data-position]:not(.active)': 'onPositionClick'
+
+  onMouseOver: ->
+    @$el.addClass('hovered')
+    # console.log 'onMouseOver'
+
+  onMouseOut: ->
+    @$el.removeClass('hovered')
+    # console.log 'onMouseOut'
+
+  # onDragStart: ->
+  #   @$el.removeClass('hovered')
+  #   setTimeout( =>
+  #     @$el.siblings('.macro--child').removeClass('hovered')
+  #   , 1000)
+
+  #   console.log 'onDragStart'
 
   removeMacro: ->
     @model.collection.remove(@model)
@@ -47,14 +66,12 @@ class MacroChild extends Mn.LayoutView
     position = @model.get('position')
     active_position = _.findWhere(positions, { position: position })
     return { active_position }
-    # activePosition.css += ' active'
-    # return { positions }
 
 # # # # #
 
 class MacroEmpty extends Mn.LayoutView
   tagName: 'li'
-  className: 'btn btn-outline-dark macro--child justify-content-center align-items-center my-2'
+  className: 'macro--child empty flex-column justify-content-center align-items-center my-2'
   template: require('./templates/macro_empty')
 
 # # # # #
@@ -65,9 +82,6 @@ class MacroList extends Mn.CollectionView
   childView: MacroChild
   emptyView: MacroEmpty
 
-  # behaviors:
-  #   SortableList: {}
-
   onRender: ->
 
     # Sorts the collection
@@ -75,7 +89,7 @@ class MacroList extends Mn.CollectionView
 
     # Initializes Sortable container
     Sortable.create @el,
-      animation:    0
+      animation:    100
       handle:       '.key'
       ghostClass:   'ghost'  # Class name for the drop placeholder
       chosenClass:  'chosen'  # Class name for the chosen item
