@@ -26,12 +26,32 @@ class UsbService extends Marionette.Service
       .then( (device) =>
 
         # TODO - remove
-        console.log device
+        # console.log device
 
         # Step 2 - Get Devices
         # TODO - verify this workflow
         return navigator.usb.getDevices().then((d) =>
+
           console.log(d)
+
+          d = d[0]
+
+          # STEP 3 - open device
+          d.open().then =>
+
+            console.log 'open'
+
+            # Step 4 - select configuration
+            d.selectConfiguration(1).then =>
+
+              console.log 'selectConfiguration'
+
+              window.d = d
+
+              # STEP 5 - controlTransferIn
+              # window.d.controlTransferIn({'requestType': 'standard', 'recipient': 'device', 'request': 0x06, 'value': 0x0F00, 'index': 0x00}, 5).then( (r) => { console.log(r) })
+
+
         )
 
       )
