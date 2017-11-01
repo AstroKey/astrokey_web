@@ -106,14 +106,34 @@ module.exports = [
     { row: 'func_r0', key: 'F12', keycode: 57 }
     { row: 'func_r0', key: 'F13', keycode: 57 }
 
+    # Media Keys
+    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-backward' }
+    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-play' }
+    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-forward' }
+    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-volume-off' }
+    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-volume-down' }
+    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-volume-up' }
+
+    # Navigation Keys
+    { row: 'nav_r0', key: 'PGUP', keycode: 57 }
+    { row: 'nav_r0', key: 'PGDN', keycode: 57 }
+    { row: 'nav_r0', key: 'END', keycode: 57 }
+    { row: 'nav_r0', key: 'HOME', keycode: 57 }
+    { row: 'nav_r0', key: 'LEFT-ARROW', keycode: 57, icon: 'fa-chevron-left' }
+    { row: 'nav_r0', key: 'UP-ARROW', keycode: 57, icon: 'fa-chevron-up' }
+    { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 57, icon: 'fa-chevron-down' }
+    { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 57, icon: 'fa-chevron-right' }
+    { row: 'nav_r0', key: 'INS', keycode: 57 }
+    { row: 'nav_r0', key: 'DEL', keycode: 57 }
+
 ]
 
 # Scratch
 
-# { key: 'LEFT-ARROW', icon: 'fa-chevron-left' }
-# { key: 'UP-ARROW', icon: 'fa-chevron-up' }
-# { key: 'DOWN-ARROW', icon: 'fa-chevron-down' }
-# { key: 'RIGHT-ARROW', icon: 'fa-chevron-right' }
+# { row: 'nav_r0', key: 'LEFT-ARROW', keycode: 57, icon: 'fa-chevron-left' }
+# { row: 'nav_r0', key: 'UP-ARROW', keycode: 57, icon: 'fa-chevron-up' }
+# { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 57, icon: 'fa-chevron-down' }
+# { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 57, icon: 'fa-chevron-right' }
 
 # { key: 'ESC', keycode: 27 }
 # { key: 'F1' }
