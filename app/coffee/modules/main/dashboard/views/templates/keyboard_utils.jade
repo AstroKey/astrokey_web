@@ -15,26 +15,3 @@ mixin keyboardKey(opts)
 
       else
         .plain= opts.key
-
-//- // // // //
-
-.keyboard--body.mt-4
-  +keyboardRow()
-    each key in r4
-      +keyboardKey(key)
-
-  +keyboardRow()
-    each key in r3
-      +keyboardKey(key)
-
-  +keyboardRow()
-    each key in r2
-      +keyboardKey(key)
-
-  +keyboardRow()
-    each key in r1
-      +keyboardKey(key)
-
-  +keyboardRow()
-    each key in r0
-      +keyboardKey(key)

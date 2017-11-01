@@ -1,4 +1,4 @@
-KeyboardView = require('./keyboardView')
+KeyboardSelector = require('./keyboardSelector')
 MacroList = require('./macroList')
 
 # # # # #
@@ -17,9 +17,9 @@ class MacroEditor extends Marionette.LayoutView
     # macroCollection = keyModel.getMacroCollection()
     @macroRegion.show new MacroList({ collection: @options.macros })
 
-    # Instantaiates new KeyboardView
+    # Instantaiates new KeyboardSelector
     # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
-    keyboardView = new KeyboardView({ model: @model, keys: @options.keys })
+    keyboardView = new KeyboardSelector({ model: @model, keys: @options.keys })
 
     # Handles KeySelection event
     keyboardView.on 'key:selected', (key) =>

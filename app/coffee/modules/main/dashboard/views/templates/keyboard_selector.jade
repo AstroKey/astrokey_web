@@ -1,0 +1,13 @@
+.col-lg-12
+  .row
+    .col-lg-12.d-flex.justify-content-center
+      each navItem in navItems
+        button.d-flex.btn.btn-outline-secondary.justify-content-center.mx-3(style='flex-grow:1;' data-trigger=navItem.trigger )
+          = navItem.text
+
+  .row
+    .col-lg-12
+      hr
+
+  .row
+    .col-lg-12( data-region='content' )
