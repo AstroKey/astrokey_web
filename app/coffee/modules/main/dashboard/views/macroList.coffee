@@ -94,7 +94,8 @@ class MacroList extends Mn.CollectionView
 
     # Initializes Sortable container
     Sortable.create @el,
-      animation:    100
+      # animation:    50
+      animation:    0
       handle:       '.key'
       ghostClass:   'ghost'  # Class name for the drop placeholder
       chosenClass:  'chosen'  # Class name for the chosen item
