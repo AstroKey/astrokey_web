@@ -1,25 +1,6 @@
 DeviceLayout = require('./deviceLayout')
 EditorSelector = require('./editorSelector')
-TextEditor = require('./textEditor')
-MacroEditor = require('./macroEditor')
-
-# TODO - define EDITORWRAPPER view that accepts and editor, and wraps it in save/close controls
-
-# # # # #
-# TODO - abstract EditorWrapper into a different file when its ready
-class EditorWrapper extends Marionette.LayoutView
-  template: require './templates/editor_wrapper'
-  className: 'row'
-
-  regions:
-    contentRegion: '[data-region=content]'
-
-  triggers:
-    'click [data-click=save]':    'save'
-    'click [data-click=cancel]':  'cancel'
-
-  onRender: ->
-    @contentRegion.show new @options.editor({ model: @model, keys: @options.keys, macros: @options.macros })
+EditorWrapper = require('./editorWrapper')
 
 # # # # #
 
@@ -29,29 +10,28 @@ class HelpView extends Marionette.LayoutView
 
 # # # # #
 
-class DeviceLayoutView extends Marionette.LayoutView
+class LayoutView extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid h-100 device--layout'
+  className: 'container-fluid d-flex flex-column w-100 h-100 justify-content-center align-items-center device--layout'
 
   regions:
-    deviceRegion: '[data-region=device]'
+    deviceRegion:   '[data-region=device]'
     selectorRegion: '[data-region=selector]'
-    editorRegion: '[data-region=editor]'
+    editorRegion:   '[data-region=editor]'
 
   onRender: ->
 
     # Displays default help text
     @showHelpView()
 
-    # Instantiates a new DeviceLayout for selecting an AstroKey
+    # Instantiates a new DeviceLayout for connecting to an AstroKey
+    # and selecting which key the user would like to edit
     deviceView = new DeviceLayout({ model: @model })
     deviceView.on 'key:selected', (keyModel) => @showEditorSelector(keyModel)
     deviceView.on 'key:deselected', () => @showHelpView()
     @deviceRegion.show(deviceView)
 
   showHelpView: ->
-
-    @$el.removeClass('active')
 
     # Instantiates a new HelpView and shows it in @selectorRegion
     @selectorRegion.show new HelpView()
@@ -62,22 +42,22 @@ class DeviceLayoutView extends Marionette.LayoutView
     editorSelector = new EditorSelector({ model: keyModel })
 
     # Shows Macro Editor
-    editorSelector.on 'show:macro:editor', => @showEditorView(keyModel, MacroEditor)
+    editorSelector.on 'show:macro:editor', => @showEditorView(keyModel, 'macro')
 
     # Shows Text Editor
-    editorSelector.on 'show:text:editor', => @showEditorView(keyModel, MacroEditor) # TODO - TextEditor
+    editorSelector.on 'show:text:editor', => @showEditorView(keyModel, 'macro') # TODO - TextEditor
 
     # Shows Key Editor
-    editorSelector.on 'show:key:editor', => @showEditorView(keyModel, MacroEditor) # TODO - KeyEditor
+    editorSelector.on 'show:key:editor', => @showEditorView(keyModel, 'macro') # TODO - KeyEditor
 
     # Shows the EditorSelector view
     @selectorRegion.show(editorSelector)
 
-  showEditorView: (keyModel, view) ->
+  showEditorView: (keyModel, editor) ->
     @$el.addClass('active')
 
     # Instantiates new EditorWrapper view
-    editorWrapper = new EditorWrapper({ model: keyModel, keys: @options.keys, macros: @options.macros, editor: view })
+    editorWrapper = new EditorWrapper({ model: keyModel, keys: @options.keys, macros: @options.macros, editor: editor })
 
     # Handles 'cancel' event
     editorWrapper.on 'cancel', =>
@@ -85,14 +65,16 @@ class DeviceLayoutView extends Marionette.LayoutView
 
     # Handles 'save' event
     editorWrapper.on 'save', =>
-      console.log 'SAVE KEY MODEL SETTINGS'
+      # TODO - hit the KeyModel / DeviceModel to do the rest from here
+      console.log 'SAVE KEY MODEL SETTINGS HERE'
+      @$el.removeClass('active')
 
     # Shows the EditorWrapper view in @editorRegion
     @editorRegion.show(editorWrapper)
 
 # # # # #
 
-module.exports = DeviceLayoutView
+module.exports = LayoutView
 
 
 

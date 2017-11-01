@@ -1,4 +1,4 @@
-SimpleNav = require('./simpleNav')
+SimpleNav = require 'lib/views/simple_nav'
 KeyboardView = require('./keyboardView')
 NumpadView = require('./numpadView')
 FunctionKeyboard = require('./functionKeyboard')

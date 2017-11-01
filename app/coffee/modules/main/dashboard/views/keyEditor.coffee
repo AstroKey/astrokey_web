@@ -1,4 +1,4 @@
-SimpleNav = require('./simpleNav')
+SimpleNav = require('lib/views/simple_nav')
 TextEditor = require('./textEditor')
 MacroEditor = require('./macroEditor')
 

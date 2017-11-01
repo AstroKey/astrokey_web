@@ -81,6 +81,10 @@ gulp.task 'bundle', ->
       debug:      true
       transform:  ['coffeeify', 'jadeify']
       extensions: ['.coffee', '.jade']
+      paths: [
+          './node_modules',
+          './app/coffee/modules'
+      ],
     .pipe plugins.concat(paths.bundle.dest)
 
   stream.pipe uglify() if process.env.NODE_ENV == 'prod'
