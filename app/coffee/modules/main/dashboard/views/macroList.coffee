@@ -20,24 +20,16 @@ class MacroChild extends Mn.LayoutView
 
   onMouseOver: ->
     @$el.addClass('hovered')
-    # console.log 'onMouseOver'
 
   onMouseOut: ->
     @$el.removeClass('hovered')
-    # console.log 'onMouseOut'
 
   onDragStart: ->
     @$el.addClass('drag-start')
 
   onDrag: ->
     @$el.removeClass('drag-start hovered')
-    # @$el.removeClass('hovered')
-    # setTimeout( =>
-    #   @$el.removeClass('hovered')
-    #   @$el.siblings('.macro--child').removeClass('hovered')
-    # , 1000)
-
-    console.log 'onDragStart'
+    @$el.siblings('.macro--child').removeClass('drag-start hovered')
 
   removeMacro: ->
     @model.collection.remove(@model)
