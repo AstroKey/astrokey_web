@@ -74,7 +74,7 @@ module.exports = [
       { id: 'device_1_key_2', config: { type: 'text', text_value: 'Hello world!' } }
       { id: 'device_1_key_3', config: { type: 'macro', macros: [] } }
       { id: 'device_1_key_4', config: { type: 'text', text_value: 'Hello, again' } }
-      { id: 'device_1_key_5', config: { type: 'key', key_value: 56 } }
+      { id: 'device_1_key_5', config: { type: 'macro', macros: [] } }
     ]
   }
 ]

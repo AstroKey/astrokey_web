@@ -9,7 +9,7 @@ class EditorSelector extends SimpleNav
   navItems: [
     { icon: 'fa-keyboard-o',  text: 'Macro',  trigger: 'macro' }
     { icon: 'fa-file-text-o', text: 'Text',   trigger: 'text' }
-    { icon: 'fa-asterisk',    text: 'Key',    trigger: 'key' }
+    # { icon: 'fa-asterisk',    text: 'Key',    trigger: 'key' }
   ]
 
   onRender: ->
