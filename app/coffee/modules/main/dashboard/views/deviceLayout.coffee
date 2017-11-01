@@ -37,7 +37,7 @@ class DeviceLayout extends Mn.LayoutView
     keySelector = new KeySelector({ collection: @model.get('keys') })
     keySelector.on 'childview:selected', (view) => @trigger('key:selected', view.model)
     @keysRegion.show(keySelector)
-    @model.get('keys').first().trigger('selected')
+    # @model.get('keys').first().trigger('selected')
 
     # Status View
     # @statusRegion.show new DeviceStatusView({ model: @model })
