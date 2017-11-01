@@ -22,11 +22,13 @@ require 'hn_entities/lib/config'
 
 # Henson.js Components
 HeaderComponent     = require './components/header/component'
+AboutComponent      = require './components/about/component'
 OverlayComponent    = require 'hn_overlay/lib/component'
 FlashComponent      = require 'hn_flash/lib/component'
 new HeaderComponent({ container: AppLayout.header })
 new OverlayComponent({ container: AppLayout.overlay })
 new FlashComponent({ container: AppLayout.flash })
+new AboutComponent({ container: AppLayout.modal })
 
 # # # # #
 

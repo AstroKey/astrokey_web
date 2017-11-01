@@ -56,6 +56,17 @@ class UsbService extends Marionette.Service
 
       )
 
+  # send
+  send: ->
+
+    window.d.controlTransferOut({
+        requestType:  'vendor',
+        recipient:    'device',
+        request:      0x03,
+        value:        0x0013, # Whatever we want (to some extent)
+        index:        0x0001  # TODO - We can use index for the key the macro corresponds to (low-byte = key, high-byte = number of actions in the macro)
+    }, data);
+
 
 # # # #
 
