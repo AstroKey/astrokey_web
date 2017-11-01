@@ -36,6 +36,7 @@ class DeviceLayout extends Mn.LayoutView
   onRender: ->
     keySelector = new KeySelector({ collection: @model.get('keys') })
     keySelector.on 'childview:selected', (view) => @trigger('key:selected', view.model)
+    keySelector.on 'childview:deselected', (view) => @trigger('key:deselected')
     @keysRegion.show(keySelector)
     # @model.get('keys').first().trigger('selected')
 

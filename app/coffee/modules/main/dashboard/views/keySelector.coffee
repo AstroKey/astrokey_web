@@ -5,7 +5,7 @@ class KeyChild extends Mn.LayoutView
   template: require('./templates/key_child')
 
   behaviors:
-    SelectableChild: {}
+    SelectableChild: { deselect: true }
 
 # # # # #
 

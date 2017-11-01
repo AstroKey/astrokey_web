@@ -7,6 +7,12 @@ MacroEditor = require('./macroEditor')
 
 # # # # #
 
+class HelpView extends Marionette.LayoutView
+  template: require './templates/help_view'
+  className: 'row'
+
+# # # # #
+
 class DeviceLayoutView extends Marionette.LayoutView
   template: require './templates/layout'
   className: 'container-fluid h-100'
@@ -17,9 +23,19 @@ class DeviceLayoutView extends Marionette.LayoutView
     editorRegion: '[data-region=editor]'
 
   onRender: ->
+
+    # Displays default help text
+    @showHelpView()
+
+    # Instantiates a new DeviceLayout for selecting an AstroKey
     deviceView = new DeviceLayout({ model: @model })
     deviceView.on 'key:selected', (keyModel) => @showEditorSelector(keyModel)
+    deviceView.on 'key:deselected', () => @showHelpView()
     @deviceRegion.show(deviceView)
+
+  showHelpView: ->
+    console.log 'SHOW HELP VIEW'
+    @selectorRegion.show new HelpView()
 
   showEditorSelector: (keyModel) ->
 

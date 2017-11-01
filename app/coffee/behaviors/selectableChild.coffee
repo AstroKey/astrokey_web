@@ -13,13 +13,6 @@ class SelectableChild extends Marionette.Behavior
   # Selects activeModel on render
   onRender: ->
     return unless @options.setActive
-    @$el.trigger('click') if @view.model.collection._activeModel == @view.model.id
-
-  # Sets activeModel on click
-  onSelected: ->
-    return unless @options.setActive
-    @view.model.collection._setActiveModel(@view.model.id)
-    @view.model.collection.trigger('selected:model', @view.model)
 
   # Invoked when clicked
   onClick: (e) ->
@@ -28,6 +21,11 @@ class SelectableChild extends Marionette.Behavior
 
     # Prevent double-click unless specificed
     e?.preventDefault() unless @options.doubleClick
+
+    # Handles de-selection
+    if @options.deselect && @$el.hasClass(@css.active)
+      @$el.removeClass(@css.active)
+      return @view.triggerMethod 'deselected'
 
     # Return if element is currently selected
     return if @$el.hasClass(@css.active)
