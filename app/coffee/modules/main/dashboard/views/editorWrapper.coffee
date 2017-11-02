@@ -44,6 +44,9 @@ class EditorWrapper extends Marionette.LayoutView
     # Instantiates new EditorView instance
     @editorView = new EditorView({ model: config, keys: keys, macros: @macros })
 
+    # Listens for 'stop:recording' event
+    @editorView.on 'stop:recording', => @toggleRecord()
+
     # Shows the view in @contentRegion
     @contentRegion.show @editorView
 
@@ -52,12 +55,18 @@ class EditorWrapper extends Marionette.LayoutView
   # TODO - undo button?
   onClear: ->
 
+    # Stops Recording
+    @stopRecording()
+
     # Empties the MacroCollection
     @macros.reset()
     return
 
   # onSave
   onSave: ->
+
+    # Stops Recording
+    @stopRecording()
 
     # Serializes data from any form elements in this view
     data = Backbone.Syphon.serialize(@)
@@ -78,6 +87,9 @@ class EditorWrapper extends Marionette.LayoutView
   # onCancel
   onCancel: ->
 
+    # Stops Recording
+    @stopRecording()
+
     # Resets config attributes
     @model.get('config').set(@cachedConfig)
 
@@ -87,34 +99,32 @@ class EditorWrapper extends Marionette.LayoutView
   # toggleRecord
   # Toggles wether or not the user's keyboard is recording keystrokes
   toggleRecord: (e) ->
+    return @stopRecording() if @isRecording
+    @startRecording()
 
-    # Stop Recording
-    if @isRecording
+  # stopRecording
+  stopRecording: ->
 
-      # Sets @isRecording flag
-      @isRecording = false
+    # Sets @isRecording flag
+    @isRecording = false
 
-      # Updates the EditorView instance to ignore keyboard input
-      @editorView.keyboardSelector.current.stopRecording()
+    # Updates the EditorView instance to ignore keyboard input
+    @editorView.keyboardSelector?.current.stopRecording()
 
-      # Updates the @ui.recordBtn element
-      @ui.recordBtn.removeClass('active').find('i').removeClass('fa-spin fa-circle-o-notch').addClass('fa-circle')
+    # Updates the @ui.recordBtn element
+    @ui.recordBtn.removeClass('active').find('i').removeClass('fa-spin fa-circle-o-notch').addClass('fa-circle')
 
-    # Start Recording
-    else
+  # startRecording
+  startRecording: ->
 
-      # Sets @isRecording flag
-      @isRecording = true
+    # Sets @isRecording flag
+    @isRecording = true
 
-      # Updates the EditorView instance to allow keyboard input
-      @editorView.keyboardSelector.current.startRecording()
+    # Updates the EditorView instance to allow keyboard input
+    @editorView.keyboardSelector?.current.startRecording()
 
-      # Listens for 'stop:recording' event
-      # TODO - manage recording state in a central location!
-      @editorView.keyboardSelector.current.on 'stop:recording', => @toggleRecord()
-
-      # Updates the @ui.recordBtn element
-      @ui.recordBtn.addClass('active').find('i').addClass('fa-spin fa-circle-o-notch').removeClass('fa-circle')
+    # Updates the @ui.recordBtn element
+    @ui.recordBtn.addClass('active').find('i').addClass('fa-spin fa-circle-o-notch').removeClass('fa-circle')
 
 # # # # #
 

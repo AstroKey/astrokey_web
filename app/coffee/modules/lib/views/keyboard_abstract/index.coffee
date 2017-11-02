@@ -20,10 +20,8 @@ class AbstractKeyboardView extends Mn.LayoutView
 
     # Defines @debounceStopRecording
     @debounceStopRecording = _.debounce( () =>
-      console.log 'STOP RECORDING'
       @trigger 'stop:recording'
-      @stopRecording()
-    , 2000);
+    , 1500);
 
   # startRecording
   startRecording: ->
@@ -36,7 +34,6 @@ class AbstractKeyboardView extends Mn.LayoutView
   # KeyboardControls behavior callback
   # TODO - annoate and clean up this method
   onKeyAction: (e) ->
-    # console.log e
 
     # Short-circuits unless
     return unless @isRecording

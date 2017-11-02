@@ -21,6 +21,9 @@ class MacroEditor extends Marionette.LayoutView
     # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
     @keyboardSelector = new KeyboardSelector({ model: @model, keys: @options.keys })
 
+    # Bubbles up stop:recording event
+    @keyboardSelector.on 'stop:recording', => @trigger 'stop:recording'
+
     # Handles KeySelection event
     @keyboardSelector.on 'key:selected', (key) =>
 

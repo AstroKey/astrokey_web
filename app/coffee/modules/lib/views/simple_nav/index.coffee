@@ -12,6 +12,7 @@ class SimpleNav extends Mn.LayoutView
     def = _.where(_.result(@, 'navItems'), { default: true })[0]
     return unless def
     @triggerMethod("navigate:#{def.trigger}")
+    @$("[data-trigger=#{def.trigger}]").addClass('active')
 
   serializeData: ->
     data = super
@@ -22,6 +23,7 @@ class SimpleNav extends Mn.LayoutView
     el = $(e.currentTarget)
     el.addClass('active').siblings().removeClass('active')
     @triggerMethod("navigate:#{el.data('trigger')}")
+    el.blur()
 
 # # # # #
 

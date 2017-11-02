@@ -124,7 +124,7 @@ module.exports = [
     { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 57, icon: 'fa-chevron-down' }
     { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 57, icon: 'fa-chevron-right' }
     { row: 'nav_r0', key: 'INS', keycode: 57 }
-    { row: 'nav_r0', key: 'DEL', keycode: 57 }
+    { row: 'nav_r0', key: 'DEL', keycode: 46 }
 
 ]
 

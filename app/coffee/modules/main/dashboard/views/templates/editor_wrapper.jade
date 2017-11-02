@@ -1,27 +1,31 @@
 .col-lg-12
-  .row
-    .col-lg-6
+  .row.justify-content-center
+    .col-lg-12.d-flex.justify-content-center
       button.btn.btn-sm.btn-outline-secondary.mx-2.px-4(data-click='cancel')
-        i.fa.fa-fw.fa-2x.mx-4.fa-times-circle-o
+        i.fa.fa-fw.fa-2x.mx-4.fa-angle-left
 
       button.btn.btn-sm.btn-outline-success.mx-2.px-4(data-click='save')
         i.fa.fa-fw.fa-2x.mx-4.fa-check-circle-o
 
-    .col-lg-6.text-right
+      //- button.btn.btn-sm.btn-outline-light.mx-2.px-4(data-click='save')
+      //-   i.fa.fa-fw.fa-2x.mx-4.fa-save
 
-      button.btn.btn-sm.btn-outline-danger.mx-2.px-4(data-click='record')
-        i.fa.fa-fw.fa-2x.mx-4.fa-circle
+      //- button.btn.btn-sm.btn-outline-info.mx-2.px-4(data-click='open')
+      //-   i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
 
       button.btn.btn-sm.btn-outline-warning.mx-2.px-4(data-click='clear')
         i.fa.fa-fw.fa-2x.mx-4.fa-times
 
+      button.btn.btn-sm.btn-outline-danger.mx-2.px-4(data-click='record')
+        i.fa.fa-fw.fa-2x.mx-4.fa-circle
+
       .btn-group
         button.btn.btn-outline-primary.dropdown-toggle.mx-2.px-4(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-          | Examples
+          i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
         .dropdown-menu.dropdown-menu-right
-          a.dropdown-item(data-click='example') Action
-          a.dropdown-item(data-click='example') Another action
-          a.dropdown-item(data-click='example') Something else here
+          button.dropdown-item( type='button' data-click='example') Ex. 1: Hello, world!
+          button.dropdown-item( type='button' data-click='example') Ex. 2: CTRL + ALT + DELETE
+          button.dropdown-item( type='button' data-click='example') Ex. 3: Cycle Windows
 
 .col-lg-12
   hr

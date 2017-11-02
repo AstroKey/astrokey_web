@@ -12,6 +12,10 @@
 
 .device--layout
 
+  .device--overlay
+    opacity: 1
+    transition: opacity .25s ease-in
+
   .editor--overlay
     background-color: #333
     position: fixed
@@ -20,15 +24,18 @@
     margin-top: 2.5rem
     z-index: -1000
     opacity: 0
+    filter: blur(10px)
 
   &.active
     .device--overlay
-      // opacity: 0
+      opacity: 0
+      filter: blur(10px)
 
     .editor--overlay
       z-index: 100
       opacity: 1
       background-color: $body-bg
+      filter: none
 
 // // // //
 
@@ -125,6 +132,7 @@ ul.list-unstyled.macro--list
   li.macro--child
     display: flex
     padding: 0 .25rem
+    min-height: 8rem
 
     .key
       height: $macro_size
