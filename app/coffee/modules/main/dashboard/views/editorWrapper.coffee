@@ -10,10 +10,14 @@ class EditorWrapper extends Marionette.LayoutView
   regions:
     contentRegion: '[data-region=content]'
 
+  ui:
+    recordBtn: '[data-click=record]'
+
   events:
     'click [data-click=save]':    'onSave'
     'click [data-click=clear]':   'onClear'
     'click [data-click=cancel]':  'onCancel'
+    'click @ui.recordBtn':        'toggleRecord'
 
   editors:
     macro:  MacroEditor
@@ -47,20 +51,13 @@ class EditorWrapper extends Marionette.LayoutView
   # Empties the MacroCollection
   # TODO - undo button?
   onClear: ->
-    console.log 'CLEAR'
-
-    console.log @macros
 
     # Empties the MacroCollection
     @macros.reset()
     return
 
-
   # onSave
   onSave: ->
-
-    # Prevents keyboard input
-    @editorView.preventKeyaction = true
 
     # Serializes data from any form elements in this view
     data = Backbone.Syphon.serialize(@)
@@ -81,14 +78,42 @@ class EditorWrapper extends Marionette.LayoutView
   # onCancel
   onCancel: ->
 
-    # Prevents keyboard input
-    @editorView.preventKeyaction = true
-
     # Resets config attributes
     @model.get('config').set(@cachedConfig)
 
     # Triggers 'cancel' event, closing this view
     return @trigger 'cancel'
+
+  # toggleRecord
+  # Toggles wether or not the user's keyboard is recording keystrokes
+  toggleRecord: (e) ->
+
+    console.log @editorView
+    console.log @editorView.keyboardSelector.current.isRecording
+
+    # Stop Recording
+    if @isRecording
+
+      # Sets @isRecording flag
+      @isRecording = false
+
+      # Updates the EditorView instance to ignore keyboard input
+      @editorView.keyboardSelector.current.stopRecording()
+
+      # Updates the @ui.recordBtn element
+      @ui.recordBtn.removeClass('active').find('i').removeClass('fa-spin fa-circle-o-notch').addClass('fa-circle')
+
+    # Start Recording
+    else
+
+      # Sets @isRecording flag
+      @isRecording = true
+
+      # Updates the EditorView instance to allow keyboard input
+      @editorView.keyboardSelector.current.startRecording()
+
+      # Updates the @ui.recordBtn element
+      @ui.recordBtn.addClass('active').find('i').addClass('fa-spin fa-circle-o-notch').removeClass('fa-circle')
 
 # # # # #
 

@@ -21,6 +21,9 @@ class KeyboardSelector extends SimpleNav
 
   showKeyboardView: (keyboardView) ->
 
+    # Caches current keyboard view
+    @current = keyboardView
+
     # Handles KeySelection event
     keyboardView.on 'key:selected', (key) => @trigger('key:selected', key)
 

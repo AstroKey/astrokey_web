@@ -13,23 +13,33 @@ class AbstractKeyboardView extends Mn.LayoutView
   events:
     'click @ui.key': 'onKeyClick'
 
+  isRecording: false
+
+  # startRecording
+  startRecording: ->
+    @isRecording = true
+
+  # stopRecording
+  stopRecording: ->
+    @isRecording = false
+
   # KeyboardControls behavior callback
   onKeyAction: (e) ->
     # console.log e
 
-    # TODO - not working
-    return if @preventKeyaction
+    # Short-circuits unless
+    return unless @isRecording
 
+    # Prevents default hotkeys while recording
     e.preventDefault()
-
-    console.log e
 
     # TODO - ignore keyup on alphanumeric, listen for special keys?
     # return if e.key in ["Control", "Meta", "Alt"]
-
     key = @options.keys.findWhere({ keycode: e.keyCode })
 
-    # console.log key
+    # # # #
+
+    # TODO - document this block of code
 
     if e.type == 'keydown'
 
@@ -48,7 +58,7 @@ class AbstractKeyboardView extends Mn.LayoutView
         @trigger 'key:selected', json
 
 
-    # # #
+    # # # #
 
     if e.type == 'keyup'
       @$("[data-keycode=#{e.keyCode}]").removeClass('active')
