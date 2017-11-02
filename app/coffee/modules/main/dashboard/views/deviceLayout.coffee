@@ -30,17 +30,20 @@ class DeviceLayout extends Mn.LayoutView
   template: require('./templates/device_layout')
 
   regions:
-    statusRegion: '[data-region=status]'
+    # statusRegion: '[data-region=status]'
     keysRegion:   '[data-region=keys]'
 
   onRender: ->
+
+    # Instantiates new KeySelector View
     keySelector = new KeySelector({ collection: @model.get('keys') })
     keySelector.on 'childview:selected', (view) => @trigger('key:selected', view.model)
+    keySelector.on 'childview:deselected', (view) => @trigger('key:deselected')
     @keysRegion.show(keySelector)
-    @model.get('keys').first().trigger('selected')
 
     # Status View
-    @statusRegion.show new DeviceStatusView({ model: @model })
+    # TODO - status & connection view
+    # @statusRegion.show new DeviceStatusView({ model: @model })
 
 # # # # #
 

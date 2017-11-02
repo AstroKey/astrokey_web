@@ -1,8 +1,28 @@
 
 // Layout Styles
-// .device--region
+.device--region
+  display: flex
+  align-content: center
+  justify-content: center
+
 .controls--region
-  border-left: 1px solid $gray-800
+  border-left: 1px solid
+  border-color: theme-color('light')
+
+.device--layout
+
+  .editor--overlay
+    display: none
+
+  &.active
+    .device--overlay
+      display: none
+
+    .editor--overlay
+      display: flex
+      z-index: 100
+      background-color: $body-bg
+      margin-top: 0.5rem
 
 // // // //
 
@@ -10,39 +30,176 @@
 $astrokey_child_size: 4rem
 
 ul.list-unstyled.key--list
-  border: 1px solid $gray-800
+  border: 1px solid theme-color('light')
+  border-radius: 1.5rem
 
   li.key--child
     height: $astrokey_child_size
     width: $astrokey_child_size
+    cursor: pointer
 
     span
-      display: none
-      font-size: 0.5rem
+      font-size: 0.75rem
       position: relative
       bottom: 0
       left: 0
 
+    &:last-child
+      margin-right: 5rem !important
+
+    &.active
+      color: $gray-800
+
 // // // //
 
-// Hotkey Editor Styles
-$hotkey_child_size: 3rem
-$hotkey_child_margin_x: 0.25rem
+// Keyboard Body Styles
+// .keyboard--body
+//   width: 80%
 
-.hotkey--child
+// Keyboard Row Styles
+.keyboard--row
+  display: flex
+  justify-content: space-between
+  width: 100%
+
+// Key Selector Styles
+$keyboard_key_child_size: 3.5rem
+$keyboard_key_margin: 0.25rem
+
+.keyboard--key
+  display: flex
+  flex-direction: column
   font-size: 80%
-  width: $hotkey_child_size
-  height: $hotkey_child_size
-  margin: 0 $hotkey_child_margin_x
+  width: $keyboard_key_child_size
+  height: $keyboard_key_child_size
+  margin: $keyboard_key_margin
+  justify-content: center
+  align-items: center
 
-  &.h_5
-    height: .5 * $hotkey_child_size
+  .shift
+    display: flex
+    flex-direction: row
+    margin-bottom: 0.5rem
 
-  &.x2
-    width: 2*$hotkey_child_size
+  .plain
+    display: flex
+    flex-direction: row
 
-  &.x2-5
-    width: 8.5rem
+  &.w1_25
+    width: 1.25*$keyboard_key_child_size
+
+  &.w1_5
+    width: 1.5*$keyboard_key_child_size
+
+  &.w1_75
+    width: 1.75*$keyboard_key_child_size
+
+  &.w2_0
+    width: 2*$keyboard_key_child_size
+
+  &.w2_25
+    width: 2.25*$keyboard_key_child_size
+
+  &.w2_75
+    width: 2.75*$keyboard_key_child_size
 
   &.space
-    width: 5*$hotkey_child_size
+    width: 6.25*$keyboard_key_child_size
+
+  &.h2_0
+    height: 2.15*$keyboard_key_child_size
+
+// // // //
+// Macro Styles
+
+$macro_size: 4rem
+
+ul.list-unstyled.macro--list
+
+  li.macro--child
+    display: flex
+    padding: 0 .25rem
+
+    .key
+      height: $macro_size
+      width: $macro_size
+      border: .15rem solid theme-color('secondary')
+      border-radius: 1rem
+      color: theme-color('light')
+      display: flex
+      font-size: 1.25rem
+      font-weight: 400
+      cursor: pointer
+
+      .inner
+        height: 100%
+        width: 100%
+        justify-content: center
+        align-items: center
+
+        &.content
+          display: flex
+          flex-direction: column
+
+        &.hover
+          display: none
+
+      &.special
+        color: lighten(theme-color('info'), 35%)
+
+    .position
+      display: flex
+
+      span.position--select
+        color: $gray-500
+        cursor: pointer
+
+        &.position_-1
+          color: lighten(theme-color('warning'), 25%)
+
+          &:hover
+            color: theme-color('warning')
+
+        &.position_0
+          color: lighten(theme-color('success'), 25%)
+
+          &:hover
+            color: theme-color('success')
+
+        &.position_1
+          color: lighten(theme-color('primary'), 25%)
+
+          &:hover
+            color: theme-color('primary')
+
+    &.hovered
+      .key
+        color: lighten(theme-color('danger'), 25%)
+        .inner.content
+          display: none
+        .inner.hover
+          display: flex
+
+    &.drag-start
+      opacity: 0
+
+    &.ghost
+      .key
+        border-width: .3rem
+        border-color: #f3f3f3
+        border-style: dashed
+        color: theme-color('warning')
+
+    // &.chosen
+    //   .key
+    //     background-color: $gray-100
+
+    //     .hover
+    //       display: none !important
+
+    // &.drag
+    //   .position
+    //     opacity: 0
+
+    &.empty
+      font-size: 1.5rem
