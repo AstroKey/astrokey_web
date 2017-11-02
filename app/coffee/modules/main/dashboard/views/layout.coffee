@@ -57,7 +57,7 @@ class LayoutView extends Marionette.LayoutView
     @$el.addClass('active')
 
     # Instantiates new EditorWrapper view
-    editorWrapper = new EditorWrapper({ model: keyModel, keys: @options.keys, macros: @options.macros, editor: editor })
+    editorWrapper = new EditorWrapper({ model: keyModel, editor: editor })
 
     # Handles 'cancel' event
     editorWrapper.on 'cancel', =>
