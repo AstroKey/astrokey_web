@@ -17,19 +17,47 @@ class AbstractKeyboardView extends Mn.LayoutView
   onKeyAction: (e) ->
     # console.log e
 
+    # TODO - not working
+    return if @preventKeyaction
+
     e.preventDefault()
+
+    console.log e
+
+    # TODO - ignore keyup on alphanumeric, listen for special keys?
+    # return if e.key in ["Control", "Meta", "Alt"]
 
     key = @options.keys.findWhere({ keycode: e.keyCode })
 
     # console.log key
 
     if e.type == 'keydown'
-      @trigger 'key:selected', key.toJSON()
+
+      if e.key in ["Control", "Meta", "Alt", "Shift"]
+        json = key.toJSON()
+        json.position = -1
+        @trigger 'key:selected', json
+      else
+        @trigger 'key:selected', key.toJSON()
+
+    if e.type == 'keyup'
+
+      if e.key in ["Control", "Meta", "Alt", "Shift"]
+        json = key.toJSON()
+        json.position = 1
+        @trigger 'key:selected', json
+
+
+    # # #
 
     if e.type == 'keyup'
       @$("[data-keycode=#{e.keyCode}]").removeClass('active')
     else
       @$("[data-keycode=#{e.keyCode}]").addClass('active')
+
+    setTimeout( =>
+      @$("[data-keycode=#{e.keyCode}]").removeClass('active')
+    , 1000)
 
   # KeyClick callback
   onKeyClick: (e) ->

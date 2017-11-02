@@ -1,9 +1,28 @@
 .col-lg-12
-  button.btn.btn-sm.btn-outline-secondary.mx-2(data-click='cancel')
-    i.fa.fa-fw.fa-2x.mx-4.fa-times-circle
+  .row
+    .col-lg-6
+      button.btn.btn-sm.btn-outline-secondary.mx-2.px-4(data-click='cancel')
+        i.fa.fa-fw.fa-2x.mx-4.fa-times-circle
 
-  button.btn.btn-sm.btn-outline-success.mx-2(data-click='save')
-    i.fa.fa-fw.fa-2x.mx-4.fa-save
+      button.btn.btn-sm.btn-outline-success.mx-2.px-4(data-click='save')
+        i.fa.fa-fw.fa-2x.mx-4.fa-save
+
+    .col-lg-6.text-right
+
+      button.btn.btn-sm.btn-outline-danger.mx-2.px-4(data-click='record')
+        //- | REC
+        i.fa.fa-fw.fa-2x.mx-4.fa-circle
+
+      button.btn.btn-sm.btn-outline-warning.mx-2.px-4(data-click='clear')
+        i.fa.fa-fw.fa-2x.mx-4.fa-times
+
+      .btn-group.mx-2
+        button.btn.btn-outline-primary.dropdown-toggle.mx-2.px-4(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+          | Examples
+        .dropdown-menu.dropdown-menu-right
+          a.dropdown-item(data-click='example') Action
+          a.dropdown-item(data-click='example') Another action
+          a.dropdown-item(data-click='example') Something else here
 
 .col-lg-12
   hr

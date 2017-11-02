@@ -5,6 +5,9 @@ AbstractKeyboardView = require('lib/views/keyboard_abstract')
 class KeyboardView extends AbstractKeyboardView
   template: require './templates/keyboard_full'
 
+  behaviors:
+    KeyboardControls: {}
+
   # Passes key objects to UI
   templateHelpers: ->
     keys = @options.keys.toJSON()

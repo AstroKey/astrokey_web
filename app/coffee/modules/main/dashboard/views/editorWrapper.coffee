@@ -12,6 +12,7 @@ class EditorWrapper extends Marionette.LayoutView
 
   events:
     'click [data-click=save]':    'onSave'
+    'click [data-click=clear]':   'onClear'
     'click [data-click=cancel]':  'onCancel'
 
   editors:
@@ -31,16 +32,35 @@ class EditorWrapper extends Marionette.LayoutView
     @cachedConfig = config.toJSON()
 
     # Isolates MacroCollection
-    macros = config.get('macros')
+    @macros = config.get('macros')
 
     # Requests KeyCollection from the KeyFactory
     keys = Radio.channel('key').request('collection')
 
+    # Instantiates new EditorView instance
+    @editorView = new EditorView({ model: config, keys: keys, macros: @macros })
+
     # Shows the view in @contentRegion
-    @contentRegion.show new EditorView({ model: config, keys: keys, macros: macros })
+    @contentRegion.show @editorView
+
+  # onClear
+  # Empties the MacroCollection
+  # TODO - undo button?
+  onClear: ->
+    console.log 'CLEAR'
+
+    console.log @macros
+
+    # Empties the MacroCollection
+    @macros.reset()
+    return
+
 
   # onSave
   onSave: ->
+
+    # Prevents keyboard input
+    @editorView.preventKeyaction = true
 
     # Serializes data from any form elements in this view
     data = Backbone.Syphon.serialize(@)
@@ -60,6 +80,9 @@ class EditorWrapper extends Marionette.LayoutView
 
   # onCancel
   onCancel: ->
+
+    # Prevents keyboard input
+    @editorView.preventKeyaction = true
 
     # Resets config attributes
     @model.get('config').set(@cachedConfig)

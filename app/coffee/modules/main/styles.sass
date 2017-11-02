@@ -1,4 +1,5 @@
 
+
 // Layout Styles
 .device--region
   display: flex
@@ -12,17 +13,23 @@
 .device--layout
 
   .editor--overlay
-    display: none
+    // display: none
+    background-color: #333
+    position: fixed
+    display: flex
+    transition: opacity .25s ease-in
+    margin-top: 2.5rem
+    z-index: -1000
+    opacity: 0
 
   &.active
     .device--overlay
-      display: none
+      // opacity: 0
 
     .editor--overlay
-      display: flex
       z-index: 100
+      opacity: 1
       background-color: $body-bg
-      margin-top: 0.5rem
 
 // // // //
 
