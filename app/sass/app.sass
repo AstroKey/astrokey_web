@@ -1,0 +1,31 @@
+
+// Vendor Assets
+@import './vendor'
+
+// Material Mixins
+@import './material'
+
+// Henson Styles
+// @import './util'
+@import '../../node_modules/hn_breadcrumb/lib/styles.sass'
+@import '../../node_modules/hn_views/lib/json_viewer/styles.sass'
+
+// Components
+@import '../coffee/components/header/styles'
+
+// Modules
+@import '../coffee/modules/main/styles'
+
+// Layout SASS
+@import './layout'
+
+// // // //
+
+// BOOTSTRAP TAB CSS FIX
+ul.nav.nav-tabs
+  li.nav-item
+    &.active
+      a.nav-link
+        color: $gray-900
+        background-color: $body-bg
+        border-color: $nav-tabs-border-color $nav-tabs-border-color $body-bg

@@ -1,0 +1,17 @@
+mixin formGroup(opts)
+  fieldset.form-group( class=opts.formGroupCss )
+    if opts.label
+      label.form-control-label= opts.label
+    block
+
+//- // // // // //
+
+mixin formInput(opts)
+  +formGroup(opts)
+    input.form-control( placeholder=opts.placeholder, name=opts.name, type=opts.type )&attributes(attributes)
+
+//- // // // // //
+
+.col-lg-12
+  input(type='hidden', name='type', value='text', readonly=true )
+  +formInput({ name: 'text_value', type: 'text', placeholder: 'Enter some text here...' })&attributes({ class: 'form-control-lg' })
