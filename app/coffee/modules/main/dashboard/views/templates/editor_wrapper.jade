@@ -23,9 +23,11 @@
         button.btn.btn-sm.btn-outline-primary.dropdown-toggle.mx-2.px-4(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
           i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
         .dropdown-menu.dropdown-menu-right
-          button.dropdown-item( type='button' data-click='example') Ex. 1: Hello, world!
-          button.dropdown-item( type='button' data-click='example') Ex. 2: CTRL + ALT + DELETE
-          button.dropdown-item( type='button' data-click='example') Ex. 3: Cycle Windows
+          //- TODO - MacroExamples should be managed as their own Backbone.Collection, rather than hard-coded here
+          button.dropdown-item( type='button' data-example="ex_01" ) Ex. 1: "Hello!"
+          button.dropdown-item( type='button' data-example="ex_02" ) Ex. 2: "Resumè"
+          button.dropdown-item( type='button' data-example="ex_03" ) Ex. 3: Em Dash (—)
+          button.dropdown-item( type='button' data-example="ex_04" ) Ex. 4: CTRL + ALT + DELETE
 
 .col-lg-12
   hr

@@ -1,3 +1,6 @@
+MacroExamples = require('./examples')
+
+# # # # #
 
 # MacroModel class definition
 class MacroModel extends Backbone.RelationalModel
@@ -12,6 +15,13 @@ class MacroModel extends Backbone.RelationalModel
 class MacroCollection extends Backbone.Collection
   model: MacroModel
   comparator: 'order'
+
+  # loadExample
+  # Resets the collection to one of the examples
+  loadExample: (example_id) ->
+
+    # Resets the collection with the data defined in the Examples object
+    @reset(MacroExamples[example_id])
 
 # # # # #
 

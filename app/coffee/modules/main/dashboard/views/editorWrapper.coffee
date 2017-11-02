@@ -17,6 +17,7 @@ class EditorWrapper extends Marionette.LayoutView
     'click [data-click=save]':    'onSave'
     'click [data-click=clear]':   'onClear'
     'click [data-click=cancel]':  'onCancel'
+    'click [data-example]':       'loadExample'
     'click @ui.recordBtn':        'toggleRecord'
 
   editors:
@@ -37,6 +38,8 @@ class EditorWrapper extends Marionette.LayoutView
 
     # Isolates MacroCollection
     @macros = config.get('macros')
+
+    window.macros = @macros # TODO - remove
 
     # Requests KeyCollection from the KeyFactory
     keys = Radio.channel('key').request('collection')
@@ -95,6 +98,19 @@ class EditorWrapper extends Marionette.LayoutView
 
     # Triggers 'cancel' event, closing this view
     return @trigger 'cancel'
+
+  # loadExample
+  # Empties out the MacroCollecion and loads an example macro
+  loadExample: (e) ->
+
+    # Caches clicked el
+    el = $(e.currentTarget)
+
+    # Gets the ID of the example to load
+    example_id = el.data('example')
+
+    # Invokes the loadExample method on the MacroCollection
+    return @macros.loadExample(example_id)
 
   # toggleRecord
   # Toggles wether or not the user's keyboard is recording keystrokes
