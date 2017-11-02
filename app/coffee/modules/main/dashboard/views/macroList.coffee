@@ -11,8 +11,25 @@ class MacroChild extends Mn.LayoutView
     'change:position': 'render'
 
   events:
+    'drag': 'onDrag'
+    'dragstart': 'onDragStart'
+    'mouseover .key': 'onMouseOver'
+    'mouseout .key': 'onMouseOut'
     'click .key': 'removeMacro'
     'click [data-position]:not(.active)': 'onPositionClick'
+
+  onMouseOver: ->
+    @$el.addClass('hovered')
+
+  onMouseOut: ->
+    @$el.removeClass('hovered')
+
+  onDragStart: ->
+    @$el.addClass('drag-start')
+
+  onDrag: ->
+    @$el.removeClass('drag-start hovered')
+    @$el.siblings('.macro--child').removeClass('drag-start hovered')
 
   removeMacro: ->
     @model.collection.remove(@model)
@@ -25,10 +42,16 @@ class MacroChild extends Mn.LayoutView
     # Isolates position data from element
     position = el.data('position')
 
-    console.log position
+    # Determines next position
+    if position == -1
+      new_position = 1
+    if position == 0
+      new_position = -1
+    if position == 1
+      new_position = 0
 
     # Sets the position attribute on the model
-    @model.set('position', position)
+    @model.set('position', new_position)
 
   templateHelpers: ->
     positions = [
@@ -38,28 +61,23 @@ class MacroChild extends Mn.LayoutView
     ]
 
     position = @model.get('position')
-    activePosition = _.findWhere(positions, { position: position })
-    activePosition.css += ' active'
-
-    return { positions }
+    active_position = _.findWhere(positions, { position: position })
+    return { active_position }
 
 # # # # #
 
 class MacroEmpty extends Mn.LayoutView
   tagName: 'li'
-  className: 'btn btn-outline-dark macro--child justify-content-center align-items-center my-2'
+  className: 'macro--child empty flex-column justify-content-center align-items-center my-2'
   template: require('./templates/macro_empty')
 
 # # # # #
 
 class MacroList extends Mn.CollectionView
   tagName: 'ul'
-  className: 'list-unstyled macro--list px-4 py-3 my-2 d-flex justify-content-center align-items-center flex-row'
+  className: 'list-unstyled macro--list px-4 my-2 d-flex justify-content-center align-items-center flex-row flex-wrap'
   childView: MacroChild
   emptyView: MacroEmpty
-
-  # behaviors:
-  #   SortableList: {}
 
   onRender: ->
 

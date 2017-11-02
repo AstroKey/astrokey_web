@@ -1,16 +1,21 @@
 mixin positionSelect(opts)
-  i.fa.fa-lg.mx-1.position--select( class=opts.css, data-position=opts.position )
+  span.fa-stack.fa-lg.position--select( class=`position_${opts.position}`, data-toggle='tooltip' title=opts.tooltip, data-placement='bottom' )
+    i.fa.fa-circle-thin.fa-stack-2x
+    i.fa.fa-stack-1x( class=opts.css, data-position=opts.position )
 
 //- // // //
 
-.key.d-flex.mb-2
+.key.d-flex( class=typeof special === "undefined" ? "" : "special" )
   .inner.content
-    .shift= key
-    .text-lowercase= key
+    if key && shift
+      .shift= shift
+      = key
+
+    else
+      .plain= key
+
   .inner.hover
     i.fa.fa-fw.fa-lg.fa-times
 
-.position
-  each pos in positions
-    +positionSelect(pos)
-
+.position.mt-2
+  +positionSelect(active_position)

@@ -1,53 +1,80 @@
 DeviceLayout = require('./deviceLayout')
-KeyboardView = require('./keyboardView')
-MacroList = require('./macroList')
-# KeyEditor = require('./keyEditor')
+EditorSelector = require('./editorSelector')
+EditorWrapper = require('./editorWrapper')
 
 # # # # #
 
-class DeviceLayoutView extends Marionette.LayoutView
+class HelpView extends Marionette.LayoutView
+  template: require './templates/help_view'
+  className: 'row'
+
+# # # # #
+
+class LayoutView extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid h-100'
+  className: 'container-fluid d-flex flex-column w-100 h-100 justify-content-center align-items-center device--layout'
 
   regions:
     deviceRegion:   '[data-region=device]'
-    macroRegion:    '[data-region=macro]'
-    controlsRegion: '[data-region=controls]'
+    selectorRegion: '[data-region=selector]'
+    editorRegion:   '[data-region=editor]'
 
   onRender: ->
+
+    # Displays default help text
+    @showHelpView()
+
+    # Instantiates a new DeviceLayout for connecting to an AstroKey
+    # and selecting which key the user would like to edit
     deviceView = new DeviceLayout({ model: @model })
-    deviceView.on 'key:selected', (keyModel) => @showControlsView(keyModel)
+    deviceView.on 'key:selected', (keyModel) => @showEditorSelector(keyModel)
+    deviceView.on 'key:deselected', () => @showHelpView()
     @deviceRegion.show(deviceView)
 
-  showControlsView: (keyModel) ->
+  showHelpView: ->
 
-    # Gets the current macro assigned to the keyModel
-    # macroCollection = keyModel.getMacroCollection()
-    @macroRegion.show new MacroList({ collection: @options.macros })
+    # Instantiates a new HelpView and shows it in @selectorRegion
+    @selectorRegion.show new HelpView()
 
-    # Instantaiates new KeyboardView
-    # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
-    # @controlsRegion.show new KeyEditor({ model: keyModel, keys: @options.keys })
-    keyboardView = new KeyboardView({ model: keyModel, keys: @options.keys })
+  showEditorSelector: (keyModel) ->
 
-    # Handles KeySelection event
-    keyboardView.on 'key:selected', (key) =>
+    # Instantaiates new EditorSelector view
+    editorSelector = new EditorSelector({ model: keyModel })
 
-      # Clones the original object
-      key = _.clone(key)
+    # Shows Macro Editor
+    editorSelector.on 'show:macro:editor', => @showEditorView(keyModel, 'macro')
 
-      # Adds the correct `order` attribute
-      key.order = @options.macros.length + 1
+    # Shows Text Editor
+    editorSelector.on 'show:text:editor', => @showEditorView(keyModel, 'text')
 
-      # Adds the key to the MacroCollection
-      @options.macros.add(key)
+    # Shows Key Editor
+    editorSelector.on 'show:key:editor', => @showEditorView(keyModel, 'key')
 
-    # Shows the keyboardView
-    @controlsRegion.show keyboardView
+    # Shows the EditorSelector view
+    @selectorRegion.show(editorSelector)
+
+  showEditorView: (keyModel, editor) ->
+    @$el.addClass('active')
+
+    # Instantiates new EditorWrapper view
+    editorWrapper = new EditorWrapper({ model: keyModel, keys: @options.keys, macros: @options.macros, editor: editor })
+
+    # Handles 'cancel' event
+    editorWrapper.on 'cancel', =>
+      @$el.removeClass('active')
+
+    # Handles 'save' event
+    editorWrapper.on 'save', =>
+      # TODO - hit the KeyModel / DeviceModel to do the rest from here
+      console.log 'SAVE KEY MODEL SETTINGS HERE'
+      @$el.removeClass('active')
+
+    # Shows the EditorWrapper view in @editorRegion
+    @editorRegion.show(editorWrapper)
 
 # # # # #
 
-module.exports = DeviceLayoutView
+module.exports = LayoutView
 
 
 

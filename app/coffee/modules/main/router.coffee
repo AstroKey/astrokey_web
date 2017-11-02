@@ -9,13 +9,14 @@ class MainRouter extends require 'hn_routing/lib/router'
 
   routes:
     '(/)':        'home'
-    'device(/)': 'dashboard'
+    # 'device(/)': 'dashboard'
 
   home: ->
-    new HomeRoute({ container: @container })
-
-  dashboard: ->
     new DashboardRoute({ container: @container })
+    # new HomeRoute({ container: @container })
+
+  # dashboard: ->
+  #   new DashboardRoute({ container: @container })
 
 # # # # #
 

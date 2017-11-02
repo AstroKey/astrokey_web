@@ -1,8 +1,28 @@
 
 // Layout Styles
-// .device--region
+.device--region
+  display: flex
+  align-content: center
+  justify-content: center
+
 .controls--region
-  border-left: 1px solid $gray-800
+  border-left: 1px solid
+  border-color: theme-color('light')
+
+.device--layout
+
+  .editor--overlay
+    display: none
+
+  &.active
+    .device--overlay
+      display: none
+
+    .editor--overlay
+      display: flex
+      z-index: 100
+      background-color: $body-bg
+      margin-top: 0.5rem
 
 // // // //
 
@@ -10,18 +30,25 @@
 $astrokey_child_size: 4rem
 
 ul.list-unstyled.key--list
-  border: 1px solid $gray-800
+  border: 1px solid theme-color('light')
+  border-radius: 1.5rem
 
   li.key--child
     height: $astrokey_child_size
     width: $astrokey_child_size
+    cursor: pointer
 
     span
-      display: none
-      font-size: 0.5rem
+      font-size: 0.75rem
       position: relative
       bottom: 0
       left: 0
+
+    &:last-child
+      margin-right: 5rem !important
+
+    &.active
+      color: $gray-800
 
 // // // //
 
@@ -41,12 +68,22 @@ $keyboard_key_margin: 0.25rem
 
 .keyboard--key
   display: flex
+  flex-direction: column
   font-size: 80%
   width: $keyboard_key_child_size
   height: $keyboard_key_child_size
   margin: $keyboard_key_margin
   justify-content: center
   align-items: center
+
+  .shift
+    display: flex
+    flex-direction: row
+    margin-bottom: 0.5rem
+
+  .plain
+    display: flex
+    flex-direction: row
 
   &.w1_25
     width: 1.25*$keyboard_key_child_size
@@ -69,25 +106,30 @@ $keyboard_key_margin: 0.25rem
   &.space
     width: 6.25*$keyboard_key_child_size
 
+  &.h2_0
+    height: 2.15*$keyboard_key_child_size
+
 // // // //
 // Macro Styles
 
 $macro_size: 4rem
 
 ul.list-unstyled.macro--list
-  border-bottom: 1px solid $gray-800
 
   li.macro--child
     display: flex
-    margin: 0 .25rem
+    padding: 0 .25rem
 
     .key
       height: $macro_size
       width: $macro_size
-      border: .25rem solid $gray-100
-      color: #333
+      border: .15rem solid theme-color('secondary')
+      border-radius: 1rem
+      color: theme-color('light')
       display: flex
+      font-size: 1.25rem
       font-weight: 400
+      cursor: pointer
 
       .inner
         height: 100%
@@ -102,36 +144,62 @@ ul.list-unstyled.macro--list
         &.hover
           display: none
 
-      &:hover
-        border: .25rem solid theme-color('warning')
-        color: theme-color('warning')
+      &.special
+        color: lighten(theme-color('info'), 35%)
+
+    .position
+      display: flex
+
+      span.position--select
+        color: $gray-500
+        cursor: pointer
+
+        &.position_-1
+          color: lighten(theme-color('warning'), 25%)
+
+          &:hover
+            color: theme-color('warning')
+
+        &.position_0
+          color: lighten(theme-color('success'), 25%)
+
+          &:hover
+            color: theme-color('success')
+
+        &.position_1
+          color: lighten(theme-color('primary'), 25%)
+
+          &:hover
+            color: theme-color('primary')
+
+    &.hovered
+      .key
+        color: lighten(theme-color('danger'), 25%)
         .inner.content
           display: none
         .inner.hover
           display: flex
 
-    .position
-      display: flex
-
-      i.position--select
-        color: #dddddd
-
-        &.active
-          color: #000000
+    &.drag-start
+      opacity: 0
 
     &.ghost
       .key
-        border: .25rem dotted #000
-      .position
-        opacity: 0
+        border-width: .3rem
+        border-color: #f3f3f3
+        border-style: dashed
+        color: theme-color('warning')
 
-    &.chosen
-      .key
-        background-color: $gray-100
+    // &.chosen
+    //   .key
+    //     background-color: $gray-100
 
-        .hover
-          display: none !important
+    //     .hover
+    //       display: none !important
 
-    &.drag
-      .position
-        opacity: 0
+    // &.drag
+    //   .position
+    //     opacity: 0
+
+    &.empty
+      font-size: 1.5rem

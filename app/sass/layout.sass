@@ -2,10 +2,6 @@
 html, body.window
   height: 100%
 
-$brdr-color: #ccc
-$sidebarTransition: margin-left .25s cubic-bezier(0,0,0,1.2)
-
-// TODO - Layout Styles should be included in their respective component repositories
 .flash-region
   position: fixed
   z-index: 1000
@@ -17,18 +13,10 @@ $sidebarTransition: margin-left .25s cubic-bezier(0,0,0,1.2)
   position: fixed
   width: 100%
   z-index: 100
-  border: 1px solid $brdr-color
   background-color: $body-bg
 
-.breadcrumb-region
-  display: none
-  +z-depth-1
-  position: fixed
-  z-index: 90
-  width: 100%
-  margin-top: 3.45rem
-  border-bottom: 1px solid $brdr-color
-  transition: $sidebarTransition
+  nav
+    border-bottom: 1px solid $white
 
 .main-region
   transition: opacity 0.25s ease-in-out
@@ -51,3 +39,6 @@ $sidebarTransition: margin-left .25s cubic-bezier(0,0,0,1.2)
   &.active
     z-index: 80
     opacity: 0.60
+
+.modal-content
+  background-color: #333333

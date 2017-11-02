@@ -42,6 +42,7 @@
     "hn_breadcrumb": "git+https://github.com/HensonJS/hn_breadcrumb.git",
     "hn_entities": "git+https://github.com/HensonJS/hn_entities.git",
     "hn_flash": "git+https://github.com/HensonJS/hn_flash.git",
+    "hn_modal": "git+https://github.com/HensonJS/hn_modal.git",
     "hn_overlay": "git+https://github.com/HensonJS/hn_overlay.git",
     "hn_routing": "git+https://github.com/HensonJS/hn_routing.git",
     "hn_views": "git+https://github.com/HensonJS/hn_views.git",

@@ -1,0 +1,31 @@
+include ../../../partials/keyboard_helpers
+
+//- // // // //
+
+.keyboard--body
+  .d-flex.flex-row
+
+    .d-flex.flex-column
+      +keyboardRow()
+        each key in r4
+          +keyboardKey(key)
+
+      +keyboardRow()
+        each key in r3
+          +keyboardKey(key)
+
+      +keyboardRow()
+        each key in r2
+          +keyboardKey(key)
+
+      +keyboardRow()
+        each key in r1
+          +keyboardKey(key)
+
+      +keyboardRow()
+        each key in r0
+          +keyboardKey(key)
+
+    .d-flex.flex-column
+      each key in col
+        +keyboardKey(key)
