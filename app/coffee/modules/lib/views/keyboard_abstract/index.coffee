@@ -15,6 +15,16 @@ class AbstractKeyboardView extends Mn.LayoutView
 
   isRecording: false
 
+  # initialize
+  initialize: ->
+
+    # Defines @debounceStopRecording
+    @debounceStopRecording = _.debounce( () =>
+      console.log 'STOP RECORDING'
+      @trigger 'stop:recording'
+      @stopRecording()
+    , 2000);
+
   # startRecording
   startRecording: ->
     @isRecording = true
@@ -24,6 +34,7 @@ class AbstractKeyboardView extends Mn.LayoutView
     @isRecording = false
 
   # KeyboardControls behavior callback
+  # TODO - annoate and clean up this method
   onKeyAction: (e) ->
     # console.log e
 
@@ -65,9 +76,16 @@ class AbstractKeyboardView extends Mn.LayoutView
     else
       @$("[data-keycode=#{e.keyCode}]").addClass('active')
 
+    # TODO - annotae
     setTimeout( =>
       @$("[data-keycode=#{e.keyCode}]").removeClass('active')
     , 1000)
+
+    # Stops recording 2 seconds after last keystroke
+    @debounceStopRecording()
+
+    # # # #
+
 
   # KeyClick callback
   onKeyClick: (e) ->

@@ -88,9 +88,6 @@ class EditorWrapper extends Marionette.LayoutView
   # Toggles wether or not the user's keyboard is recording keystrokes
   toggleRecord: (e) ->
 
-    console.log @editorView
-    console.log @editorView.keyboardSelector.current.isRecording
-
     # Stop Recording
     if @isRecording
 
@@ -111,6 +108,10 @@ class EditorWrapper extends Marionette.LayoutView
 
       # Updates the EditorView instance to allow keyboard input
       @editorView.keyboardSelector.current.startRecording()
+
+      # Listens for 'stop:recording' event
+      # TODO - manage recording state in a central location!
+      @editorView.keyboardSelector.current.on 'stop:recording', => @toggleRecord()
 
       # Updates the @ui.recordBtn element
       @ui.recordBtn.addClass('active').find('i').addClass('fa-spin fa-circle-o-notch').removeClass('fa-circle')
