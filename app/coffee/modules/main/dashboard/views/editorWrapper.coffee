@@ -115,16 +115,20 @@ class EditorWrapper extends Marionette.LayoutView
       # wValue - Macro index (0 - 4 inclusive)
       # bRequest - 3 (hardcoded)
       # wLength - number of bytes (should be macro length * 2)
-      d.controlTransferIn(
-        {
+
+      return @trigger('save') unless window.d
+
+      requestObj = {
           'requestType': 'vendor',
           'recipient': 'device',
           'request': 0x03,
           'value': macroIndex,
           'index': 0x01
-        }, new Uint8Array(data).buffer
-        # }, new Uint8Array([1,4,2,4]).buffer
-      ).then (response) =>
+        }
+
+      console.log requestObj
+
+      d.controlTransferIn(requestObj, new Uint8Array(data).buffer).then (response) =>
         console.log(response)
         return @trigger 'save'
 
