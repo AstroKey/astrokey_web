@@ -1,14 +1,31 @@
 mixin positionSelect(opts)
   span.fa-stack.fa-lg.position--select( class=`position_${opts.position}`, data-toggle='tooltip' title=opts.tooltip, data-placement='bottom' )
     i.fa.fa-circle-thin.fa-stack-2x
-    i.fa.fa-stack-1x( class=opts.css, data-position=opts.position )
+    //- i.fa.fa-circle-thin.fa-stack-3x(style='color:#ffffff;' )
+    i.fa.fa-stack-1x.fa-stack
+      i.fa.fa-circle-thin.fa-stack-2x.fa-2x
+      i.fa.fa-stack-1x( class=opts.css, data-position=opts.position )
 
 //- // // //
 
 .key.d-flex( class=typeof special === "undefined" ? "" : "special" )
-  .inner.content
-    if key && shift
-      .shift= shift
+  .inner.content(class=css)
+    //- if key && shift_key && !alpha
+    //-   .shift= shift_key
+    //-   = key
+
+    //- else
+    //-   .plain= key
+
+    //- if shifted
+    //-   .shift= shift_key
+    //-   = key
+
+    //- if shifted && shift_key && alpha
+    //-   .plain= shift
+
+    if shifted || shift_key && !alpha
+      .shift= shift_key
       = key
 
     else

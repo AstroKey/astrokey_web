@@ -21,8 +21,9 @@
 
       .btn-group
         button.btn.btn-sm.btn-outline-primary.dropdown-toggle.mx-2.px-4(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-          i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
-        .dropdown-menu.dropdown-menu-right
+          //- i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
+          | Examples
+        .dropdown-menu.dropdown-menu-right.mt-3
           //- TODO - MacroExamples should be managed as their own Backbone.Collection, rather than hard-coded here
           button.dropdown-item( type='button' data-example="ex_01" ) Ex. 1: "Hello!"
           button.dropdown-item( type='button' data-example="ex_02" ) Ex. 2: "Resumè"

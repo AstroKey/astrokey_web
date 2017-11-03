@@ -9,9 +9,12 @@ mixin keyboardKey(opts)
       i.fa.fa-fw( class=opts.icon )
     else
 
-      if opts.key && opts.shift
-        .shift= opts.shift
+      if opts.key && opts.shift_key && !opts.alpha
+        .shift= opts.shift_key
         .plain= opts.key
+
+      else if opts.alpha
+        .plain= opts.shift_key
 
       else
         .plain= opts.key

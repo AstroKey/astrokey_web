@@ -103,6 +103,9 @@ class EditorWrapper extends Marionette.LayoutView
   # Empties out the MacroCollecion and loads an example macro
   loadExample: (e) ->
 
+    # Stops Recording
+    @stopRecording()
+
     # Caches clicked el
     el = $(e.currentTarget)
 
@@ -132,6 +135,9 @@ class EditorWrapper extends Marionette.LayoutView
 
   # startRecording
   startRecording: ->
+
+    # Empty macros
+    @macros.reset()
 
     # Sets @isRecording flag
     @isRecording = true

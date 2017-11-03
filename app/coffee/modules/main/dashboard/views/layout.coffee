@@ -31,6 +31,11 @@ class LayoutView extends Marionette.LayoutView
     deviceView.on 'key:deselected', () => @showHelpView()
     @deviceRegion.show(deviceView)
 
+    # Macro Development hack
+    @showEditorView(@model.get('keys').first(), 'macro')
+
+    # @showEditorView()
+
   showHelpView: ->
 
     # Instantiates a new HelpView and shows it in @selectorRegion
