@@ -33,6 +33,18 @@ class DeviceLayout extends Mn.LayoutView
     # statusRegion: '[data-region=status]'
     keysRegion:   '[data-region=keys]'
 
+  events:
+    'click [data-click=connect]': 'connectToDevice'
+
+  connectToDevice: ->
+    Radio.channel('usb').request('devices').then (d) => @render()
+
+  templateHelpers: ->
+    if window.d
+      return { connected: true }
+    else
+      return { connected: false }
+
   onRender: ->
 
     # Instantiates new KeySelector View

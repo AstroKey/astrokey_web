@@ -84,8 +84,55 @@ class EditorWrapper extends Marionette.LayoutView
     # Triggers change event on @model to re-render the currently hidden AstroKey element
     @model.trigger('config:updated')
 
-    # Triggers 'save' event, closing this view
-    return @trigger 'save'
+    # SENDS TO DEVICE (IF AVAILABLE)
+    # TODO - this is a HACKKKKKKK
+    # if window.d
+    if true # TODO - remove true
+
+      console.log 'HAS DEVICE - SEND TO DEVICE'
+
+      console.log @model
+      console.log @model.get('order')
+
+      # Gets the macroIndex
+      macroIndex = @model.get('order')
+
+      # console.log @macros.toJSON()
+
+      # Data for array buffer
+      data = []
+
+      # Iterates over each macro
+      _.each(@macros.models, (macro) =>
+        console.log 'EACH MACRO'
+        console.log macro.getKeyData()
+        data = data.concat(macro.getKeyData())
+      )
+
+      console.log data
+
+      # wIndex - Request type (0x01 for set macro)
+      # wValue - Macro index (0 - 4 inclusive)
+      # bRequest - 3 (hardcoded)
+      # wLength - number of bytes (should be macro length * 2)
+      d.controlTransferIn(
+        {
+          'requestType': 'vendor',
+          'recipient': 'device',
+          'request': 0x03,
+          'value': macroIndex,
+          'index': 0x01
+        }, new Uint8Array(data).buffer
+        # }, new Uint8Array([1,4,2,4]).buffer
+      ).then (response) =>
+        console.log(response)
+        return @trigger 'save'
+
+    else
+
+      # Triggers 'save' event, closing this view
+      # TODO - this is dummy
+      return @trigger 'save'
 
   # onCancel
   onCancel: ->
