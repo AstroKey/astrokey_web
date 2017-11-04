@@ -1,7 +1,7 @@
 class SimpleNav extends Mn.LayoutView
 
   events:
-    'click [data-trigger]': 'onNavItemClick'
+    'click [data-trigger]:not(.disabled)': 'onNavItemClick'
 
   navItems: []
 

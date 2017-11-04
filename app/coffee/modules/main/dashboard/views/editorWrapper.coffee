@@ -128,7 +128,7 @@ class EditorWrapper extends Marionette.LayoutView
 
       console.log requestObj
 
-      d.controlTransferIn(requestObj, new Uint8Array(data).buffer).then (response) =>
+      d.controlTransferOut(requestObj, new Uint8Array(data).buffer).then (response) =>
         console.log(response)
         return @trigger 'save'
 
