@@ -117,6 +117,10 @@ class MacroList extends Mn.CollectionView
       ghostClass:   'ghost'  # Class name for the drop placeholder
       chosenClass:  'chosen'  # Class name for the chosen item
       dragClass:    'drag'  # Class name for the dragging item
+      # group:
+      #   name: 'macro'
+      #   pull: false
+      #   put:  true
       fallbackTolerance: 100
       onEnd: (e) => @reorderCollection()
 

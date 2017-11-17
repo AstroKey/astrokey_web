@@ -24,12 +24,40 @@ class AbstractKeyboardView extends Mn.LayoutView
     , 1500);
 
   # startRecording
+  # TODO - move recording OUT of this view and into a globalized service
   startRecording: ->
     @isRecording = true
 
   # stopRecording
   stopRecording: ->
     @isRecording = false
+
+  # onRender: ->
+  #   setTimeout( @initSortable, 300 )
+
+  # # initSortable
+  # initSortable: ->
+
+  #   console.log 'ON ATTACH'
+
+  #   console.log $('ul.keyboard--row')
+
+  #   _.each $('ul.keyboard--row'), (el) =>
+
+  #     # Initializes Sortable container
+  #     Sortable.create el,
+  #       animation:    150
+  #       handle:       '.handle'
+  #       # ghostClass:   'ghost'  # Class name for the drop placeholder
+  #       # chosenClass:  'chosen'  # Class name for the chosen item
+  #       # dragClass:    'drag'  # Class name for the dragging item
+
+  #       group:
+  #         name: 'macro'
+  #         pull: 'clone'
+  #         put:  false
+
+  #       fallbackTolerance: 100
 
   # KeyboardControls behavior callback
   # TODO - annoate and clean up this method
