@@ -71,7 +71,6 @@ class LayoutView extends Marionette.LayoutView
     # Handles 'save' event
     editorWrapper.on 'save', =>
       # TODO - hit the KeyModel / DeviceModel to do the rest from here
-      console.log 'SAVE KEY MODEL SETTINGS HERE'
       @$el.removeClass('active')
 
     # Shows the EditorWrapper view in @editorRegion

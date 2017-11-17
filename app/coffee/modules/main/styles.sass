@@ -195,14 +195,23 @@ ul.list-unstyled.macro--list
 
     &.hovered
       .key
-        color: lighten(theme-color('danger'), 25%)
         .inner.content
           display: none
         .inner.hover
           display: flex
+          color: lighten(theme-color('danger'), 25%)
 
+    // TODO - this should be adjusted to
     &.drag-start
-      opacity: 0
+      // opacity: 0
+      .key
+        .inner.content
+          display: flex
+        .inner.hover
+          display: none
+
+      .position
+        opacity: 0
 
     &.ghost
       .key
