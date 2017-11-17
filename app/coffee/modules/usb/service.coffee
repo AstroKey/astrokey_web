@@ -57,7 +57,7 @@ class UsbService extends Marionette.Service
               # bRequest - 3 (hardcoded)
               # wLength - number of bytes (should be macro length * 2)
 
-              # d.controlTransferIn(
+              # d.controlTransferOut(
               #   {
               #     'requestType': 'vendor',
               #     'recipient': 'device',
@@ -74,6 +74,18 @@ class UsbService extends Marionette.Service
         )
 
       )
+
+  # READ MACRO
+  # d.controlTransferIn( # READ == 'controlTransferIn'
+  #   {
+  #     'requestType': 'vendor',
+  #     'recipient': 'device',
+  #     'request': 0x03,
+  #     'value': 0x0000, # value == 'macro index' (zero-indexed)
+  #     'index': 0x02 # 0x02 == 'get macro'
+  #   } # NO DATA (still need argument?)
+  # ).then( (response) => { console.log(response) })
+
 
   # send
   send: ->
