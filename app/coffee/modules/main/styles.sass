@@ -1,4 +1,5 @@
 
+
 // Layout Styles
 .device--region
   display: flex
@@ -11,18 +12,30 @@
 
 .device--layout
 
+  .device--overlay
+    opacity: 1
+    transition: opacity .25s ease-in
+
   .editor--overlay
-    display: none
+    background-color: #333
+    position: fixed
+    display: flex
+    transition: opacity .25s ease-in
+    margin-top: 2.5rem
+    z-index: -1000
+    opacity: 0
+    filter: blur(10px)
 
   &.active
     .device--overlay
-      display: none
+      opacity: 0
+      filter: blur(10px)
 
     .editor--overlay
-      display: flex
       z-index: 100
+      opacity: 1
       background-color: $body-bg
-      margin-top: 0.5rem
+      filter: none
 
 // // // //
 
@@ -76,6 +89,9 @@ $keyboard_key_margin: 0.25rem
   justify-content: center
   align-items: center
 
+  &:hover
+    color: theme-color('dark')
+
   .shift
     display: flex
     flex-direction: row
@@ -119,6 +135,7 @@ ul.list-unstyled.macro--list
   li.macro--child
     display: flex
     padding: 0 .25rem
+    min-height: 8rem
 
     .key
       height: $macro_size
@@ -140,6 +157,10 @@ ul.list-unstyled.macro--list
         &.content
           display: flex
           flex-direction: column
+
+          // Space button
+          &.space
+            color: rgba(255, 255, 255, 0)
 
         &.hover
           display: none
@@ -174,14 +195,23 @@ ul.list-unstyled.macro--list
 
     &.hovered
       .key
-        color: lighten(theme-color('danger'), 25%)
         .inner.content
           display: none
         .inner.hover
           display: flex
+          color: lighten(theme-color('danger'), 25%)
 
+    // TODO - this should be adjusted to
     &.drag-start
-      opacity: 0
+      // opacity: 0
+      .key
+        .inner.content
+          display: flex
+        .inner.hover
+          display: none
+
+      .position
+        opacity: 0
 
     &.ghost
       .key

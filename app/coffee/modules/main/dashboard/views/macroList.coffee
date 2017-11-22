@@ -6,9 +6,14 @@ class MacroChild extends Mn.LayoutView
 
   behaviors:
     SortableChild: {}
+    # Tooltips: {}
 
   modelEvents:
-    'change:position': 'render'
+    'change:position':  'render'
+    'change:shifted':   'render'
+
+  # ui:
+  #   tooltip: '[data-toggle=tooltip]'
 
   events:
     'drag': 'onDrag'
@@ -17,6 +22,19 @@ class MacroChild extends Mn.LayoutView
     'mouseout .key': 'onMouseOut'
     'click .key': 'removeMacro'
     'click [data-position]:not(.active)': 'onPositionClick'
+
+  # state: {
+  #   tooltipOnRender: false
+  # }
+
+  # onRender: ->
+  #   return unless @state.tooltipOnRender
+
+  #   # Unsets tooltip flag
+  #   @state.tooltipOnRender = false
+
+  #   # Shows the tooltip
+  #   @ui.tooltip.tooltip('show')
 
   onMouseOver: ->
     @$el.addClass('hovered')
@@ -32,9 +50,17 @@ class MacroChild extends Mn.LayoutView
     @$el.siblings('.macro--child').removeClass('drag-start hovered')
 
   removeMacro: ->
+    # console.log @model
+    # @model.set('shifted', !@model.get('shifted'))
     @model.collection.remove(@model)
 
   onPositionClick: (e) ->
+
+    # Displays the tooltip after the view re-renders
+    # @state.tooltipOnRender = true
+
+    # Clears active tooltips
+    # @clearTooltips()
 
     # Caches clicked el
     el = $(e.currentTarget)
@@ -55,9 +81,9 @@ class MacroChild extends Mn.LayoutView
 
   templateHelpers: ->
     positions = [
-      { position: -1, css: 'fa-long-arrow-down' }
-      { position: 0, css: 'fa-arrows-v' }
-      { position: 1, css: 'fa-long-arrow-up' }
+      { position: -1, css: 'fa-long-arrow-down', tooltip: 'Key Down' }
+      { position: 0, css: 'fa-arrows-v', tooltip: 'Key Down | Up' }
+      { position: 1, css: 'fa-long-arrow-up', tooltip: 'Key Up' }
     ]
 
     position = @model.get('position')
@@ -86,11 +112,15 @@ class MacroList extends Mn.CollectionView
 
     # Initializes Sortable container
     Sortable.create @el,
-      animation:    0
+      animation:    150
       handle:       '.key'
       ghostClass:   'ghost'  # Class name for the drop placeholder
       chosenClass:  'chosen'  # Class name for the chosen item
       dragClass:    'drag'  # Class name for the dragging item
+      # group:
+      #   name: 'macro'
+      #   pull: false
+      #   put:  true
       fallbackTolerance: 100
       onEnd: (e) => @reorderCollection()
 
