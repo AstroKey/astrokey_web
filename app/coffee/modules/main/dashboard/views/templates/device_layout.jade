@@ -3,8 +3,15 @@
 //- .col-lg-12
 //-   hr
 
-if !connected
-  .col-lg-12.d-flex.justify-content-center.align-items-center.mb-4
-    button.btn.btn-outline-secondary(data-click='connect') CONNECT
+.col-lg-12.d-flex.justify-content-center.align-items-center.mb-4
+  if connected
+    button.btn.btn-outline-secondary(data-click='disconnect')
+      i.fa.fa-fw.fa-times.mr-1
+      | DISCONNECT
+
+  else
+    button.btn.btn-outline-secondary(data-click='connect')
+      i.fa.fa-fw.fa-usb.mr-1
+      | CONNECT
 
 .col-lg-12.d-flex.justify-content-center.align-items-center(data-region='keys')
