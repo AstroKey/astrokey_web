@@ -53,5 +53,6 @@ module.exports = {
   '-':      86
   '+':      87
   'RETURN':  88
+  'SHIFT':  225
 
 }
