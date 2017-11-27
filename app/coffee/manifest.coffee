@@ -33,7 +33,8 @@ new AboutComponent({ container: AppLayout.modal })
 # # # # #
 
 # Services
-require('./modules/usb/chrome_webusb_service')
+require('./modules/usb/chrome_web_usb_service')
+# require('./modules/usb/chrome_web_bluetooth_service')
 
 # Factories
 require('./modules/key/factory')
