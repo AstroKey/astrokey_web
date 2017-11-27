@@ -32,13 +32,10 @@ class LayoutView extends Marionette.LayoutView
     @deviceRegion.show(deviceView)
 
     # Macro Development hack
-    setTimeout( =>
-      @showEditorView(@model.get('keys').first(), 'macro')
-    , 1000)
-
+    # setTimeout( =>
+    #   @showEditorView(@model.get('keys').first(), 'macro')
+    # , 1000)
     # @showEditorView(@model.get('keys').first(), 'macro')
-
-    # @showEditorView()
 
   showHelpView: ->
 
