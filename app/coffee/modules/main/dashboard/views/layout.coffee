@@ -60,28 +60,27 @@ class LayoutView extends Marionette.LayoutView
     @selectorRegion.show(editorSelector)
 
   showEditorView: (keyModel, editor) ->
+
+    # Adjusts the CSS to display the EditorWrapper
     @$el.addClass('active')
 
     # Reads macro from device
-    keyModel.readMacro().then( (macros) =>
-      console.log 'PARSED MACROS'
-      console.log macros
-    )
+    keyModel.readMacro().then =>
 
-    # Instantiates new EditorWrapper view
-    editorWrapper = new EditorWrapper({ model: keyModel, editor: editor })
+      # Instantiates new EditorWrapper view
+      editorWrapper = new EditorWrapper({ model: keyModel, editor: editor })
 
-    # Handles 'cancel' event
-    editorWrapper.on 'cancel', =>
-      @$el.removeClass('active')
+      # Handles 'cancel' event
+      editorWrapper.on 'cancel', =>
+        @$el.removeClass('active')
 
-    # Handles 'save' event
-    editorWrapper.on 'save', =>
-      # TODO - hit the KeyModel / DeviceModel to do the rest from here
-      @$el.removeClass('active')
+      # Handles 'save' event
+      editorWrapper.on 'save', =>
+        # TODO - hit the KeyModel / DeviceModel to do the rest from here
+        @$el.removeClass('active')
 
-    # Shows the EditorWrapper view in @editorRegion
-    @editorRegion.show(editorWrapper)
+      # Shows the EditorWrapper view in @editorRegion
+      @editorRegion.show(editorWrapper)
 
 # # # # #
 
