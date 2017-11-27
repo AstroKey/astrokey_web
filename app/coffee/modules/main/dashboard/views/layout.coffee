@@ -65,22 +65,25 @@ class LayoutView extends Marionette.LayoutView
     @$el.addClass('active')
 
     # Reads macro from device
-    keyModel.readMacro().then =>
+    # NOTE - this happens asynchronously
+    # We _should_ not render the EditorWrapper view until if a device is not present,
+    # but we will in the meantime for demonstration purposes
+    keyModel.readMacro()
 
-      # Instantiates new EditorWrapper view
-      editorWrapper = new EditorWrapper({ model: keyModel, editor: editor })
+    # Instantiates new EditorWrapper view
+    editorWrapper = new EditorWrapper({ model: keyModel, editor: editor })
 
-      # Handles 'cancel' event
-      editorWrapper.on 'cancel', =>
-        @$el.removeClass('active')
+    # Handles 'cancel' event
+    editorWrapper.on 'cancel', =>
+      @$el.removeClass('active')
 
-      # Handles 'save' event
-      editorWrapper.on 'save', =>
-        # TODO - hit the KeyModel / DeviceModel to do the rest from here
-        @$el.removeClass('active')
+    # Handles 'save' event
+    editorWrapper.on 'save', =>
+      # TODO - hit the KeyModel / DeviceModel to do the rest from here
+      @$el.removeClass('active')
 
-      # Shows the EditorWrapper view in @editorRegion
-      @editorRegion.show(editorWrapper)
+    # Shows the EditorWrapper view in @editorRegion
+    @editorRegion.show(editorWrapper)
 
 # # # # #
 
