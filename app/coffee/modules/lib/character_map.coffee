@@ -52,7 +52,9 @@ module.exports = {
   '*':      85
   '-':      86
   '+':      87
-  'RETURN':  88
-  'SHIFT':  225
+  'RETURN': 88
+  'SHIFT': 225
+  'ALT': 226
+  'CTRL': 224
 
 }

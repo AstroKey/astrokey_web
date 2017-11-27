@@ -102,7 +102,7 @@ class ChromeWebUsbService extends Marionette.Service
         }, 128 # QUESTION - why "128"?
       )
       .then( (response) =>
-        return resolve(new Int8Array(response.data.buffer))
+        return resolve(new Uint8Array(response.data.buffer))
       )
       .catch( (err) =>
         console.log 'ERROR READING MACRO'
