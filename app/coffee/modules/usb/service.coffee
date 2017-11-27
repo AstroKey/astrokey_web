@@ -16,8 +16,9 @@ requestDeviceFilters = [
 class ChromeWebUsbService extends Marionette.Service
 
   radioRequests:
-    'usb devices':  'getDevices'
-    'usb read':     'read'
+    'usb devices':      'getDevices'
+    'usb read:macro':   'readMacro'
+    'usb write:macro':  'writeMacro'
 
   # getDevices
   getDevices: ->
@@ -84,7 +85,8 @@ class ChromeWebUsbService extends Marionette.Service
 
       )
 
-  read: ->
+  # readMacro
+  readMacro: (macroIndex = 0x0000) ->
     # Returns a Promise to manage asynchonous behavior
     return new Promise (resolve, reject) =>
 
@@ -92,32 +94,44 @@ class ChromeWebUsbService extends Marionette.Service
       # TODO - abstract the controlTransferIn request object into a constant (cloned each time)
       d.controlTransferIn(
         {
-          'requestType': 'vendor',
-          'recipient': 'device',
-          'request': 0x03,
-          'value': 0x0000,
-          'index': 0x02
-        }, 128
+          'requestType':  'vendor',
+          'recipient':    'device',
+          'request':      0x03,
+          'value':        macroIndex,
+          'index':        0x02
+        }, 128 # QUESTION - why "128"?
       )
       .then( (response) =>
         return resolve(new Int8Array(response.data.buffer))
       )
       .catch( (err) =>
-        console.log 'ERROR READING DEVICE'
+        console.log 'ERROR READING MACRO'
         return reject(err)
       )
 
 
-  # send
-  send: ->
+  # sendMacro
+  sendMacro: (data) ->
 
-    window.d.controlTransferOut({
-        requestType:  'vendor',
-        recipient:    'device',
-        request:      0x03,
-        value:        0x0013, # Whatever we want (to some extent)
-        index:        0x0001  # TODO - We can use index for the key the macro corresponds to (low-byte = key, high-byte = number of actions in the macro)
-    }, data);
+    # Returns a Promise to manage asynchonous behavior
+    return new Promise (resolve, reject) =>
+
+      d.controlTransferOut(
+        {
+          requestType:  'vendor',
+          recipient:    'device',
+          request:      0x03,
+          value:        0x0013, # Whatever we want (to some extent)
+          index:        0x0001  # TODO - We can use index for the key the macro corresponds to (low-byte = key, high-byte = number of actions in the macro)
+        }, new Uint8Array(data).buffer
+      )
+      .then( (response) =>
+        return resolve(response)
+      )
+      .catch( (err) =>
+        console.log 'ERROR SENDING MACRO'
+        return reject(err)
+      )
 
 
 # # # #
