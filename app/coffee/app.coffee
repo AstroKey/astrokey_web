@@ -24,6 +24,13 @@ class Application extends Marionette.Service
   onReady: ->
     Backbone.history.start()
 
+    # TODO - this is a hack to auto-connect to a device IF it's already been connected to
+    navigator.usb.getDevices()
+    .then( (d) =>
+      d[0].open()
+      window.d = d[0]
+    )
+
   # Redirection interface
   # Used accross the application to redirect
   # to specific views after specific actions

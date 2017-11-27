@@ -32,7 +32,11 @@ class LayoutView extends Marionette.LayoutView
     @deviceRegion.show(deviceView)
 
     # Macro Development hack
-    @showEditorView(@model.get('keys').first(), 'macro')
+    setTimeout( =>
+      @showEditorView(@model.get('keys').first(), 'macro')
+    , 1000)
+
+    # @showEditorView(@model.get('keys').first(), 'macro')
 
     # @showEditorView()
 
@@ -60,6 +64,12 @@ class LayoutView extends Marionette.LayoutView
 
   showEditorView: (keyModel, editor) ->
     @$el.addClass('active')
+
+    # Reads macro from device
+    keyModel.readMacro().then( (macro) =>
+      console.log 'GOT MACRO'
+      console.log macro
+    )
 
     # Instantiates new EditorWrapper view
     editorWrapper = new EditorWrapper({ model: keyModel, editor: editor })
