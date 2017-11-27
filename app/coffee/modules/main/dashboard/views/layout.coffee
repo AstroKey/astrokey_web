@@ -66,9 +66,9 @@ class LayoutView extends Marionette.LayoutView
     @$el.addClass('active')
 
     # Reads macro from device
-    keyModel.readMacro().then( (macro) =>
-      console.log 'GOT MACRO'
-      console.log macro
+    keyModel.readMacro().then( (macros) =>
+      console.log 'PARSED MACROS'
+      console.log macros
     )
 
     # Instantiates new EditorWrapper view

@@ -66,6 +66,7 @@ class AstrokeyModel extends Backbone.RelationalModel
 
         # Stores the keys used to populate the macro collection
         macros = []
+        parsedMacros = []
 
         # Compacts the macroArray
         # QUESTION - will we ever have zeros between each key stroke?
@@ -94,9 +95,36 @@ class AstrokeyModel extends Backbone.RelationalModel
           # Appends the macro the the `macros` array
           macros.push(macro)
 
+        # Iterates over the macros _again_ - this time to merge keyup/keydown actions
+        macroIndex = 0
+        while macroIndex <= macros.length
+
+          # Isolates the current and next macros in the array
+          macro = macros[macroIndex]
+          nextMacro = macros[macroIndex + 1]
+
+          # Returns if nextMacro is undefined
+          if !nextMacro
+            parsedMacros.push(macro)
+            macroIndex++
+            continue
+
+          # Continues check if the macro is a KEY_DOWN
+          if macro.position == -1 && nextMacro.position == 1 && macro.key == nextMacro.key
+
+            # KEY_PRESS
+            macro.position = 0
+
+            # Appends the macro to the parsedMacros array
+            parsedMacros.push(macro)
+
+            # Iterates, skipping the matched macro
+            macroIndex = macroIndex + 2
+            continue
+
         # Sets the Macros on the AstrokeyConfig model
         config = @get('config')
-        config.get('macros').reset(macros)
+        config.get('macros').reset(parsedMacros)
 
         # Resolves the Promise with the parsed macros
         return resolve(macros)
