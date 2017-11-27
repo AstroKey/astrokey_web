@@ -68,6 +68,10 @@ class AstrokeyModel extends Backbone.RelationalModel
         macros = []
         parsedMacros = []
 
+        # TODO - remove
+        console.log 'Parsed Macro from device:'
+        console.log macroArray
+
         # Compacts the macroArray
         # QUESTION - will we ever have zeros between each key stroke?
         macroArray = _.compact(macroArray)
@@ -121,6 +125,11 @@ class AstrokeyModel extends Backbone.RelationalModel
             # Iterates, skipping the matched macro
             macroIndex = macroIndex + 2
             continue
+
+          # Non-Repeated - standard procedure
+          parsedMacros.push(macro)
+          macroIndex++
+          continue
 
         # Sets the Macros on the AstrokeyConfig model
         config = @get('config')
