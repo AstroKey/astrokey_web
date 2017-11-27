@@ -7,13 +7,17 @@ requestDeviceFilters = [
 
 # # # #
 
-# UsbService class definition
+# ChromeWebUsbService class definition
 # Responsible for managing USB devices
 # - fetch all devices
-class UsbService extends Marionette.Service
+# - writing data to a device
+# - reading data from a device
+# - write firmware to a device
+class ChromeWebUsbService extends Marionette.Service
 
   radioRequests:
-    'usb devices': 'getDevices'
+    'usb devices':  'getDevices'
+    'usb read':     'read'
 
   # getDevices
   getDevices: ->
@@ -30,7 +34,8 @@ class UsbService extends Marionette.Service
 
         # Step 2 - Get Devices
         # TODO - verify this workflow
-        return navigator.usb.getDevices().then((d) =>
+        return navigator.usb.getDevices()
+        .then((d) =>
 
           console.log(d)
 
@@ -72,19 +77,35 @@ class UsbService extends Marionette.Service
 
 
         )
+        # getDevices Error handling
+        .catch((err) =>
+          console.log 'ERR - navigator.usb.getDevices()'
+        )
 
       )
 
-  # READ MACRO
-  # d.controlTransferIn( # READ == 'controlTransferIn'
-  #   {
-  #     'requestType': 'vendor',
-  #     'recipient': 'device',
-  #     'request': 0x03,
-  #     'value': 0x0000, # value == 'macro index' (zero-indexed)
-  #     'index': 0x02 # 0x02 == 'get macro'
-  #   } # NO DATA (still need argument?)
-  # ).then( (response) => { console.log(response) })
+  read: ->
+    # Returns a Promise to manage asynchonous behavior
+    return new Promise (resolve, reject) =>
+
+      # device.controlTransferIn (READS DATA FROM DEVICE)
+      # TODO - abstract the controlTransferIn request object into a constant (cloned each time)
+      d.controlTransferIn(
+        {
+          'requestType': 'vendor',
+          'recipient': 'device',
+          'request': 0x03,
+          'value': 0x0000,
+          'index': 0x02
+        }, 128
+      )
+      .then( (response) =>
+        return resolve(new Int8Array(response.data.buffer))
+      )
+      .catch( (err) =>
+        console.log 'ERROR READING DEVICE'
+        return reject(err)
+      )
 
 
   # send
@@ -101,4 +122,4 @@ class UsbService extends Marionette.Service
 
 # # # #
 
-module.exports = new UsbService()
+module.exports = new ChromeWebUsbService()
