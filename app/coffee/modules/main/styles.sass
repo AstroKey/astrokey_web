@@ -42,27 +42,31 @@
 // AstroKey Selector Styles
 $astrokey_child_size: 4rem
 
-ul.list-unstyled.key--list
-  border: 1px solid theme-color('light')
-  // border-radius: 1.5rem
+.key--list--wrapper
+  border: 2px solid theme-color('light')
   border-top-left-radius: 1.5rem
   border-top-right-radius: 0.25rem
   border-bottom-left-radius: 0.25rem
   border-bottom-right-radius: 1.5rem
 
-  li.key--child
-    height: $astrokey_child_size
-    width: $astrokey_child_size
-    cursor: pointer
+  img.logo
+    margin: 0rem 1rem
+    height: 3rem
+    transform: rotate(90deg)
+    display: flex
 
-    span
-      font-size: 0.75rem
-      position: relative
-      bottom: 0
-      left: 0
+  ul.list-unstyled.key--list
+    li.key--child
+      height: $astrokey_child_size
+      width: $astrokey_child_size
+      cursor: pointer
+      border-width: 2px
 
-    &:last-child
-      margin-right: 5rem !important
+      span
+        font-size: 0.75rem
+        position: relative
+        bottom: 0
+        left: 0
 
     &.active
       color: $gray-800
