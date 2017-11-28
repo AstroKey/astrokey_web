@@ -25,6 +25,12 @@ class EditorWrapper extends Marionette.LayoutView
     text:   TextEditor
     key:    MacroEditor
 
+  templateHelpers: ->
+
+    # Short-circuit
+    return { macro_editor: true } if @options.editor == 'macro'
+    return { macro_editor: false }
+
   onRender: ->
 
     # Fetches the EditorView prototype
@@ -38,8 +44,6 @@ class EditorWrapper extends Marionette.LayoutView
 
     # Isolates MacroCollection
     @macros = config.get('macros')
-
-    window.macros = @macros # TODO - remove
 
     # Requests KeyCollection from the KeyFactory
     keys = Radio.channel('key').request('collection')
@@ -74,69 +78,72 @@ class EditorWrapper extends Marionette.LayoutView
     # Serializes data from any form elements in this view
     data = Backbone.Syphon.serialize(@)
 
-    # Clear unused type-specific attributes
-    data.macros = [] if data.type != 'macro'
-    data.text_value = '' if data.type != 'text'
+    # Handles Macro
+    if data.type == 'macro'
 
-    # Applies the attributes to the config model
-    @model.get('config').set(data)
+      # Clear unused type-specific attributes
+      data.text_value = ''
 
-    # Triggers change event on @model to re-render the currently hidden AstroKey element
-    @model.trigger('config:updated')
+      # Applies the attributes to the config model
+      @model.get('config').set(data)
 
-    # SENDS TO DEVICE (IF AVAILABLE)
-    # TODO - this is a HACKKKKKKK
-    # if window.d
-    if true # TODO - remove true
-
-      console.log 'HAS DEVICE - SEND TO DEVICE'
-
-      console.log @model
-      console.log @model.get('order')
+      # Triggers change event on @model to re-render the currently hidden KeySelector
+      @model.trigger('config:updated')
 
       # Gets the macroIndex
       macroIndex = @model.get('order')
 
-      # console.log @macros.toJSON()
+      # Gets data from MacroCollection.build() method
+      data = @macros.build()
 
-      # Data for array buffer
-      data = []
-
-      # Iterates over each macro
-      _.each(@macros.models, (macro) =>
-        console.log 'EACH MACRO'
-        console.log macro.getKeyData()
-        data = data.concat(macro.getKeyData())
-      )
-
+      # TODO - DEBUG
+      console.log 'WRITING'
       console.log data
 
-      # wIndex - Request type (0x01 for set macro)
-      # wValue - Macro index (0 - 4 inclusive)
-      # bRequest - 3 (hardcoded)
-      # wLength - number of bytes (should be macro length * 2)
-
+      # Short-circuits
       return @trigger('save') unless window.d
 
-      requestObj = {
-          'requestType': 'vendor',
-          'recipient': 'device',
-          'request': 0x03,
-          'value': macroIndex,
-          'index': 0x01
-        }
+      # Invokes ChromeWebUSBService directly
+      # TODO - abstract this into the Macro service
+      Radio.channel('usb').request('write:macro', macroIndex, data)
+      .then( (response) =>
+        return @trigger('save')
+      )
 
-      console.log requestObj
+    # Handles Snippet
+    else if data.type == 'text'
 
-      d.controlTransferOut(requestObj, new Uint8Array(data).buffer).then (response) =>
-        console.log(response)
-        return @trigger 'save'
+      # Clear unused type-specific attributes
+      data.macros = []
 
-    else
+      # Applies the attributes to the config model
+      @model.get('config').set(data)
 
-      # Triggers 'save' event, closing this view
-      # TODO - this is dummy
-      return @trigger 'save'
+      # Triggers change event on @model to re-render the currently hidden KeySelector
+      @model.trigger('config:updated')
+
+      # Gets the macroIndex
+      macroIndex = @model.get('order')
+
+      # Gets data from MacroCollection.build() method
+      # TODO - should be @snippet.build()
+      data = @model.buildSnippet(data.text_value)
+
+      # Sets the @macros collection with the updated data
+      # Used to invoke macros.build
+      @macros.reset(data)
+      data = @macros.build()
+
+      # Short-circuits
+      return @trigger('save') unless window.d
+
+      # Invokes ChromeWebUSBService directly
+      # TODO - abstract this into the Macro service
+      Radio.channel('usb').request('write:macro', macroIndex, data)
+      .then( (response) =>
+        return @trigger('save')
+      )
+
 
   # onCancel
   onCancel: ->

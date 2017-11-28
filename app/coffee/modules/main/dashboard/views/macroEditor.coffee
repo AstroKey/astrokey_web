@@ -31,10 +31,11 @@ class MacroEditor extends Marionette.LayoutView
       key = _.clone(key)
 
       # Adds the correct `order` attribute
-      key.order = @options.macros.length + 1
+      key.order = @options.macros.length
 
       # Adds the key to the MacroCollection
       @options.macros.add(key)
+      @options.macros.sort()
 
     # Shows the keyboardView
     @controlsRegion.show @keyboardSelector

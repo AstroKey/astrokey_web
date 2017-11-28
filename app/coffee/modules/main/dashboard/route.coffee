@@ -4,7 +4,7 @@ LayoutView  = require './views/layout'
 
 class DashboardRoute extends require 'hn_routing/lib/route'
 
-  title: 'AstroKey Web'
+  title: 'AstroKey'
 
   breadcrumbs: [{ text: 'Device' }]
 

@@ -67,29 +67,29 @@ module.exports = [
     { row: 'r0', key: 'P', css: 'w1_25', keycode: 93, special: true }
     { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18, special: true }
 
-    # NUMPAD KEYS
-    { row: 'num_r0', key: '0', keycode: 49, css: 'w2_25' }
-    { row: 'num_r0', key: '.', keycode: 49 }
+    # NUMPAD
+    { row: 'num_r4', key: 'n_CLEAR', keycode: 83 }
+    { row: 'num_r4', key: 'n_/', keycode: 84 }
+    { row: 'num_r4', key: 'n_*', keycode: 85 }
 
-    { row: 'num_r1', key: '1', keycode: 49 }
-    { row: 'num_r1', key: '2', keycode: 50 }
-    { row: 'num_r1', key: '3', keycode: 51 }
+    { row: 'num_col', key: 'n_-', keycode: 86 }
+    { row: 'num_col', key: 'n_+', keycode: 87, css: 'h2_0' }
+    { row: 'num_col', key: 'n_ENTER', keycode: 88, css: 'h2_0' }
 
-    { row: 'num_r2', key: '4', keycode: 52 }
-    { row: 'num_r2', key: '5', keycode: 53 }
-    { row: 'num_r2', key: '6', keycode: 54 }
+    { row: 'num_r1', key: 'n_1', keycode: 89 }
+    { row: 'num_r1', key: 'n_2', keycode: 90 }
+    { row: 'num_r1', key: 'n_3', keycode: 91 }
 
-    { row: 'num_r3', key: '7', keycode: 55 }
-    { row: 'num_r3', key: '8', keycode: 56 }
-    { row: 'num_r3', key: '9', keycode: 57 }
+    { row: 'num_r2', key: 'n_4', keycode: 92 }
+    { row: 'num_r2', key: 'n_5', keycode: 93 }
+    { row: 'num_r2', key: 'n_6', keycode: 94 }
 
-    { row: 'num_r4', key: 'CLEAR', keycode: 48 }
-    { row: 'num_r4', key: '/', keycode: 189 }
-    { row: 'num_r4', key: '*', keycode: 187 }
+    { row: 'num_r3', key: 'n_7', keycode: 95 }
+    { row: 'num_r3', key: 'n_8', keycode: 96 }
+    { row: 'num_r3', key: 'n_9', keycode: 97 }
 
-    { row: 'num_col', key: '-', keycode: 48 }
-    { row: 'num_col', key: '+', keycode: 189, css: 'h2_0' }
-    { row: 'num_col', key: 'ENTER', keycode: 187, css: 'h2_0' }
+    { row: 'num_r0', key: 'n_0', keycode: 98 }
+    { row: 'num_r0', key: 'n_.', keycode: 99 }
 
     # Function Keys
     { row: 'func_r0', key: 'F1', keycode: 49 }

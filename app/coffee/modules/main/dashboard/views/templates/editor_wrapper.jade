@@ -13,22 +13,24 @@
       //- button.btn.btn-sm.btn-outline-info.mx-2.px-4(data-click='open')
       //-   i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
 
-      button.btn.btn-sm.btn-outline-warning.mx-2.px-4(data-click='clear')
-        i.fa.fa-fw.fa-2x.mx-4.fa-times
+      if macro_editor
 
-      button.btn.btn-sm.btn-outline-danger.mx-2.px-4(data-click='record')
-        i.fa.fa-fw.fa-2x.mx-4.fa-circle
+        button.btn.btn-sm.btn-outline-warning.mx-2.px-4(data-click='clear')
+          i.fa.fa-fw.fa-2x.mx-4.fa-times
 
-      .btn-group
-        button.btn.btn-sm.btn-outline-primary.dropdown-toggle.mx-2.px-4(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-          //- i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
-          | Examples
-        .dropdown-menu.dropdown-menu-right.mt-3
-          //- TODO - MacroExamples should be managed as their own Backbone.Collection, rather than hard-coded here
-          button.dropdown-item( type='button' data-example="ex_01" ) Ex. 1: "Hello!"
-          button.dropdown-item( type='button' data-example="ex_02" ) Ex. 2: "Resumè"
-          button.dropdown-item( type='button' data-example="ex_03" ) Ex. 3: Em Dash (—)
-          button.dropdown-item( type='button' data-example="ex_04" ) Ex. 4: CTRL + ALT + DELETE
+        button.btn.btn-sm.btn-outline-danger.mx-2.px-4(data-click='record')
+          i.fa.fa-fw.fa-2x.mx-4.fa-circle
+
+        .btn-group
+          button.btn.btn-sm.btn-outline-primary.dropdown-toggle.mx-2.px-4(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            //- i.fa.fa-fw.fa-2x.mx-4.fa-folder-open-o
+            | Examples
+          .dropdown-menu.dropdown-menu-right.mt-3
+            //- TODO - MacroExamples should be managed as their own Backbone.Collection, rather than hard-coded here
+            button.dropdown-item( type='button' data-example="ex_01" ) Ex. 1: "Hello!"
+            button.dropdown-item( type='button' data-example="ex_02" ) Ex. 2: "Resumè"
+            button.dropdown-item( type='button' data-example="ex_03" ) Ex. 3: Em Dash (—)
+            button.dropdown-item( type='button' data-example="ex_04" ) Ex. 4: CTRL + ALT + DELETE
 
 .col-lg-12
   hr
