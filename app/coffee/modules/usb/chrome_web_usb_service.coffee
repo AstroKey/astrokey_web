@@ -109,23 +109,29 @@ class ChromeWebUsbService extends Marionette.Service
         return reject(err)
       )
 
-
-  # sendMacro
-  sendMacro: (data) ->
+  # writeMacro
+  writeMacro: (macroIndex, data) ->
 
     # Returns a Promise to manage asynchonous behavior
     return new Promise (resolve, reject) =>
 
-      d.controlTransferOut(
-        {
-          requestType:  'vendor',
-          recipient:    'device',
-          request:      0x03,
-          value:        0x0013, # Whatever we want (to some extent)
-          index:        0x0001  # TODO - We can use index for the key the macro corresponds to (low-byte = key, high-byte = number of actions in the macro)
-        }, new Uint8Array(data).buffer
-      )
+      # wIndex - Request type (0x01 for set macro)
+      # wValue - Macro index (0 - 4 inclusive)
+      # bRequest - 3 (hardcoded)
+      # wLength - number of bytes (should be macro length * 2)
+      requestObj = {
+          'requestType':  'vendor',
+          'recipient':    'device',
+          'request':      0x03, # TODO - document
+          'value':        macroIndex,
+          'index':        0x01 # TODO - We can use index for the key the macro corresponds to (low-byte = key, high-byte = number of actions in the macro)
+        }
+
+      console.log requestObj
+
+      return d.controlTransferOut(requestObj, new Uint8Array(data).buffer)
       .then( (response) =>
+        console.log(response)
         return resolve(response)
       )
       .catch( (err) =>

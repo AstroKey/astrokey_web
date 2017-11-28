@@ -84,59 +84,25 @@ class EditorWrapper extends Marionette.LayoutView
     # Triggers change event on @model to re-render the currently hidden AstroKey element
     @model.trigger('config:updated')
 
-    # SENDS TO DEVICE (IF AVAILABLE)
-    # TODO - this is a HACKKKKKKK
-    # if window.d
-    if true # TODO - remove true
+    # Gets the macroIndex
+    macroIndex = @model.get('order')
 
-      console.log 'HAS DEVICE - SEND TO DEVICE'
+    # Gets data from MacroCollection.build() method
+    data = @macros.build()
 
-      console.log @model
-      console.log @model.get('order')
+    # TODO - DEBUG
+    console.log 'WRITING'
+    console.log data
 
-      # Gets the macroIndex
-      macroIndex = @model.get('order')
+    # Short-circuits
+    return @trigger('save') unless window.d
 
-      # console.log @macros.toJSON()
-
-      # Data for array buffer
-      data = []
-
-      # Iterates over each macro
-      _.each(@macros.models, (macro) =>
-        console.log 'EACH MACRO'
-        console.log macro.getKeyData()
-        data = data.concat(macro.getKeyData())
-      )
-
-      console.log data
-
-      # wIndex - Request type (0x01 for set macro)
-      # wValue - Macro index (0 - 4 inclusive)
-      # bRequest - 3 (hardcoded)
-      # wLength - number of bytes (should be macro length * 2)
-
-      return @trigger('save') unless window.d
-
-      requestObj = {
-          'requestType': 'vendor',
-          'recipient': 'device',
-          'request': 0x03,
-          'value': macroIndex,
-          'index': 0x01
-        }
-
-      console.log requestObj
-
-      d.controlTransferOut(requestObj, new Uint8Array(data).buffer).then (response) =>
-        console.log(response)
-        return @trigger 'save'
-
-    else
-
-      # Triggers 'save' event, closing this view
-      # TODO - this is dummy
-      return @trigger 'save'
+    # Invokes ChromeWebUSBService directly
+    # TODO - abstract this into the Macro service
+    Radio.channel('usb').request('write:macro', macroIndex, data)
+    .then( (response) =>
+      return @trigger('save')
+    )
 
   # onCancel
   onCancel: ->

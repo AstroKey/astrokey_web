@@ -11,8 +11,8 @@ class EditorSelector extends SimpleNav
 
   navItems: [
     { icon: 'fa-keyboard-o',  text: 'Macro',  trigger: 'macro' }
-    { icon: 'fa-file-text-o', text: 'Text',   trigger: 'text', disabled: true, css: 'disabled', title: 'Coming Soon' }
-    { icon: 'fa-asterisk',    text: 'Key',    trigger: 'key', disabled: true, css: 'disabled', title: 'Coming Soon' }
+    { icon: 'fa-file-text-o', text: 'Snippet',   trigger: 'text' }
+    # { icon: 'fa-asterisk',    text: 'Key',    trigger: 'key', disabled: true, css: 'disabled', title: 'Coming Soon' }
   ]
 
   onRender: ->
