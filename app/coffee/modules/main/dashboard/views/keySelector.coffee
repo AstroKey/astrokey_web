@@ -1,7 +1,7 @@
 
 class KeyChild extends Mn.LayoutView
   tagName: 'li'
-  className: 'btn btn-light key--child d-flex justify-content-center align-items-center mx-2'
+  className: 'btn btn-outline-light key--child d-flex justify-content-center align-items-center mx-2'
   template: require('./templates/key_child')
 
   behaviors:
@@ -20,16 +20,16 @@ class KeyChild extends Mn.LayoutView
 
     # Macro
     if config.get('type') == 'macro'
-      return { label: 'Macro' }
+      return { label: 'M' }
 
     # Text
     if config.get('type') == 'text'
-      return { label: 'Text' }
+      return { label: 'T' }
 
     # Key
     # TODO - DISPLAY KEY IN VIEW
     if config.get('type') == 'key'
-      return { label: 'Key' }
+      return { label: 'K' }
 
 # # # # #
 
