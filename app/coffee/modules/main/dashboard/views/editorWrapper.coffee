@@ -25,6 +25,12 @@ class EditorWrapper extends Marionette.LayoutView
     text:   TextEditor
     key:    MacroEditor
 
+  templateHelpers: ->
+
+    # Short-circuit
+    return { macro_editor: true } if @options.editor == 'macro'
+    return { macro_editor: false }
+
   onRender: ->
 
     # Fetches the EditorView prototype
@@ -38,8 +44,6 @@ class EditorWrapper extends Marionette.LayoutView
 
     # Isolates MacroCollection
     @macros = config.get('macros')
-
-    window.macros = @macros # TODO - remove
 
     # Requests KeyCollection from the KeyFactory
     keys = Radio.channel('key').request('collection')
@@ -74,35 +78,72 @@ class EditorWrapper extends Marionette.LayoutView
     # Serializes data from any form elements in this view
     data = Backbone.Syphon.serialize(@)
 
-    # Clear unused type-specific attributes
-    data.macros = [] if data.type != 'macro'
-    data.text_value = '' if data.type != 'text'
+    # Handles Macro
+    if data.type == 'macro'
 
-    # Applies the attributes to the config model
-    @model.get('config').set(data)
+      # Clear unused type-specific attributes
+      data.text_value = ''
 
-    # Triggers change event on @model to re-render the currently hidden AstroKey element
-    @model.trigger('config:updated')
+      # Applies the attributes to the config model
+      @model.get('config').set(data)
 
-    # Gets the macroIndex
-    macroIndex = @model.get('order')
+      # Triggers change event on @model to re-render the currently hidden KeySelector
+      @model.trigger('config:updated')
 
-    # Gets data from MacroCollection.build() method
-    data = @macros.build()
+      # Gets the macroIndex
+      macroIndex = @model.get('order')
 
-    # TODO - DEBUG
-    console.log 'WRITING'
-    console.log data
+      # Gets data from MacroCollection.build() method
+      data = @macros.build()
 
-    # Short-circuits
-    return @trigger('save') unless window.d
+      # TODO - DEBUG
+      console.log 'WRITING'
+      console.log data
 
-    # Invokes ChromeWebUSBService directly
-    # TODO - abstract this into the Macro service
-    Radio.channel('usb').request('write:macro', macroIndex, data)
-    .then( (response) =>
-      return @trigger('save')
-    )
+      # Short-circuits
+      return @trigger('save') unless window.d
+
+      # Invokes ChromeWebUSBService directly
+      # TODO - abstract this into the Macro service
+      Radio.channel('usb').request('write:macro', macroIndex, data)
+      .then( (response) =>
+        return @trigger('save')
+      )
+
+    # Handles Snippet
+    else if data.type == 'text'
+
+      # Clear unused type-specific attributes
+      data.macros = []
+
+      # Applies the attributes to the config model
+      @model.get('config').set(data)
+
+      # Triggers change event on @model to re-render the currently hidden KeySelector
+      @model.trigger('config:updated')
+
+      # Gets the macroIndex
+      macroIndex = @model.get('order')
+
+      # Gets data from MacroCollection.build() method
+      # TODO - should be @snippet.build()
+      data = @model.buildSnippet(data.text_value)
+
+      # Sets the @macros collection with the updated data
+      # Used to invoke macros.build
+      @macros.reset(data)
+      data = @macros.build()
+
+      # Short-circuits
+      return @trigger('save') unless window.d
+
+      # Invokes ChromeWebUSBService directly
+      # TODO - abstract this into the Macro service
+      Radio.channel('usb').request('write:macro', macroIndex, data)
+      .then( (response) =>
+        return @trigger('save')
+      )
+
 
   # onCancel
   onCancel: ->

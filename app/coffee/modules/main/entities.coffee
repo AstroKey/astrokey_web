@@ -54,8 +54,38 @@ class AstrokeyModel extends Backbone.RelationalModel
       relatedModel:   AstrokeyConfig
   ]
 
+  # TODO - this should be moved elsewhere (not a Device-level concern)
+  buildSnippet: (snippet) ->
+    data = []
+
+    console.log 'BUILDING SNIPPET'
+    console.log snippet
+
+    for index in [0..snippet.length - 1]
+
+      # Isolaets the character
+      char = snippet[index]
+
+      # Finds the macro
+      macro = _.findWhere(MacroKeys, { key: char })
+      macro ||= _.findWhere(MacroKeys, { key: 'SPACE' })
+
+      # Clones the macro object
+      macro = _.clone(macro)
+
+      # Assignss the proper order/index and position attributes
+      macro.order = index
+      macro.position = 0
+
+      # Appends macro to data array
+      data.push(macro)
+
+    # Returns the formatted data array
+    return data
+
   # readMacro
   # Reads and parses the macro from the device
+  # TODO - most of this should be moved elsewhere (not a Device-level concern)
   readMacro: ->
 
     # Returns a Promise to handle asynchronous behavior
