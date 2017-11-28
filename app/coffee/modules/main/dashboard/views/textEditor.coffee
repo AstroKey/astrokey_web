@@ -1,6 +1,6 @@
 
 class TextEditor extends Marionette.LayoutView
-  className: 'row'
+  className: 'row d-flex justify-content-center'
   template: require('./templates/text_editor')
 
   onRender: ->

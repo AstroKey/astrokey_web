@@ -1,4 +1,5 @@
 
+
 // Layout Styles
 .device--region
   display: flex
@@ -11,41 +12,61 @@
 
 .device--layout
 
+  .device--overlay
+    opacity: 1
+    transition: opacity .25s ease-in
+
   .editor--overlay
-    display: none
+    background-color: #333
+    position: fixed
+    display: flex
+    transition: opacity .25s ease-in
+    margin-top: 2.5rem
+    z-index: -1000
+    opacity: 0
+    filter: blur(10px)
 
   &.active
     .device--overlay
-      display: none
+      opacity: 0
+      filter: blur(10px)
 
     .editor--overlay
-      display: flex
       z-index: 100
+      opacity: 1
       background-color: $body-bg
-      margin-top: 0.5rem
+      filter: none
 
 // // // //
 
 // AstroKey Selector Styles
 $astrokey_child_size: 4rem
 
-ul.list-unstyled.key--list
-  border: 1px solid theme-color('light')
-  border-radius: 1.5rem
+.key--list--wrapper
+  border: 2px solid theme-color('light')
+  border-top-left-radius: 1.5rem
+  border-top-right-radius: 0.25rem
+  border-bottom-left-radius: 0.25rem
+  border-bottom-right-radius: 1.5rem
 
-  li.key--child
-    height: $astrokey_child_size
-    width: $astrokey_child_size
-    cursor: pointer
+  img.logo
+    margin: 0rem 1rem
+    height: 3rem
+    transform: rotate(90deg)
+    display: flex
 
-    span
-      font-size: 0.75rem
-      position: relative
-      bottom: 0
-      left: 0
+  ul.list-unstyled.key--list
+    li.key--child
+      height: $astrokey_child_size
+      width: $astrokey_child_size
+      cursor: pointer
+      border-width: 2px
 
-    &:last-child
-      margin-right: 5rem !important
+      span
+        font-size: 0.75rem
+        position: relative
+        bottom: 0
+        left: 0
 
     &.active
       color: $gray-800
@@ -75,6 +96,9 @@ $keyboard_key_margin: 0.25rem
   margin: $keyboard_key_margin
   justify-content: center
   align-items: center
+
+  &:hover
+    color: theme-color('dark')
 
   .shift
     display: flex
@@ -119,6 +143,7 @@ ul.list-unstyled.macro--list
   li.macro--child
     display: flex
     padding: 0 .25rem
+    min-height: 8rem
 
     .key
       height: $macro_size
@@ -140,6 +165,10 @@ ul.list-unstyled.macro--list
         &.content
           display: flex
           flex-direction: column
+
+          // Space button
+          &.space
+            color: rgba(255, 255, 255, 0)
 
         &.hover
           display: none
@@ -174,14 +203,23 @@ ul.list-unstyled.macro--list
 
     &.hovered
       .key
-        color: lighten(theme-color('danger'), 25%)
         .inner.content
           display: none
         .inner.hover
           display: flex
+          color: lighten(theme-color('danger'), 25%)
 
+    // TODO - this should be adjusted to
     &.drag-start
-      opacity: 0
+      // opacity: 0
+      .key
+        .inner.content
+          display: flex
+        .inner.hover
+          display: none
+
+      .position
+        opacity: 0
 
     &.ghost
       .key

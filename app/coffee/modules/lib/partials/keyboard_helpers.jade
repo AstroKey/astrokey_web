@@ -1,17 +1,20 @@
 //- TODO - abstract these mixins elsewhere
 mixin keyboardRow()
-  .keyboard--row.w-100
+  ul.list-unstyled.mb-0.keyboard--row.w-100
     block
 
 mixin keyboardKey(opts)
-  button.btn.btn-outline-light.keyboard--key( data-keycode=opts.keycode data-click='key' data-key=opts.key class=opts.css )
+  li.btn.btn-outline-light.keyboard--key( data-keycode=opts.keycode data-click='key' data-key=opts.key class=opts.css )
     if opts.icon
       i.fa.fa-fw( class=opts.icon )
     else
 
-      if opts.key && opts.shift
-        .shift= opts.shift
+      if opts.key && opts.shift_key && !opts.alpha
+        .shift= opts.shift_key
         .plain= opts.key
+
+      else if opts.alpha
+        .plain= opts.shift_key
 
       else
         .plain= opts.key

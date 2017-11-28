@@ -31,6 +31,12 @@ class LayoutView extends Marionette.LayoutView
     deviceView.on 'key:deselected', () => @showHelpView()
     @deviceRegion.show(deviceView)
 
+    # Macro Development hack
+    # setTimeout( =>
+    #   @showEditorView(@model.get('keys').first(), 'macro')
+    # , 1000)
+    # @showEditorView(@model.get('keys').first(), 'macro')
+
   showHelpView: ->
 
     # Instantiates a new HelpView and shows it in @selectorRegion
@@ -54,10 +60,18 @@ class LayoutView extends Marionette.LayoutView
     @selectorRegion.show(editorSelector)
 
   showEditorView: (keyModel, editor) ->
+
+    # Adjusts the CSS to display the EditorWrapper
     @$el.addClass('active')
 
+    # Reads macro from device
+    # NOTE - this happens asynchronously
+    # We _should_ not render the EditorWrapper view until if a device is not present,
+    # but we will in the meantime for demonstration purposes
+    keyModel.readMacro()
+
     # Instantiates new EditorWrapper view
-    editorWrapper = new EditorWrapper({ model: keyModel, keys: @options.keys, macros: @options.macros, editor: editor })
+    editorWrapper = new EditorWrapper({ model: keyModel, editor: editor })
 
     # Handles 'cancel' event
     editorWrapper.on 'cancel', =>
@@ -66,7 +80,6 @@ class LayoutView extends Marionette.LayoutView
     # Handles 'save' event
     editorWrapper.on 'save', =>
       # TODO - hit the KeyModel / DeviceModel to do the rest from here
-      console.log 'SAVE KEY MODEL SETTINGS HERE'
       @$el.removeClass('active')
 
     # Shows the EditorWrapper view in @editorRegion

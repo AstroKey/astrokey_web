@@ -1,6 +1,13 @@
-.navbar-brand.title ASTROKEY
+.navbar-brand.title
+  img.logo(src='./img/icon_white.svg')
+  | strokey
 
-ul.navbar-nav.ml-auto
+ul.navbar-nav.mr-auto
+
+  li.nav-item
+    a.nav-link( style='cursor:pointer', onClick="Radio.channel('usb').request('devices');" )
+      i.fa.fa-fw.fa-lg.fa-usb
+
   li.nav-item
     a.nav-link( style='cursor:pointer', onClick="Radio.channel('about').trigger('show');" )
       i.fa.fa-fw.fa-lg.fa-question-circle-o

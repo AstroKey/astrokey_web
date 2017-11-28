@@ -1,6 +1,10 @@
 .col-lg-12
   .row
+    .col-lg-12.d-flex.flex-row.align-items-center.justify-content-center
+      i.d-flex.fa.fa-fw.fa-2x.fa-arrow-circle-o-down.mr-1
+      p.d-flex.lead.m-0(style='letter-spacing: 0.25rem; font-weight: 200;') Select an editor
+
+  .row.mt-5
     .col-lg-12.d-flex.justify-content-center
       each navItem in navItems
-        button.d-flex.btn.btn-outline-secondary.justify-content-center.mx-3(style='flex-grow:1;' data-trigger=navItem.trigger )
-          = navItem.text
+        button.d-flex.btn.btn-outline-secondary.justify-content-center.mx-3( data-toggle='tooltip', title=navItem.title, data-placement='bottom' class=navItem.css, style='flex-grow:1;', data-trigger=navItem.trigger, disabled=navItem.disabled )= navItem.text

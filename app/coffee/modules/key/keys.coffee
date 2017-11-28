@@ -1,61 +1,61 @@
 
 # Key JSON definitions
 module.exports = [
-    { row: 'r4', key: '`', shift: '~', keycode: 192 }
-    { row: 'r4', key: '1', shift: '!', keycode: 49 }
-    { row: 'r4', key: '2', shift: '@', keycode: 50 }
-    { row: 'r4', key: '3', shift: '#', keycode: 51 }
-    { row: 'r4', key: '4', shift: '$', keycode: 52 }
-    { row: 'r4', key: '5', shift: '%', keycode: 53 }
-    { row: 'r4', key: '6', shift: '^', keycode: 54 }
-    { row: 'r4', key: '7', shift: '&', keycode: 55 }
-    { row: 'r4', key: '8', shift: '*', keycode: 56 }
-    { row: 'r4', key: '9', shift: '(', keycode: 57 }
-    { row: 'r4', key: '0', shift: ')', keycode: 48 }
-    { row: 'r4', key: '-', shift: '_', keycode: 189 }
-    { row: 'r4', key: '=', shift: '+', keycode: 187 }
+    { row: 'r4', key: '`', shift_key: '~', keycode: 192 }
+    { row: 'r4', key: '1', shift_key: '!', keycode: 49 }
+    { row: 'r4', key: '2', shift_key: '@', keycode: 50 }
+    { row: 'r4', key: '3', shift_key: '#', keycode: 51 }
+    { row: 'r4', key: '4', shift_key: '$', keycode: 52 }
+    { row: 'r4', key: '5', shift_key: '%', keycode: 53 }
+    { row: 'r4', key: '6', shift_key: '^', keycode: 54 }
+    { row: 'r4', key: '7', shift_key: '&', keycode: 55 }
+    { row: 'r4', key: '8', shift_key: '*', keycode: 56 }
+    { row: 'r4', key: '9', shift_key: '(', keycode: 57 }
+    { row: 'r4', key: '0', shift_key: ')', keycode: 48 }
+    { row: 'r4', key: '-', shift_key: '_', keycode: 189 }
+    { row: 'r4', key: '=', shift_key: '+', keycode: 187 }
     { row: 'r4', key: 'BACKSPACE', keycode: 8, css: 'w2_0' }
 
     { row: 'r3', key: 'TAB', keycode: 9, css: 'w1_5', special: true }
-    { row: 'r3', key: 'Q', keycode: 81 }
-    { row: 'r3', key: 'W', keycode: 87 }
-    { row: 'r3', key: 'E', keycode: 69 }
-    { row: 'r3', key: 'R', keycode: 82 }
-    { row: 'r3', key: 'T', keycode: 84 }
-    { row: 'r3', key: 'Y', keycode: 89 }
-    { row: 'r3', key: 'U', keycode: 85 }
-    { row: 'r3', key: 'I', keycode: 73 }
-    { row: 'r3', key: 'O', keycode: 79 }
-    { row: 'r3', key: 'P', keycode: 80 }
-    { row: 'r3', key: '[', shift: '{', keycode: 219 }
-    { row: 'r3', key: ']', shift: '}', keycode: 221 }
-    { row: 'r3', key: '\\', shift: '|', keycode: 220, css: 'w1_5' }
+    { row: 'r3', key: 'q', shift_key: 'Q', alpha: true, keycode: 81 }
+    { row: 'r3', key: 'w', shift_key: 'W', alpha: true, keycode: 87 }
+    { row: 'r3', key: 'e', shift_key: 'E', alpha: true, keycode: 69 }
+    { row: 'r3', key: 'r', shift_key: 'R', alpha: true, keycode: 82 }
+    { row: 'r3', key: 't', shift_key: 'T', alpha: true, keycode: 84 }
+    { row: 'r3', key: 'y', shift_key: 'Y', alpha: true, keycode: 89 }
+    { row: 'r3', key: 'u', shift_key: 'U', alpha: true, keycode: 85 }
+    { row: 'r3', key: 'i', shift_key: 'I', alpha: true, keycode: 73 }
+    { row: 'r3', key: 'o', shift_key: 'O', alpha: true, keycode: 79 }
+    { row: 'r3', key: 'p', shift_key: 'P', alpha: true, keycode: 80 }
+    { row: 'r3', key: '[', shift_key: '{', keycode: 219 }
+    { row: 'r3', key: ']', shift_key: '}', keycode: 221 }
+    { row: 'r3', key: '\\', shift_key: '|', keycode: 220, css: 'w1_5' }
 
     { row: 'r2', key: 'CAPS', css: 'w1_75', keycode: 20, special: true }
-    { row: 'r2', key: 'A', keycode: 65 }
-    { row: 'r2', key: 'S', keycode: 83 }
-    { row: 'r2', key: 'D', keycode: 68 }
-    { row: 'r2', key: 'F', keycode: 70 }
-    { row: 'r2', key: 'G', keycode: 71 }
-    { row: 'r2', key: 'H', keycode: 72 }
-    { row: 'r2', key: 'J', keycode: 74 }
-    { row: 'r2', key: 'K', keycode: 75 }
-    { row: 'r2', key: 'L', keycode: 76 }
-    { row: 'r2', key: ';', shift: ':', keycode: 186 }
-    { row: 'r2', key: "'", shift: '"', keycode: 222 }
+    { row: 'r2', key: 'a', shift_key: 'A', alpha: true, keycode: 65 }
+    { row: 'r2', key: 's', shift_key: 'S', alpha: true, keycode: 83 }
+    { row: 'r2', key: 'd', shift_key: 'D', alpha: true, keycode: 68 }
+    { row: 'r2', key: 'f', shift_key: 'F', alpha: true, keycode: 70 }
+    { row: 'r2', key: 'g', shift_key: 'G', alpha: true, keycode: 71 }
+    { row: 'r2', key: 'h', shift_key: 'H', alpha: true, keycode: 72 }
+    { row: 'r2', key: 'j', shift_key: 'J', alpha: true, keycode: 74 }
+    { row: 'r2', key: 'k', shift_key: 'K', alpha: true, keycode: 75 }
+    { row: 'r2', key: 'l', shift_key: 'L', alpha: true, keycode: 76 }
+    { row: 'r2', key: ';', shift_key: ':', keycode: 186 }
+    { row: 'r2', key: "'", shift_key: '"', keycode: 222 }
     { row: 'r2', key: 'RETURN', css: 'w2_25', keycode: 13, special: true }
 
     { row: 'r1', key: 'SHIFT', css: 'w2_25', keycode: 16, special: true }
-    { row: 'r1', key: 'Z', keycode: 90 }
-    { row: 'r1', key: 'X', keycode: 88 }
-    { row: 'r1', key: 'C', keycode: 67 }
-    { row: 'r1', key: 'V', keycode: 86 }
-    { row: 'r1', key: 'B', keycode: 66 }
-    { row: 'r1', key: 'N', keycode: 78 }
-    { row: 'r1', key: 'M', keycode: 77 }
-    { row: 'r1', key: ',', shift: '<', keycode: 188 }
-    { row: 'r1', key: '.', shift: '>', keycode: 190 }
-    { row: 'r1', key: '/', shift: '?', keycode: 191 }
+    { row: 'r1', key: 'z', shift_key: 'Z', alpha: true, keycode: 90 }
+    { row: 'r1', key: 'x', shift_key: 'X', alpha: true, keycode: 88 }
+    { row: 'r1', key: 'c', shift_key: 'C', alpha: true, keycode: 67 }
+    { row: 'r1', key: 'v', shift_key: 'V', alpha: true, keycode: 86 }
+    { row: 'r1', key: 'b', shift_key: 'B', alpha: true, keycode: 66 }
+    { row: 'r1', key: 'n', shift_key: 'N', alpha: true, keycode: 78 }
+    { row: 'r1', key: 'm', shift_key: 'M', alpha: true, keycode: 77 }
+    { row: 'r1', key: ',', shift_key: '<', keycode: 188 }
+    { row: 'r1', key: '.', shift_key: '>', keycode: 190 }
+    { row: 'r1', key: '/', shift_key: '?', keycode: 191 }
     { row: 'r1', key: 'SHIFT', css: 'w2_75', keycode: 16, special: true }
 
     { row: 'r0', key: 'CTRL', css: 'w1_25', keycode: 17, special: true }
@@ -67,29 +67,29 @@ module.exports = [
     { row: 'r0', key: 'P', css: 'w1_25', keycode: 93, special: true }
     { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18, special: true }
 
-    # NUMPAD KEYS
-    { row: 'num_r0', key: '0', keycode: 49, css: 'w2_25' }
-    { row: 'num_r0', key: '.', keycode: 49 }
+    # NUMPAD
+    { row: 'num_r4', key: 'n_CLEAR', keycode: 83 }
+    { row: 'num_r4', key: 'n_/', keycode: 84 }
+    { row: 'num_r4', key: 'n_*', keycode: 85 }
 
-    { row: 'num_r1', key: '1', keycode: 49 }
-    { row: 'num_r1', key: '2', keycode: 50 }
-    { row: 'num_r1', key: '3', keycode: 51 }
+    { row: 'num_col', key: 'n_-', keycode: 86 }
+    { row: 'num_col', key: 'n_+', keycode: 87, css: 'h2_0' }
+    { row: 'num_col', key: 'n_ENTER', keycode: 88, css: 'h2_0' }
 
-    { row: 'num_r2', key: '4', keycode: 52 }
-    { row: 'num_r2', key: '5', keycode: 53 }
-    { row: 'num_r2', key: '6', keycode: 54 }
+    { row: 'num_r1', key: 'n_1', keycode: 89 }
+    { row: 'num_r1', key: 'n_2', keycode: 90 }
+    { row: 'num_r1', key: 'n_3', keycode: 91 }
 
-    { row: 'num_r3', key: '7', keycode: 55 }
-    { row: 'num_r3', key: '8', keycode: 56 }
-    { row: 'num_r3', key: '9', keycode: 57 }
+    { row: 'num_r2', key: 'n_4', keycode: 92 }
+    { row: 'num_r2', key: 'n_5', keycode: 93 }
+    { row: 'num_r2', key: 'n_6', keycode: 94 }
 
-    { row: 'num_r4', key: 'CLEAR', keycode: 48 }
-    { row: 'num_r4', key: '/', keycode: 189 }
-    { row: 'num_r4', key: '*', keycode: 187 }
+    { row: 'num_r3', key: 'n_7', keycode: 95 }
+    { row: 'num_r3', key: 'n_8', keycode: 96 }
+    { row: 'num_r3', key: 'n_9', keycode: 97 }
 
-    { row: 'num_col', key: '-', keycode: 48 }
-    { row: 'num_col', key: '+', keycode: 189, css: 'h2_0' }
-    { row: 'num_col', key: 'ENTER', keycode: 187, css: 'h2_0' }
+    { row: 'num_r0', key: 'n_0', keycode: 98 }
+    { row: 'num_r0', key: 'n_.', keycode: 99 }
 
     # Function Keys
     { row: 'func_r0', key: 'F1', keycode: 49 }
@@ -124,7 +124,7 @@ module.exports = [
     { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 57, icon: 'fa-chevron-down' }
     { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 57, icon: 'fa-chevron-right' }
     { row: 'nav_r0', key: 'INS', keycode: 57 }
-    { row: 'nav_r0', key: 'DEL', keycode: 57 }
+    { row: 'nav_r0', key: 'DEL', keycode: 46 }
 
 ]
 

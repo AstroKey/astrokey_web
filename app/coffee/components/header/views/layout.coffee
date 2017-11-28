@@ -6,7 +6,7 @@
 # manages toggling the SidebarComponent's view
 class HeaderView extends Marionette.LayoutView
   template: require './templates/header'
-  className: 'navbar fixed-top navbar-dark bg-dark'
+  className: 'navbar navbar-expand-lg fixed-top navbar-dark bg-dark'
   tagName: 'nav'
 
 # # # # #

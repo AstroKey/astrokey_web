@@ -19,22 +19,34 @@ class MacroEditor extends Marionette.LayoutView
 
     # Instantaiates new KeyboardSelector
     # TODO - this will *eventually* display a selector between different types of keyboards / sets of keys
-    keyboardView = new KeyboardSelector({ model: @model, keys: @options.keys })
+    @keyboardSelector = new KeyboardSelector({ model: @model, keys: @options.keys })
+
+    # Bubbles up stop:recording event
+    @keyboardSelector.on 'stop:recording', => @trigger 'stop:recording'
 
     # Handles KeySelection event
-    keyboardView.on 'key:selected', (key) =>
+    @keyboardSelector.on 'key:selected', (key) =>
 
       # Clones the original object
       key = _.clone(key)
 
       # Adds the correct `order` attribute
-      key.order = @options.macros.length + 1
+      key.order = @options.macros.length
 
       # Adds the key to the MacroCollection
       @options.macros.add(key)
+      @options.macros.sort()
 
     # Shows the keyboardView
-    @controlsRegion.show keyboardView
+    @controlsRegion.show @keyboardSelector
+
+  # startRecording
+  startRecording: ->
+    @keyboardView.startRecording()
+
+  # stopRecording
+  stopRecording: ->
+    @keyboardView.stopRecording()
 
 # # # # #
 
