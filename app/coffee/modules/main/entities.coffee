@@ -58,9 +58,7 @@ class AstrokeyModel extends Backbone.RelationalModel
   buildSnippet: (snippet) ->
     data = []
 
-    console.log 'BUILDING SNIPPET'
-    console.log snippet
-
+    # Iterates over each character in the snippet
     for index in [0..snippet.length - 1]
 
       # Isolaets the character
@@ -123,42 +121,48 @@ class AstrokeyModel extends Backbone.RelationalModel
           macro = _.clone(macro)
 
           # Assignss the proper order/index and position attributes
-          macro.order = index
           macro.position = position
 
           # Appends the macro the the `macros` array
           macros.push(macro)
 
         # Iterates over the macros _again_ - this time to merge keyup/keydown actions
-        macroIndex = 0
-        while macroIndex <= macros.length
+        parsedIndex = 0
+        iterateIndex = 0
+        while iterateIndex < macros.length
 
           # Isolates the current and next macros in the array
-          macro = macros[macroIndex]
-          nextMacro = macros[macroIndex + 1]
+          macro = macros[iterateIndex]
+          nextMacro = macros[iterateIndex + 1]
 
           # Returns if nextMacro is undefined
           if !nextMacro
+            macro.order = parsedIndex
+            parsedIndex++
             parsedMacros.push(macro)
-            macroIndex++
+            iterateIndex++
             continue
 
-          # Continues check if the macro is a KEY_DOWN
+          # Continues check if the macro is a corresponding KEY_UP
           if macro.position == -1 && nextMacro.position == 1 && macro.key == nextMacro.key
 
             # KEY_PRESS
             macro.position = 0
 
             # Appends the macro to the parsedMacros array
+            macro.order = parsedIndex
+            parsedIndex++
             parsedMacros.push(macro)
 
             # Iterates, skipping the matched macro
-            macroIndex = macroIndex + 2
+            iterateIndex = iterateIndex + 2
             continue
 
           # Non-Repeated - standard procedure
+          macro.order = parsedIndex
+          parsedIndex++
           parsedMacros.push(macro)
-          macroIndex++
+          iterateIndex++
           continue
 
         # Sets the Macros on the AstrokeyConfig model
