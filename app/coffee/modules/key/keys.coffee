@@ -59,7 +59,7 @@ module.exports = [
     { row: 'r1', key: 'SHIFT', css: 'w2_75', keycode: 16, special: true }
 
     { row: 'r0', key: 'CTRL', css: 'w1_25', keycode: 17, special: true }
-    { row: 'r0', key: 'M', css: 'w1_25', keycode: 91, special: true }
+    { row: 'r0', key: 'META', css: 'w1_25', keycode: 91, special: true }
     { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18, special: true }
     { row: 'r0', key: 'SPACE', css: 'space', keycode: 32, special: true }
     { row: 'r0', key: 'CTRL', css: 'w1_25', keycode: 17, special: true }
@@ -110,9 +110,9 @@ module.exports = [
     { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-backward' }
     { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-play' }
     { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-forward' }
-    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-volume-off' }
-    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-volume-down' }
-    { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-volume-up' }
+    { row: 'media_r0', key: 'MUTE', keycode: 127, icon: 'fa-volume-off' }
+    { row: 'media_r0', key: 'VOLUME_DN', keycode: 128, icon: 'fa-volume-down' }
+    { row: 'media_r0', key: 'VOLUME_UP', keycode: 129, icon: 'fa-volume-up' }
 
     # Navigation Keys
     { row: 'nav_r0', key: 'PGUP', keycode: 57 }

@@ -57,7 +57,6 @@ class MacroCollection extends Backbone.Collection
     # Resets the collection with the data defined in the Examples object
     @reset(MacroExamples[example_id])
 
-
   # build
   # Compiles the complete macro from each macro model
   build: ->

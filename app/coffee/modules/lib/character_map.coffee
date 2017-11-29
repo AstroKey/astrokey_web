@@ -40,6 +40,10 @@ module.exports = {
   '9': 38
   '0': 39
 
+  # Punc
+  '-':  45
+  '\\': 49
+
   # Else
   '.':      99
   'SPACE':  44
@@ -50,12 +54,17 @@ module.exports = {
   'BACKSPACE': 42
   '/':      84
   '*':      85
-  '-':      86
+  # '-':      86
   '+':      87
   'RETURN': 88
+  'MUTE': 127
+  'VOLUME_UP': 128
+  'VOLUME_DN': 129
   'SHIFT': 225
   'ALT': 226
   'CTRL': 224
+  'META': 227
+  # 'META': 231
 
   # NUMPAD
   'n_CLEAR': 83
