@@ -97,7 +97,7 @@ class AstrokeyModel extends Backbone.RelationalModel
         parsedMacros = []
 
         # TODO - remove
-        console.log 'Parsed Macro from device:'
+        console.log 'Parsed Macro from key: ', @get('order')
         console.log macroArray
 
         # Compacts the macroArray
