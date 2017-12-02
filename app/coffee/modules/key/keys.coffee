@@ -18,7 +18,7 @@ module.exports = [
 
     { row: 'r3', key: 'TAB', keycode: 9, css: 'w1_5', special: true, dec: 43 }
     { row: 'r3', key: 'q', shift_key: 'Q', alpha: true, keycode: 81, dec: 20 }
-    { row: 'r3', key: 'w', shift_key: 'W', alpha: true, keycode: 87, dec: 27 }
+    { row: 'r3', key: 'w', shift_key: 'W', alpha: true, keycode: 87, dec: 26 }
     { row: 'r3', key: 'e', shift_key: 'E', alpha: true, keycode: 69, dec: 8 }
     { row: 'r3', key: 'r', shift_key: 'R', alpha: true, keycode: 82, dec: 21 }
     { row: 'r3', key: 't', shift_key: 'T', alpha: true, keycode: 84, dec: 23 }

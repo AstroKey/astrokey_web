@@ -1,5 +1,5 @@
 MacroExamples = require('./examples')
-charMap = require('lib/character_map')
+# charMap = require('lib/character_map')
 
 # # # # #
 
@@ -28,17 +28,17 @@ class MacroModel extends Backbone.RelationalModel
     # KEY_DN
     if attrs.position == 1 # TODO - constantize
       data.push(1)
-      data.push(charMap[attrs.key] || 4)
+      data.push(attrs.dec || 4)
 
     # KEY_DN
     if attrs.position == 2 # TODO - constantize
       data.push(2)
-      data.push(charMap[attrs.key] || 4)
+      data.push(attrs.dec || 4)
 
     # KEY_PR
     if attrs.position == 3 # TODO - constantize
       data.push(3)
-      data.push(charMap[attrs.key] || 4)
+      data.push(attrs.dec || 4)
 
     return data
 
