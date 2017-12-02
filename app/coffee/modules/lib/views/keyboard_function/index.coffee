@@ -16,5 +16,3 @@ class FunctionKeyboard extends AbstractKeyboardView
 # # # # #
 
 module.exports = FunctionKeyboard
-
-

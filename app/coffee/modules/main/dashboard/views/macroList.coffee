@@ -87,13 +87,9 @@ class MacroChild extends Mn.LayoutView
 
   templateHelpers: ->
     positions = [
-      { position: -1, css: 'fa-long-arrow-down', tooltip: 'Key Down' }
-      { position: 0, css: 'fa-arrows-v', tooltip: 'Key Down | Up' }
-      { position: 1, css: 'fa-long-arrow-up', tooltip: 'Key Up' }
-
+      { position: 3, css: 'fa-arrows-v', tooltip: 'Key Down | Up' }
       { position: 1, css: 'fa-long-arrow-down', tooltip: 'Key Down' }
       { position: 2, css: 'fa-long-arrow-up', tooltip: 'Key Up' }
-      { position: 3, css: 'fa-arrows-v', tooltip: 'Key Down | Up' }
     ]
 
     position = @model.get('position')
