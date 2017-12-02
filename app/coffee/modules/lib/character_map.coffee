@@ -77,6 +77,7 @@ module.exports = {
   'VOLUME_DN': 129
 
   # Modifiers
+  'KEYPAD_HEX': 221
   'CTRL': 224
   'SHIFT': 225
   'ALT': 226
@@ -130,7 +131,8 @@ module.exports = {
   'F23': 114
   'F24': 115
 
-  # Cut / Copy / Paste
+  # Misc.
+  'MENU': 118
   'CUT': 123
   'COPY': 124
   'PASTE': 125
