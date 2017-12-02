@@ -21,25 +21,23 @@ class MacroModel extends Backbone.RelationalModel
     # console.log attrs
 
     # ActionType
-    # Press   = 1, KEY VALUE
-    # Release = 2, KEY VALUE
+    # KEY_DN = 1, KEY VALUE
+    # KEY_UP = 2, KEY VALUE
+    # KEY_PR = 3, KEY VALUE
 
-    # KEY DOWN & KEY UP
-    if attrs.position == 0
+    # KEY_DN
+    if attrs.position == 1 # TODO - constantize
       data.push(1)
       data.push(charMap[attrs.key] || 4)
 
+    # KEY_DN
+    if attrs.position == 2 # TODO - constantize
       data.push(2)
       data.push(charMap[attrs.key] || 4)
 
-    # KEY DOWN
-    if attrs.position == -1
-      data.push(1)
-      data.push(charMap[attrs.key] || 4)
-
-    # KEY UP
-    if attrs.position == 1
-      data.push(2)
+    # KEY_PR
+    if attrs.position == 3 # TODO - constantize
+      data.push(3)
       data.push(charMap[attrs.key] || 4)
 
     return data

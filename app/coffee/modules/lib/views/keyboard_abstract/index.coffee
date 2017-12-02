@@ -81,7 +81,7 @@ class AbstractKeyboardView extends Mn.LayoutView
 
       if e.key in ["Control", "Meta", "Alt", "Shift"]
         json = key.toJSON()
-        json.position = -1
+        json.position = 1 # KEY_DN - TODO - constantize
         @trigger 'key:selected', json
       else
         @trigger 'key:selected', key.toJSON()
@@ -90,7 +90,7 @@ class AbstractKeyboardView extends Mn.LayoutView
 
       if e.key in ["Control", "Meta", "Alt", "Shift"]
         json = key.toJSON()
-        json.position = 1
+        json.position = 2 # KEY_UP - TODO - constantize
         @trigger 'key:selected', json
 
 
