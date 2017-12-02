@@ -8,7 +8,7 @@ class MacroModel extends Backbone.RelationalModel
   # Default attributes
   defaults:
     order: 0
-    position: 3
+    position: 3 # TODO - rename 'position' to 'action_type'
     shifted: false
 
   getKeyData: ->
@@ -24,20 +24,29 @@ class MacroModel extends Backbone.RelationalModel
     # KEY_UP = 2, KEY VALUE
     # KEY_PR = 3, KEY VALUE
 
+    # KEY_DELAY
+    if attrs.delay
+      data.push(16) # DELAY indicator
+      data.push(5) # 1 - 255 (5 = 5 x 100ms = 500ms)
+      return data
+
     # KEY_DN
     if attrs.position == 1 # TODO - constantize
       data.push(1)
       data.push(attrs.dec || 4)
+      return data
 
-    # KEY_DN
+    # KEY_UP
     if attrs.position == 2 # TODO - constantize
       data.push(2)
       data.push(attrs.dec || 4)
+      return data
 
     # KEY_PR
     if attrs.position == 3 # TODO - constantize
       data.push(3)
       data.push(attrs.dec || 4)
+      return data
 
     return data
 

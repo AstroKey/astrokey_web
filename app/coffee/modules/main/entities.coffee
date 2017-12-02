@@ -112,13 +112,26 @@ class AstrokeyModel extends Backbone.RelationalModel
           position = pair[0]
 
           # Finds the macro object
-          macro = _.findWhere(MacroKeys, { dec: pair[1] })
+          if pair[0] == 16 # 16 == DELAY
 
-          # Clones the macro object
-          macro = _.clone(macro)
+            # Finds macro object
+            macro = _.findWhere(MacroKeys, { delay: true })
 
-          # Assignss the proper order/index and position attributes
-          macro.position = position
+            # Clones the macro object
+            macro = _.clone(macro)
+
+            # Assignss the proper order/index and position attributes
+            # TODO - this must be adjusted for delay, and others
+            macro.position = 3
+
+          else
+            macro = _.findWhere(MacroKeys, { dec: pair[1] })
+
+            # Clones the macro object
+            macro = _.clone(macro)
+
+            # Assignss the proper order/index and position attributes
+            macro.position = position
 
           # Appends the macro the the `macros` array
           macros.push(macro)

@@ -138,6 +138,7 @@ module.exports = [
     # { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-backward' }
     # { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-play' }
     # { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-forward' }
+    { row: 'media_r0', key: 'DELAY', keycode: 1008, delay: true, position: 3 }
     { row: 'media_r0', key: 'MUTE', keycode: 5127, icon: 'fa-volume-off', dec: 127 }
     { row: 'media_r0', key: 'VOLUME_UP', keycode: 5129, icon: 'fa-volume-up', dec: 128 }
     { row: 'media_r0', key: 'VOLUME_DN', keycode: 5128, icon: 'fa-volume-down', dec: 129 }

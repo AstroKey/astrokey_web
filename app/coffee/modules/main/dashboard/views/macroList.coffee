@@ -93,7 +93,6 @@ class MacroChild extends Mn.LayoutView
     ]
 
     position = @model.get('position')
-    console.log 'position: ', position
     active_position = _.findWhere(positions, { position: position })
     return { active_position }
 
