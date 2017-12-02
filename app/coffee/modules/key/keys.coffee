@@ -106,39 +106,24 @@ module.exports = [
     { row: 'func_r0', key: 'F11', keycode: 2010, dec: 68 }
     { row: 'func_r0', key: 'F12', keycode: 2011, dec: 69 }
 
-    # Function Keys (F13 - F24)
-    { row: 'func_r0', key: 'F1', keycode: 2000, dec: 58 }
-    { row: 'func_r0', key: 'F2', keycode: 2001, dec: 59 }
-    { row: 'func_r0', key: 'F3', keycode: 2002, dec: 60 }
-    { row: 'func_r0', key: 'F4', keycode: 2003, dec: 61 }
-    { row: 'func_r0', key: 'F5', keycode: 2004, dec: 62 }
-    { row: 'func_r0', key: 'F6', keycode: 2005, dec: 63 }
-    { row: 'func_r0', key: 'F7', keycode: 2006, dec: 64 }
-    { row: 'func_r0', key: 'F8', keycode: 2007, dec: 65 }
-    { row: 'func_r0', key: 'F9', keycode: 2008, dec: 66 }
-    { row: 'func_r0', key: 'F10', keycode: 2009, dec: 67 }
-    { row: 'func_r0', key: 'F11', keycode: 2010, dec: 68 }
-    { row: 'func_r0', key: 'F12', keycode: 2011, dec: 69 }
-
     # Function Keys (F13-F24)
-    { row: 'func_r0', key: 'F13', keycode: 2104, dec: 104 }
-    { row: 'func_r0', key: 'F14', keycode: 2105, dec: 105 }
-    { row: 'func_r0', key: 'F15', keycode: 2106, dec: 106 }
-    { row: 'func_r0', key: 'F16', keycode: 2107, dec: 107 }
-    { row: 'func_r0', key: 'F17', keycode: 2108, dec: 108 }
-    { row: 'func_r0', key: 'F18', keycode: 2109, dec: 109 }
-    { row: 'func_r0', key: 'F19', keycode: 2110, dec: 110 }
-    { row: 'func_r0', key: 'F20', keycode: 2111, dec: 111 }
-    { row: 'func_r0', key: 'F21', keycode: 2112, dec: 112 }
-    { row: 'func_r0', key: 'F22', keycode: 2113, dec: 113 }
-    { row: 'func_r0', key: 'F23', keycode: 2114, dec: 114 }
-    { row: 'func_r0', key: 'F24', keycode: 2115, dec: 115 }
+    # { row: 'func_r0', key: 'F13', keycode: 2104, dec: 104 }
+    # { row: 'func_r0', key: 'F14', keycode: 2105, dec: 105 }
+    # { row: 'func_r0', key: 'F15', keycode: 2106, dec: 106 }
+    # { row: 'func_r0', key: 'F16', keycode: 2107, dec: 107 }
+    # { row: 'func_r0', key: 'F17', keycode: 2108, dec: 108 }
+    # { row: 'func_r0', key: 'F18', keycode: 2109, dec: 109 }
+    # { row: 'func_r0', key: 'F19', keycode: 2110, dec: 110 }
+    # { row: 'func_r0', key: 'F20', keycode: 2111, dec: 111 }
+    # { row: 'func_r0', key: 'F21', keycode: 2112, dec: 112 }
+    # { row: 'func_r0', key: 'F22', keycode: 2113, dec: 113 }
+    # { row: 'func_r0', key: 'F23', keycode: 2114, dec: 114 }
+    # { row: 'func_r0', key: 'F24', keycode: 2115, dec: 115 }
 
     # Media Keys
     # { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-backward' }
     # { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-play' }
     # { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-forward' }
-    { row: 'media_r0', key: 'DELAY', keycode: 1008, delay: true, position: 3 }
     { row: 'media_r0', key: 'MUTE', keycode: 5127, icon: 'fa-volume-off', dec: 127 }
     { row: 'media_r0', key: 'VOLUME_UP', keycode: 5129, icon: 'fa-volume-up', dec: 128 }
     { row: 'media_r0', key: 'VOLUME_DN', keycode: 5128, icon: 'fa-volume-down', dec: 129 }
@@ -156,6 +141,7 @@ module.exports = [
     { row: 'nav_r0', key: 'DEL', keycode: 4076, dec: 76 }
 
     # SPECIAL / MISC
+    { row: 'special_r0', key: 'DELAY', keycode: 1008, delay: true, position: 3 }
     # { row: 'special_r0', key: 'CUT', keycode: 1000 }
     # { row: 'special_r0', key: 'COPY', keycode: 1001 }
     # { row: 'special_r0', key: 'PASTE', keycode: 1002 }
