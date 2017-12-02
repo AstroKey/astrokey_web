@@ -27,7 +27,7 @@ class MacroModel extends Backbone.RelationalModel
     # KEY_DELAY
     if attrs.delay
       data.push(16) # DELAY indicator
-      data.push(5) # 1 - 255 (5 = 5 x 100ms = 500ms)
+      data.push(1) # 1 - 255 (i.e. 5 = 5 x 100ms = 500ms)
       return data
 
     # KEY_DN
