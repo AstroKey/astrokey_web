@@ -9,8 +9,8 @@ class FunctionKeyboard extends AbstractKeyboardView
     keys = @options.keys.toJSON()
 
     return {
-      # r0: _.where(keys, { row: 'func_r0'})
-      r0: _.where(keys, { row: 'special_r0'})
+      r0: _.where(keys, { row: 'func_r0' })
+      # r0: _.where(keys, { row: 'special_r0'})
     }
 
 # # # # #

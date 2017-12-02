@@ -92,19 +92,19 @@ module.exports = [
     { row: 'num_r0', key: 'n_.', keycode: 99 }
 
     # Function Keys
-    { row: 'func_r0', key: 'F1', keycode: 49 }
-    { row: 'func_r0', key: 'F2', keycode: 50 }
-    { row: 'func_r0', key: 'F3', keycode: 51 }
-    { row: 'func_r0', key: 'F4', keycode: 52 }
-    { row: 'func_r0', key: 'F5', keycode: 53 }
-    { row: 'func_r0', key: 'F6', keycode: 54 }
-    { row: 'func_r0', key: 'F7', keycode: 55 }
-    { row: 'func_r0', key: 'F8', keycode: 56 }
-    { row: 'func_r0', key: 'F9', keycode: 57 }
-    { row: 'func_r0', key: 'F10', keycode: 57 }
-    { row: 'func_r0', key: 'F11', keycode: 57 }
-    { row: 'func_r0', key: 'F12', keycode: 57 }
-    { row: 'func_r0', key: 'F13', keycode: 57 }
+    { row: 'func_r0', key: 'F1', keycode: 2000 }
+    { row: 'func_r0', key: 'F2', keycode: 2001 }
+    { row: 'func_r0', key: 'F3', keycode: 2002 }
+    { row: 'func_r0', key: 'F4', keycode: 2003 }
+    { row: 'func_r0', key: 'F5', keycode: 2004 }
+    { row: 'func_r0', key: 'F6', keycode: 2005 }
+    { row: 'func_r0', key: 'F7', keycode: 2006 }
+    { row: 'func_r0', key: 'F8', keycode: 2007 }
+    { row: 'func_r0', key: 'F9', keycode: 2008 }
+    { row: 'func_r0', key: 'F10', keycode: 2009 }
+    { row: 'func_r0', key: 'F11', keycode: 2010 }
+    { row: 'func_r0', key: 'F12', keycode: 2011 }
+    { row: 'func_r0', key: 'F13', keycode: 2012 }
 
     # Media Keys
     { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-backward' }
