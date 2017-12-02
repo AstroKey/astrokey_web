@@ -112,7 +112,6 @@ class AstrokeyModel extends Backbone.RelationalModel
 
           # Captures and formats the position
           position = pair[0]
-          position = if position == 2 then 1 else -1
 
           # Finds the macro object
           macro = _.findWhere(MacroKeys, { key: InvertedCharacterMap[pair[1]] })
@@ -143,20 +142,20 @@ class AstrokeyModel extends Backbone.RelationalModel
             iterateIndex++
             continue
 
-          # Continues check if the macro is a corresponding KEY_UP
-          if macro.position == -1 && nextMacro.position == 1 && macro.key == nextMacro.key
+          # # Continues check if the macro is a corresponding KEY_UP
+          # if macro.position == 1 && nextMacro.position == 2 && macro.key == nextMacro.key
 
-            # KEY_PRESS
-            macro.position = 0
+          #   # KEY_PRESS
+          #   macro.position = 3
 
-            # Appends the macro to the parsedMacros array
-            macro.order = parsedIndex
-            parsedIndex++
-            parsedMacros.push(macro)
+          #   # Appends the macro to the parsedMacros array
+          #   macro.order = parsedIndex
+          #   parsedIndex++
+          #   parsedMacros.push(macro)
 
-            # Iterates, skipping the matched macro
-            iterateIndex = iterateIndex + 2
-            continue
+          #   # Iterates, skipping the matched macro
+          #   iterateIndex = iterateIndex + 2
+          #   continue
 
           # Non-Repeated - standard procedure
           macro.order = parsedIndex

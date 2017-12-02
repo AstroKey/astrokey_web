@@ -9,7 +9,7 @@ class MacroModel extends Backbone.RelationalModel
   # Default attributes
   defaults:
     order: 0
-    position: 0
+    position: 3
     shifted: false
 
   getKeyData: ->

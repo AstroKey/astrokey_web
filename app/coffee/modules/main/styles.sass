@@ -184,23 +184,27 @@ ul.list-unstyled.macro--list
         color: $gray-500
         cursor: pointer
 
-        &.position_-1
+        // KEY DN
+        &.position_1
           color: lighten(theme-color('warning'), 25%)
 
           &:hover
             color: theme-color('warning')
 
-        &.position_0
+        // KEY_UP
+        &.position_2
+          color: lighten(theme-color('primary'), 25%)
+
+          &:hover
+            color: theme-color('primary')
+
+        // KEY_PR
+        &.position_3
           color: lighten(theme-color('success'), 25%)
 
           &:hover
             color: theme-color('success')
 
-        &.position_1
-          color: lighten(theme-color('primary'), 25%)
-
-          &:hover
-            color: theme-color('primary')
 
     &.hovered
       // .position

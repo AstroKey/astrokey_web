@@ -126,5 +126,10 @@ module.exports = [
     { row: 'nav_r0', key: 'INS', keycode: 57 }
     { row: 'nav_r0', key: 'DEL', keycode: 46 }
 
+    # SPECIAL
+    { row: 'special_r0', key: 'CUT' }
+    { row: 'special_r0', key: 'COPY' }
+    { row: 'special_r0', key: 'PASTE' }
+
 ]
 

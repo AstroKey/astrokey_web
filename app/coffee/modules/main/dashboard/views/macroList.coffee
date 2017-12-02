@@ -69,12 +69,18 @@ class MacroChild extends Mn.LayoutView
     position = el.data('position')
 
     # Determines next position
-    if position == -1
-      new_position = 1
-    if position == 0
-      new_position = -1
+
+    # KEY_DN -> KEY_UP
     if position == 1
-      new_position = 0
+      new_position = 2
+
+    # KEY_UP -> KEY_PR
+    if position == 2
+      new_position = 3
+
+    # KEY_PR -> KEY_DN
+    if position == 3
+      new_position = 1
 
     # Sets the position attribute on the model
     @model.set('position', new_position)
@@ -84,9 +90,14 @@ class MacroChild extends Mn.LayoutView
       { position: -1, css: 'fa-long-arrow-down', tooltip: 'Key Down' }
       { position: 0, css: 'fa-arrows-v', tooltip: 'Key Down | Up' }
       { position: 1, css: 'fa-long-arrow-up', tooltip: 'Key Up' }
+
+      { position: 1, css: 'fa-long-arrow-down', tooltip: 'Key Down' }
+      { position: 2, css: 'fa-long-arrow-up', tooltip: 'Key Up' }
+      { position: 3, css: 'fa-arrows-v', tooltip: 'Key Down | Up' }
     ]
 
     position = @model.get('position')
+    console.log 'position: ', position
     active_position = _.findWhere(positions, { position: position })
     return { active_position }
 
