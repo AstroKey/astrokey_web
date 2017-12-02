@@ -127,9 +127,10 @@ module.exports = [
     { row: 'nav_r0', key: 'DEL', keycode: 46 }
 
     # SPECIAL
-    { row: 'special_r0', key: 'CUT' }
-    { row: 'special_r0', key: 'COPY' }
-    { row: 'special_r0', key: 'PASTE' }
+    { row: 'special_r0', key: 'CUT', keycode: 1000 }
+    { row: 'special_r0', key: 'COPY', keycode: 1001 }
+    { row: 'special_r0', key: 'PASTE', keycode: 1002 }
+    { row: 'special_r0', key: 'DELAY', keycode: 1004 }
 
 ]
 

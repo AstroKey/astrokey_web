@@ -40,9 +40,20 @@ module.exports = {
   '9': 38
   '0': 39
 
-  # Punc
+  # Enter / Escape / Backspace / Tab / Space
+  'ENTER': 40
+  'ESCAPE': 41
+  'BACKSPACE': 42
+  'TAB': 43
+  'SPACE': 44
+
+  # Punctuation
   '-':  45
+  '=':  46
+  '[':  47
+  ']':  48
   '\\': 49
+  # 'Keyboard Non-US # and ~2': 50
   ';':  51
   "'":  52
   '`':  53
@@ -52,12 +63,10 @@ module.exports = {
 
   # Else
   '.':      99
-  'SPACE':  44
   right:    79
   left:     80
   down:     81
   up:       82
-  'BACKSPACE': 42
   # '/':      84
   '*':      85
   # '-':      86
@@ -66,9 +75,11 @@ module.exports = {
   'MUTE': 127
   'VOLUME_UP': 128
   'VOLUME_DN': 129
+
+  # Modifiers
+  'CTRL': 224
   'SHIFT': 225
   'ALT': 226
-  'CTRL': 224
   'META': 227
   # 'META': 231
 
