@@ -1,5 +1,6 @@
 
 # Key JSON definitions
+# TODO - abstract ROW attributes from this DS
 module.exports = [
     { row: 'r4', key: '`', shift_key: '~', keycode: 192, dec: 53 }
     { row: 'r4', key: '1', shift_key: '!', keycode: 49, dec: 30 }
@@ -68,30 +69,30 @@ module.exports = [
     { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18, special: true, dec: 226 }
 
     # NUMPAD
-    { row: 'num_r4', key: 'n_CLEAR', keycode: 83, dec: 83 }
-    { row: 'num_r4', key: 'n_/', keycode: 84, dec: 84 }
-    { row: 'num_r4', key: 'n_*', keycode: 85, dec: 85 }
+    { row: 'num_r4', key: 'n_CLEAR', keycode: 6083, dec: 83 }
+    { row: 'num_r4', key: 'n_/', keycode: 6084, dec: 84 }
+    { row: 'num_r4', key: 'n_*', keycode: 6085, dec: 85 }
 
-    { row: 'num_col', key: 'n_-', keycode: 86, dec: 86 }
-    { row: 'num_col', key: 'n_+', keycode: 87, css: 'h2_0', dec: 87 }
-    { row: 'num_col', key: 'n_ENTER', keycode: 88, css: 'h2_0', dec: 88 }
+    { row: 'num_col', key: 'n_-', keycode: 6086, dec: 86 }
+    { row: 'num_col', key: 'n_+', keycode: 6087, css: 'h2_0', dec: 87 }
+    { row: 'num_col', key: 'n_ENTER', keycode: 6088, css: 'h2_0', dec: 88 }
 
-    { row: 'num_r1', key: 'n_1', keycode: 89, dec: 89 }
-    { row: 'num_r1', key: 'n_2', keycode: 90, dec: 90 }
-    { row: 'num_r1', key: 'n_3', keycode: 91, dec: 91 }
+    { row: 'num_r1', key: 'n_1', keycode: 6089, dec: 89 }
+    { row: 'num_r1', key: 'n_2', keycode: 6090, dec: 90 }
+    { row: 'num_r1', key: 'n_3', keycode: 6091, dec: 91 }
 
-    { row: 'num_r2', key: 'n_4', keycode: 92, dec: 92 }
-    { row: 'num_r2', key: 'n_5', keycode: 93, dec: 93 }
-    { row: 'num_r2', key: 'n_6', keycode: 94, dec: 94 }
+    { row: 'num_r2', key: 'n_4', keycode: 6092, dec: 92 }
+    { row: 'num_r2', key: 'n_5', keycode: 6093, dec: 93 }
+    { row: 'num_r2', key: 'n_6', keycode: 6094, dec: 94 }
 
-    { row: 'num_r3', key: 'n_7', keycode: 95, dec: 95 }
-    { row: 'num_r3', key: 'n_8', keycode: 96, dec: 96 }
-    { row: 'num_r3', key: 'n_9', keycode: 97, dec: 97 }
+    { row: 'num_r3', key: 'n_7', keycode: 6095, dec: 95 }
+    { row: 'num_r3', key: 'n_8', keycode: 6096, dec: 96 }
+    { row: 'num_r3', key: 'n_9', keycode: 6097, dec: 97 }
 
-    { row: 'num_r0', key: 'n_0', keycode: 98, dec: 98 }
-    { row: 'num_r0', key: 'n_.', keycode: 99, dec: 99 }
+    { row: 'num_r0', key: 'n_0', keycode: 6098, dec: 98 }
+    { row: 'num_r0', key: 'n_.', keycode: 6099, dec: 99 }
 
-    # Function Keys
+    # Function Keys (F1 - F12)
     { row: 'func_r0', key: 'F1', keycode: 2000, dec: 58 }
     { row: 'func_r0', key: 'F2', keycode: 2001, dec: 59 }
     { row: 'func_r0', key: 'F3', keycode: 2002, dec: 60 }
@@ -104,7 +105,34 @@ module.exports = [
     { row: 'func_r0', key: 'F10', keycode: 2009, dec: 67 }
     { row: 'func_r0', key: 'F11', keycode: 2010, dec: 68 }
     { row: 'func_r0', key: 'F12', keycode: 2011, dec: 69 }
-    { row: 'func_r0', key: 'F13', keycode: 2012, dec: 60 }
+
+    # Function Keys (F13 - F24)
+    { row: 'func_r0', key: 'F1', keycode: 2000, dec: 58 }
+    { row: 'func_r0', key: 'F2', keycode: 2001, dec: 59 }
+    { row: 'func_r0', key: 'F3', keycode: 2002, dec: 60 }
+    { row: 'func_r0', key: 'F4', keycode: 2003, dec: 61 }
+    { row: 'func_r0', key: 'F5', keycode: 2004, dec: 62 }
+    { row: 'func_r0', key: 'F6', keycode: 2005, dec: 63 }
+    { row: 'func_r0', key: 'F7', keycode: 2006, dec: 64 }
+    { row: 'func_r0', key: 'F8', keycode: 2007, dec: 65 }
+    { row: 'func_r0', key: 'F9', keycode: 2008, dec: 66 }
+    { row: 'func_r0', key: 'F10', keycode: 2009, dec: 67 }
+    { row: 'func_r0', key: 'F11', keycode: 2010, dec: 68 }
+    { row: 'func_r0', key: 'F12', keycode: 2011, dec: 69 }
+
+    # Function Keys (F13-F24)
+    { row: 'func_r0', key: 'F13', keycode: 2104, dec: 104 }
+    { row: 'func_r0', key: 'F14', keycode: 2105, dec: 105 }
+    { row: 'func_r0', key: 'F15', keycode: 2106, dec: 106 }
+    { row: 'func_r0', key: 'F16', keycode: 2107, dec: 107 }
+    { row: 'func_r0', key: 'F17', keycode: 2108, dec: 108 }
+    { row: 'func_r0', key: 'F18', keycode: 2109, dec: 109 }
+    { row: 'func_r0', key: 'F19', keycode: 2110, dec: 110 }
+    { row: 'func_r0', key: 'F20', keycode: 2111, dec: 111 }
+    { row: 'func_r0', key: 'F21', keycode: 2112, dec: 112 }
+    { row: 'func_r0', key: 'F22', keycode: 2113, dec: 113 }
+    { row: 'func_r0', key: 'F23', keycode: 2114, dec: 114 }
+    { row: 'func_r0', key: 'F24', keycode: 2115, dec: 115 }
 
     # Media Keys
     # { row: 'media_r0', key: 'F13', keycode: 57, icon: 'fa-step-backward' }
