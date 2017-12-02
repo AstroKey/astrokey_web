@@ -115,16 +115,16 @@ module.exports = [
     { row: 'media_r0', key: 'VOLUME_DN', keycode: 128, icon: 'fa-volume-down', dec: 129 }
 
     # Navigation Keys
-    { row: 'nav_r0', key: 'PGUP', keycode: 57, dec: 75 }
-    { row: 'nav_r0', key: 'PGDN', keycode: 57, dec: 78 }
-    { row: 'nav_r0', key: 'END', keycode: 57, dec: 77 }
-    { row: 'nav_r0', key: 'HOME', keycode: 57, dec: 74 }
-    { row: 'nav_r0', key: 'LEFT-ARROW', keycode: 57, icon: 'fa-chevron-left', dec: 80 }
-    { row: 'nav_r0', key: 'UP-ARROW', keycode: 57, icon: 'fa-chevron-up', dec: 82 }
-    { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 57, icon: 'fa-chevron-down', dec: 81 }
-    { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 57, icon: 'fa-chevron-right', dec: 79 }
-    { row: 'nav_r0', key: 'INS', keycode: 57, dec: 73 }
-    { row: 'nav_r0', key: 'DEL', keycode: 46, dec: 76 }
+    { row: 'nav_r0', key: 'PGUP', keycode: 4075, dec: 75 }
+    { row: 'nav_r0', key: 'PGDN', keycode: 4078, dec: 78 }
+    { row: 'nav_r0', key: 'END', keycode: 4077, dec: 77 }
+    { row: 'nav_r0', key: 'HOME', keycode: 4074, dec: 74 }
+    { row: 'nav_r0', key: 'LEFT-ARROW', keycode: 4080, icon: 'fa-chevron-left', dec: 80 }
+    { row: 'nav_r0', key: 'UP-ARROW', keycode: 4082, icon: 'fa-chevron-up', dec: 82 }
+    { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 4081, icon: 'fa-chevron-down', dec: 81 }
+    { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 4079, icon: 'fa-chevron-right', dec: 79 }
+    { row: 'nav_r0', key: 'INS', keycode: 4073, dec: 73 }
+    { row: 'nav_r0', key: 'DEL', keycode: 4076, dec: 76 }
 
     # SPECIAL / MISC
     # { row: 'special_r0', key: 'CUT', keycode: 1000 }

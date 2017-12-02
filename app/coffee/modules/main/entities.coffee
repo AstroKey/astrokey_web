@@ -1,7 +1,5 @@
 MacroEntities = require('../macro/entities')
 MacroKeys = require('../key/keys')
-CharacterMap = require('lib/character_map')
-InvertedCharacterMap = _.invert(CharacterMap)
 
 # # # # #
 
@@ -114,7 +112,7 @@ class AstrokeyModel extends Backbone.RelationalModel
           position = pair[0]
 
           # Finds the macro object
-          macro = _.findWhere(MacroKeys, { key: InvertedCharacterMap[pair[1]] })
+          macro = _.findWhere(MacroKeys, { dec: pair[1] })
 
           # Clones the macro object
           macro = _.clone(macro)

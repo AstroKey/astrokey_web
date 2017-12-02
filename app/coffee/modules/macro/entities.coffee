@@ -1,5 +1,4 @@
 MacroExamples = require('./examples')
-# charMap = require('lib/character_map')
 
 # # # # #
 
