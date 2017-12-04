@@ -1,5 +1,4 @@
 MacroExamples = require('./examples')
-charMap = require('lib/character_map')
 
 # # # # #
 
@@ -9,7 +8,7 @@ class MacroModel extends Backbone.RelationalModel
   # Default attributes
   defaults:
     order: 0
-    position: 0
+    position: 3 # TODO - rename 'position' to 'action_type'
     shifted: false
 
   getKeyData: ->
@@ -21,26 +20,33 @@ class MacroModel extends Backbone.RelationalModel
     # console.log attrs
 
     # ActionType
-    # Press   = 1, KEY VALUE
-    # Release = 2, KEY VALUE
+    # KEY_DN = 1, KEY VALUE
+    # KEY_UP = 2, KEY VALUE
+    # KEY_PR = 3, KEY VALUE
 
-    # KEY DOWN & KEY UP
-    if attrs.position == 0
+    # KEY_DELAY
+    if attrs.delay
+      data.push(16) # DELAY indicator
+      data.push(1) # 1 - 255 (i.e. 5 = 5 x 100ms = 500ms)
+      return data
+
+    # KEY_DN
+    if attrs.position == 1 # TODO - constantize
       data.push(1)
-      data.push(charMap[attrs.key] || 4)
+      data.push(attrs.dec || 4)
+      return data
 
+    # KEY_UP
+    if attrs.position == 2 # TODO - constantize
       data.push(2)
-      data.push(charMap[attrs.key] || 4)
+      data.push(attrs.dec || 4)
+      return data
 
-    # KEY DOWN
-    if attrs.position == -1
-      data.push(1)
-      data.push(charMap[attrs.key] || 4)
-
-    # KEY UP
-    if attrs.position == 1
-      data.push(2)
-      data.push(charMap[attrs.key] || 4)
+    # KEY_PR
+    if attrs.position == 3 # TODO - constantize
+      data.push(3)
+      data.push(attrs.dec || 4)
+      return data
 
     return data
 
@@ -56,7 +62,6 @@ class MacroCollection extends Backbone.Collection
 
     # Resets the collection with the data defined in the Examples object
     @reset(MacroExamples[example_id])
-
 
   # build
   # Compiles the complete macro from each macro model
