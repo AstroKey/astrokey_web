@@ -1,5 +1,4 @@
 
-
 // Layout Styles
 .device--region
   display: flex
@@ -15,6 +14,7 @@
   .device--overlay
     opacity: 1
     transition: opacity .25s ease-in
+    height: 100%
 
   .editor--overlay
     background-color: #333
@@ -40,9 +40,15 @@
 // // // //
 
 // AstroKey Selector Styles
-$astrokey_child_size: 4rem
+$astrokey_child_size: 3rem
+
+.key-selector-wrapper
+  height: 100%
+  justify-content: center
 
 .key--list--wrapper
+  display: flex
+  flex-direction: column
   border: 2px solid theme-color('light')
   border-top-left-radius: 1.5rem
   border-top-right-radius: 0.25rem
@@ -52,10 +58,17 @@ $astrokey_child_size: 4rem
   img.logo
     margin: 0rem 1rem
     height: 3rem
-    transform: rotate(90deg)
     display: flex
 
+    &.side
+      display: none
+
   ul.list-unstyled.key--list
+    justify-content: space-between
+    align-items: center
+    flex-direction: column
+    margin: 0
+
     li.key--child
       height: $astrokey_child_size
       width: $astrokey_child_size
@@ -70,6 +83,44 @@ $astrokey_child_size: 4rem
 
     &.active
       color: $gray-800
+
+  // 90-degree rotation
+  &.deg-90
+    flex-direction: row
+
+    img.logo
+      transform: rotate(90deg)
+      display: none
+      &.side
+        display: flex
+
+    ul.key--list
+      flex-direction: row-reverse
+
+  // 180-degree rotation
+  &.deg-180
+    img.logo
+      transform: rotate(180deg)
+      display: none
+      &.side
+        display: flex
+
+    ul.key--list
+      flex-direction: column-reverse
+
+  // 270-degree rotation
+  &.deg-270
+    flex-direction: row
+
+    img.logo
+      transform: rotate(270deg)
+      display: flex
+      &.side
+        display: none
+
+    ul.key--list
+      flex-direction: row
+
 
 // // // //
 

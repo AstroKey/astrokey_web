@@ -26,7 +26,7 @@ class DeviceStatusView extends Marionette.LayoutView
 # # # # #
 
 class DeviceLayout extends Mn.LayoutView
-  className: 'row'
+  className: 'row h-100'
   template: require('./templates/device_layout')
 
   regions:
@@ -35,6 +35,30 @@ class DeviceLayout extends Mn.LayoutView
 
   events:
     'click [data-click=connect]': 'connectToDevice'
+    'click [data-click=rotate]': 'rotateDevice'
+
+  rotation: 0
+  rotateDevice: ->
+    if @rotation == 0
+
+      @rotation = 90
+      $('.key--list--wrapper').addClass('deg-90')
+      return
+
+    if @rotation == 90
+      @rotation = 180
+      $('.key--list--wrapper').removeClass('deg-90').addClass('deg-180')
+      return
+
+    if @rotation == 180
+      @rotation = 270
+      $('.key--list--wrapper').removeClass('deg-180').addClass('deg-270')
+      return
+
+    if @rotation == 270
+      @rotation = 0
+      $('.key--list--wrapper').removeClass('deg-270')
+      return
 
   connectToDevice: ->
     Radio.channel('usb').request('devices').then (d) => @render()

@@ -1,7 +1,19 @@
 .row.h-100.w-100.editor--overlay
   .col-lg-12.pt-2(data-region='editor')
 
-.row.device--overlay
-  .col-lg-12(data-region='device')
+.row
+  .col-lg-12
+    hr
 
-  .col-lg-12.pt-5(data-region='selector')
+  .col-lg-12
+    .btn-group
+      button.btn.btn-outline-secondary(data-click='connect')
+        i.fa.fa-fw.fa-usb.mr-1
+
+      button.btn.btn-outline-secondary(data-click='rotate')
+        i.fa.fa-fw.fa-rotate-right
+
+.row.device--overlay
+  .col-lg-6(data-region='device')
+
+  .col-lg-6(data-region='selector')

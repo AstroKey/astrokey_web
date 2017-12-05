@@ -12,7 +12,7 @@ class HelpView extends Marionette.LayoutView
 
 class LayoutView extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid d-flex flex-column w-100 h-100 justify-content-center align-items-center device--layout'
+  className: 'container-fluid d-flex flex-column w-100 h-100 device--layout'
 
   regions:
     deviceRegion:   '[data-region=device]'
