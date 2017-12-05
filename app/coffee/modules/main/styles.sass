@@ -1,5 +1,4 @@
 
-
 // Layout Styles
 .device--region
   display: flex
@@ -63,6 +62,7 @@ $astrokey_child_size: 4rem
     justify-content: space-between
     align-items: center
     flex-direction: column
+    margin: 0
 
     li.key--child
       height: $astrokey_child_size
@@ -90,7 +90,7 @@ $astrokey_child_size: 4rem
         display: flex
 
     ul.key--list
-      flex-direction: row
+      flex-direction: row-reverse
 
   // 180-degree rotation
   &.deg-180
@@ -114,7 +114,7 @@ $astrokey_child_size: 4rem
         display: none
 
     ul.key--list
-      flex-direction: row-reverse
+      flex-direction: row
 
 
 // // // //
