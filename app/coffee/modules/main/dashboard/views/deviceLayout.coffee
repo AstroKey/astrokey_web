@@ -26,7 +26,7 @@ class DeviceStatusView extends Marionette.LayoutView
 # # # # #
 
 class DeviceLayout extends Mn.LayoutView
-  className: 'row'
+  className: 'row h-100'
   template: require('./templates/device_layout')
 
   regions:
