@@ -35,6 +35,12 @@ class DeviceLayout extends Mn.LayoutView
 
   events:
     'click [data-click=connect]': 'connectToDevice'
+    'click [data-click=rotate]': 'rotateDevice'
+
+  rotateDevice: ->
+    # $('.key--list--wrapper').toggleClass('deg-90')
+    # $('.key--list--wrapper').toggleClass('deg-180')
+    $('.key--list--wrapper').toggleClass('deg-270')
 
   connectToDevice: ->
     Radio.channel('usb').request('devices').then (d) => @render()
