@@ -113,8 +113,6 @@ class AstrokeyModel extends Backbone.RelationalModel
 
           if pair[0] == 255 # 255 == KEY_UP
 
-            console.log('FOUND KEYUP')
-
             # Finds macro object
             macro = _.findWhere(MacroKeys, { key_up: true })
 
