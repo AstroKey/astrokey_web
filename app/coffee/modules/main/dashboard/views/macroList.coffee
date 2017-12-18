@@ -96,6 +96,10 @@ class MacroChild extends Mn.LayoutView
       active_position = { position: 16, css: 'fa-clock-o', tooltip: '100ms Delay' }
       return { active_position }
 
+    else if @model.get('key_up')
+      active_position = { position: 255, css: 'fa-arrow-up', tooltip: 'Wait for key release' }
+      return { active_position }
+
     else
       position = @model.get('position')
       active_position = _.findWhere(positions, { position: position })

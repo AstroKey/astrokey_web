@@ -24,6 +24,12 @@ class MacroModel extends Backbone.RelationalModel
     # KEY_UP = 2, KEY VALUE
     # KEY_PR = 3, KEY VALUE
 
+    # KEY_UP
+    if attrs.key_up
+      data.push(255) # KEY_UP indicator
+      data.push(1) # ??????
+      return data
+
     # KEY_DELAY
     if attrs.delay
       data.push(16) # DELAY indicator

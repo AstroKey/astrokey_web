@@ -66,7 +66,8 @@ $astrokey_child_size: 3rem
   ul.list-unstyled.key--list
     justify-content: space-between
     align-items: center
-    flex-direction: column
+    flex-direction: column-reverse
+
     margin: 0
 
     li.key--child
@@ -84,42 +85,42 @@ $astrokey_child_size: 3rem
     &.active
       color: $gray-800
 
-  // 90-degree rotation
-  &.deg-90
-    flex-direction: row
+  // // 90-degree rotation
+  // &.deg-90
+  //   flex-direction: row
 
-    img.logo
-      transform: rotate(90deg)
-      display: none
-      &.side
-        display: flex
+  //   img.logo
+  //     transform: rotate(90deg)
+  //     display: none
+  //     &.side
+  //       display: flex
 
-    ul.key--list
-      flex-direction: row-reverse
+  //   ul.key--list
+  //     flex-direction: row-reverse
 
-  // 180-degree rotation
-  &.deg-180
-    img.logo
-      transform: rotate(180deg)
-      display: none
-      &.side
-        display: flex
+  // // 180-degree rotation
+  // &.deg-180
+  //   img.logo
+  //     transform: rotate(180deg)
+  //     display: none
+  //     &.side
+  //       display: flex
 
-    ul.key--list
-      flex-direction: column-reverse
+  //   ul.key--list
+  //     flex-direction: column-reverse
 
-  // 270-degree rotation
-  &.deg-270
-    flex-direction: row
+  // // 270-degree rotation
+  // &.deg-270
+  //   flex-direction: row
 
-    img.logo
-      transform: rotate(270deg)
-      display: flex
-      &.side
-        display: none
+  //   img.logo
+  //     transform: rotate(270deg)
+  //     display: flex
+  //     &.side
+  //       display: none
 
-    ul.key--list
-      flex-direction: row
+  //   ul.key--list
+  //     flex-direction: row
 
 
 // // // //
