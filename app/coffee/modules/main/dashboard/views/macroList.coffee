@@ -97,7 +97,7 @@ class MacroChild extends Mn.LayoutView
       return { active_position }
 
     else if @model.get('key_up')
-      active_position = { position: 256, css: 'fa-arrow-up', tooltip: 'Wait for key release' }
+      active_position = { position: 255, css: 'fa-arrow-up', tooltip: 'Wait for key release' }
       return { active_position }
 
     else
