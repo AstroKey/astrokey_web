@@ -6,7 +6,7 @@ EditorWrapper = require('./editorWrapper')
 
 class HelpView extends Marionette.LayoutView
   template: require './templates/help_view'
-  className: 'row'
+  className: 'row h-100 align-items-center'
 
 # # # # #
 

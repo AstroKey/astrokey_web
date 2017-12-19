@@ -1,16 +1,15 @@
 .col-lg-12
-  .row
-    .col-lg-12.d-flex.flex-row.align-items-center.justify-content-center
-      i.d-flex.fa.fa-fw.fa-2x.fa-question-circle-o.mr-1
-      p.d-flex.lead.m-0(style='letter-spacing: 0.25rem; font-weight: 200;') Click a key to edit
 
-  .row
+  .row.my-4
     .col-lg-12.text-center
-      h5.modal-title Welcome
+      img.welcome-logo(src='./img/icon_white.svg')
 
+  .row.my-4
     .col-lg-12.text-center
-      hr
+      p.welcome-text WELCOME
 
+
+  .row.my-4
     .col-lg-12.text-center
       p.lead
         a(href='https://github.com/AstroKey', target='_blank')  AstroKey
@@ -18,10 +17,16 @@
 
       p AstroKey provides an intuitive interface anybody can use to automate basic keyboard actions.
 
-      p Simply drag and drop keyboard keys to construct your desired sequence - AstroKey does the rest.
+      p Drag and drop keyboard keys to construct your desired sequence - AstroKey does the rest.
 
-      p It's that easy.
+      //- p It's that easy.
 
+  .row.py-4
+    .col-lg-12.d-flex.flex-row.align-items-center.justify-content-center
+      //- i.d-flex.fa.fa-fw.fa-2x.mr-1
+      p.d-flex.lead.m-0(style='letter-spacing: 0.25rem; font-weight: 200;') Click a key to get started
+
+  .row
     .col-lg-12.text-center
       hr
 
