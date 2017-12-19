@@ -2,6 +2,7 @@ KeySelector = require('./keySelector')
 
 # # # # #
 
+#  TODO - reintegrate this
 class DeviceStatusView extends Marionette.LayoutView
   template: require './templates/device_status'
   className: 'row'

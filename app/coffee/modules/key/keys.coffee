@@ -69,28 +69,29 @@ module.exports = [
     { row: 'r0', key: 'ALT', css: 'w1_25', keycode: 18, special: true, dec: 226 }
 
     # NUMPAD
-    { row: 'num_r4', key: 'n_CLEAR', keycode: 6083, dec: 83 }
-    { row: 'num_r4', key: 'n_/', keycode: 6084, dec: 84 }
-    { row: 'num_r4', key: 'n_*', keycode: 6085, dec: 85 }
+    { row: 'num_r4', key: 'n_CLEAR', label: 'CLEAR', keycode: 6083, dec: 83 }
+    { row: 'num_r4', key: 'n_/', label: '/', keycode: 6084, dec: 84 }
+    { row: 'num_r4', key: 'n_*', label: '*', keycode: 6085, dec: 85 }
 
-    { row: 'num_col', key: 'n_-', keycode: 6086, dec: 86 }
-    { row: 'num_col', key: 'n_+', keycode: 6087, css: 'h2_0', dec: 87 }
-    { row: 'num_col', key: 'n_ENTER', keycode: 6088, css: 'h2_0', dec: 88 }
+    { row: 'num_col', key: 'n_-', label: '-', keycode: 6086, dec: 86 }
+    { row: 'num_col', key: 'n_+', label: '+', keycode: 6087, css: 'h2_0', dec: 87 }
+    { row: 'num_col', key: 'n_ENTER', label: 'ENTER', keycode: 6088, css: 'h2_0', dec: 88 }
 
-    { row: 'num_r1', key: 'n_1', keycode: 6089, dec: 89 }
-    { row: 'num_r1', key: 'n_2', keycode: 6090, dec: 90 }
-    { row: 'num_r1', key: 'n_3', keycode: 6091, dec: 91 }
+    { row: 'num_r1', key: 'n_1', label: '1', keycode: 6089, dec: 89 }
+    { row: 'num_r1', key: 'n_2', label: '2', keycode: 6090, dec: 90 }
+    { row: 'num_r1', key: 'n_3', label: '3', keycode: 6091, dec: 91 }
 
-    { row: 'num_r2', key: 'n_4', keycode: 6092, dec: 92 }
-    { row: 'num_r2', key: 'n_5', keycode: 6093, dec: 93 }
-    { row: 'num_r2', key: 'n_6', keycode: 6094, dec: 94 }
+    { row: 'num_r2', key: 'n_4', label: '4', keycode: 6092, dec: 92 }
+    { row: 'num_r2', key: 'n_5', label: '5', keycode: 6093, dec: 93 }
+    { row: 'num_r2', key: 'n_6', label: '6', keycode: 6094, dec: 94 }
 
-    { row: 'num_r3', key: 'n_7', keycode: 6095, dec: 95 }
-    { row: 'num_r3', key: 'n_8', keycode: 6096, dec: 96 }
-    { row: 'num_r3', key: 'n_9', keycode: 6097, dec: 97 }
+    { row: 'num_r3', key: 'n_7', label: '7', keycode: 6095, dec: 95 }
+    { row: 'num_r3', key: 'n_8', label: '8', keycode: 6096, dec: 96 }
+    { row: 'num_r3', key: 'n_9', label: '9', keycode: 6097, dec: 97 }
 
-    { row: 'num_r0', key: 'n_0', keycode: 6098, dec: 98 }
-    { row: 'num_r0', key: 'n_.', keycode: 6099, dec: 99 }
+    { row: 'num_r0', key: 'n_0', label: '0', keycode: 6098, dec: 98 }
+    { row: 'num_r0', key: 'n_0', label: '00', keycode: 6098, dec: 100 } # TODO - this is placeholder
+    { row: 'num_r0', key: 'n_.', label: '.', keycode: 6099, dec: 99 }
 
     # Function Keys (F1 - F12)
     { row: 'func_r0', key: 'F1', keycode: 2000, dec: 58 }
@@ -129,20 +130,21 @@ module.exports = [
     { row: 'media_r0', key: 'VOLUME_DN', keycode: 5128, icon: 'fa-volume-down', dec: 129 }
 
     # Navigation Keys
-    { row: 'nav_r0', key: 'PGUP', keycode: 4075, dec: 75 }
-    { row: 'nav_r0', key: 'PGDN', keycode: 4078, dec: 78 }
-    { row: 'nav_r0', key: 'END', keycode: 4077, dec: 77 }
-    { row: 'nav_r0', key: 'HOME', keycode: 4074, dec: 74 }
+    { row: 'nav_r3', key: 'INS', keycode: 4073, dec: 73 }
+    { row: 'nav_r3', key: 'HOME', keycode: 4074, dec: 74 }
+    { row: 'nav_r3', key: 'PGUP', keycode: 4075, dec: 75 }
+    { row: 'nav_r2', key: 'DEL', keycode: 4076, dec: 76 }
+    { row: 'nav_r2', key: 'END', keycode: 4077, dec: 77 }
+    { row: 'nav_r2', key: 'PGDN', keycode: 4078, dec: 78 }
+    { row: 'nav_r1', key: 'UP-ARROW', keycode: 4082, icon: 'fa-chevron-up', dec: 82 }
     { row: 'nav_r0', key: 'LEFT-ARROW', keycode: 4080, icon: 'fa-chevron-left', dec: 80 }
-    { row: 'nav_r0', key: 'UP-ARROW', keycode: 4082, icon: 'fa-chevron-up', dec: 82 }
     { row: 'nav_r0', key: 'DOWN-ARROW', keycode: 4081, icon: 'fa-chevron-down', dec: 81 }
     { row: 'nav_r0', key: 'RIGHT-ARROW', keycode: 4079, icon: 'fa-chevron-right', dec: 79 }
-    { row: 'nav_r0', key: 'INS', keycode: 4073, dec: 73 }
-    { row: 'nav_r0', key: 'DEL', keycode: 4076, dec: 76 }
+
 
     # SPECIAL / MISC
-    { row: 'special_r0', key: 'DELAY', keycode: 1008, delay: true, position: 3 }
-    { row: 'special_r0', key: 'KEY_UP', keycode: 1009, key_up: true, position: 3 }
+    { row: 'special_r0', key: 'DELAY', icon: 'fa-clock-o', keycode: 1008, delay: true, position: 3 }
+    { row: 'special_r0', key: 'KEY_UP', icon: 'fa-arrow-up', keycode: 1009, key_up: true, position: 3 }
     # { row: 'special_r0', key: 'CUT', keycode: 1000 }
     # { row: 'special_r0', key: 'COPY', keycode: 1001 }
     # { row: 'special_r0', key: 'PASTE', keycode: 1002 }
