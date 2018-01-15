@@ -87,25 +87,30 @@ class ChromeWebUsbService extends Marionette.Service
 
   # readMacro
   readMacro: (macroIndex = 0x0000) ->
+
     # Returns a Promise to manage asynchonous behavior
     return new Promise (resolve, reject) =>
 
+      # TODO - move to constants
+      transferOptions = {
+        'requestType':  'vendor',
+        'recipient':    'device',
+        'request':      0x03,
+        'value':        macroIndex,
+        'index':        0x02
+      }
+
       # device.controlTransferIn (READS DATA FROM DEVICE)
       # TODO - abstract the controlTransferIn request object into a constant (cloned each time)
-      d.controlTransferIn(
-        {
-          'requestType':  'vendor',
-          'recipient':    'device',
-          'request':      0x03,
-          'value':        macroIndex,
-          'index':        0x02
-        }, 128 # QUESTION - why "128"?
-      )
+      d.controlTransferIn(transferOptions, 256) # TODO - '256' should be '128'
       .then( (response) =>
+        console.log 'readMacro response:'
+        console.log(response)
         return resolve(new Uint8Array(response.data.buffer))
       )
       .catch( (err) =>
-        console.log 'ERROR READING MACRO'
+        console.log 'readMacro error:'
+        console.log err
         return reject(err)
       )
 

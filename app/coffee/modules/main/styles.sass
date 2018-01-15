@@ -1,4 +1,21 @@
 
+// Layout Styles
+nav.navbar
+  border-bottom: 1px solid theme-color('light')
+
+// // // //
+
+// Help View Styles
+img.welcome-logo
+  height: 4rem
+  width: 4rem
+
+.welcome-text
+  letter-spacing: .6rem
+  font-weight: 300
+  font-size: 2rem
+
+// // // //
 
 // Layout Styles
 .device--region
@@ -11,10 +28,17 @@
   border-color: theme-color('light')
 
 .device--layout
+  padding-top: 2rem
 
   .device--overlay
     opacity: 1
     transition: opacity .25s ease-in
+    height: 100%
+
+    .device-region
+      border-right: 1px solid theme-color('light')
+      padding-top: 4rem
+      margin-top: -2rem
 
   .editor--overlay
     background-color: #333
@@ -40,9 +64,15 @@
 // // // //
 
 // AstroKey Selector Styles
-$astrokey_child_size: 4rem
+$astrokey_child_size: 3rem
+
+.key-selector-wrapper
+  height: 100%
+  justify-content: center
 
 .key--list--wrapper
+  display: flex
+  flex-direction: column
   border: 2px solid theme-color('light')
   border-top-left-radius: 1.5rem
   border-top-right-radius: 0.25rem
@@ -52,10 +82,18 @@ $astrokey_child_size: 4rem
   img.logo
     margin: 0rem 1rem
     height: 3rem
-    transform: rotate(90deg)
     display: flex
 
+    &.side
+      display: none
+
   ul.list-unstyled.key--list
+    justify-content: space-between
+    align-items: center
+    flex-direction: column-reverse
+
+    margin: 0
+
     li.key--child
       height: $astrokey_child_size
       width: $astrokey_child_size
@@ -71,6 +109,44 @@ $astrokey_child_size: 4rem
     &.active
       color: $gray-800
 
+  // // 90-degree rotation
+  // &.deg-90
+  //   flex-direction: row
+
+  //   img.logo
+  //     transform: rotate(90deg)
+  //     display: none
+  //     &.side
+  //       display: flex
+
+  //   ul.key--list
+  //     flex-direction: row-reverse
+
+  // // 180-degree rotation
+  // &.deg-180
+  //   img.logo
+  //     transform: rotate(180deg)
+  //     display: none
+  //     &.side
+  //       display: flex
+
+  //   ul.key--list
+  //     flex-direction: column-reverse
+
+  // // 270-degree rotation
+  // &.deg-270
+  //   flex-direction: row
+
+  //   img.logo
+  //     transform: rotate(270deg)
+  //     display: flex
+  //     &.side
+  //       display: none
+
+  //   ul.key--list
+  //     flex-direction: row
+
+
 // // // //
 
 // Keyboard Body Styles
@@ -84,13 +160,13 @@ $astrokey_child_size: 4rem
   width: 100%
 
 // Key Selector Styles
-$keyboard_key_child_size: 3.5rem
+$keyboard_key_child_size: 2.5rem
 $keyboard_key_margin: 0.25rem
 
 .keyboard--key
   display: flex
   flex-direction: column
-  font-size: 80%
+  font-size: 50%
   width: $keyboard_key_child_size
   height: $keyboard_key_child_size
   margin: $keyboard_key_margin
@@ -136,7 +212,7 @@ $keyboard_key_margin: 0.25rem
 // // // //
 // Macro Styles
 
-$macro_size: 4rem
+$macro_size: 3rem
 
 ul.list-unstyled.macro--list
 
@@ -149,10 +225,10 @@ ul.list-unstyled.macro--list
       height: $macro_size
       width: $macro_size
       border: .15rem solid theme-color('secondary')
-      border-radius: 1rem
+      border-radius: .2rem
       color: theme-color('light')
       display: flex
-      font-size: 1.25rem
+      font-size: .75rem
       font-weight: 400
       cursor: pointer
 
@@ -178,31 +254,41 @@ ul.list-unstyled.macro--list
 
     .position
       display: flex
+      // opacity: 0
 
       span.position--select
         color: $gray-500
         cursor: pointer
 
-        &.position_-1
+        // KEY DN
+        &.position_1
           color: lighten(theme-color('warning'), 25%)
 
           &:hover
             color: theme-color('warning')
 
-        &.position_0
-          color: lighten(theme-color('success'), 25%)
-
-          &:hover
-            color: theme-color('success')
-
-        &.position_1
+        // KEY_UP
+        &.position_2
           color: lighten(theme-color('primary'), 25%)
 
           &:hover
             color: theme-color('primary')
 
+        // KEY_PR
+        &.position_3
+          color: lighten(theme-color('success'), 25%)
+
+          &:hover
+            color: theme-color('success')
+
+
     &.hovered
+      // .position
+      //   opacity: 1
+
       .key
+        // border: .15rem solid theme-color('secondary')
+
         .inner.content
           display: none
         .inner.hover

@@ -1,7 +1,5 @@
 MacroEntities = require('../macro/entities')
 MacroKeys = require('../key/keys')
-CharacterMap = require('lib/character_map')
-InvertedCharacterMap = _.invert(CharacterMap)
 
 # # # # #
 
@@ -97,7 +95,7 @@ class AstrokeyModel extends Backbone.RelationalModel
         parsedMacros = []
 
         # TODO - remove
-        console.log 'Parsed Macro from device:'
+        console.log 'Parsed Macro from key: ', @get('order')
         console.log macroArray
 
         # Compacts the macroArray
@@ -112,16 +110,40 @@ class AstrokeyModel extends Backbone.RelationalModel
 
           # Captures and formats the position
           position = pair[0]
-          position = if position == 2 then 1 else -1
+
+          if pair[0] == 255 # 255 == KEY_UP
+
+            # Finds macro object
+            macro = _.findWhere(MacroKeys, { key_up: true })
+
+            # Clones the macro object
+            macro = _.clone(macro)
+
+            # Assignss the proper order/index and position attributes
+            # TODO - this must be adjusted for delay, and others
+            macro.position = 3
 
           # Finds the macro object
-          macro = _.findWhere(MacroKeys, { key: InvertedCharacterMap[pair[1]] })
+          else if pair[0] == 16 # 16 == DELAY
 
-          # Clones the macro object
-          macro = _.clone(macro)
+            # Finds macro object
+            macro = _.findWhere(MacroKeys, { delay: true })
 
-          # Assignss the proper order/index and position attributes
-          macro.position = position
+            # Clones the macro object
+            macro = _.clone(macro)
+
+            # Assignss the proper order/index and position attributes
+            # TODO - this must be adjusted for delay, and others
+            macro.position = 3
+
+          else
+            macro = _.findWhere(MacroKeys, { dec: pair[1] })
+
+            # Clones the macro object
+            macro = _.clone(macro)
+
+            # Assignss the proper order/index and position attributes
+            macro.position = position
 
           # Appends the macro the the `macros` array
           macros.push(macro)
@@ -143,20 +165,20 @@ class AstrokeyModel extends Backbone.RelationalModel
             iterateIndex++
             continue
 
-          # Continues check if the macro is a corresponding KEY_UP
-          if macro.position == -1 && nextMacro.position == 1 && macro.key == nextMacro.key
+          # # Continues check if the macro is a corresponding KEY_UP
+          # if macro.position == 1 && nextMacro.position == 2 && macro.key == nextMacro.key
 
-            # KEY_PRESS
-            macro.position = 0
+          #   # KEY_PRESS
+          #   macro.position = 3
 
-            # Appends the macro to the parsedMacros array
-            macro.order = parsedIndex
-            parsedIndex++
-            parsedMacros.push(macro)
+          #   # Appends the macro to the parsedMacros array
+          #   macro.order = parsedIndex
+          #   parsedIndex++
+          #   parsedMacros.push(macro)
 
-            # Iterates, skipping the matched macro
-            iterateIndex = iterateIndex + 2
-            continue
+          #   # Iterates, skipping the matched macro
+          #   iterateIndex = iterateIndex + 2
+          #   continue
 
           # Non-Repeated - standard procedure
           macro.order = parsedIndex

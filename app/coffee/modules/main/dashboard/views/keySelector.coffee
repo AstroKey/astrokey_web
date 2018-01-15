@@ -1,7 +1,7 @@
 
 class KeyChild extends Mn.LayoutView
   tagName: 'li'
-  className: 'btn btn-outline-light key--child d-flex justify-content-center align-items-center mx-2'
+  className: 'btn btn-outline-light key--child d-flex justify-content-center align-items-center mx-2 my-2'
   template: require('./templates/key_child')
 
   behaviors:
@@ -39,7 +39,7 @@ class KeyChild extends Mn.LayoutView
 #   childView: KeyChild
 
 class KeySelector extends Mn.CompositeView
-  className: 'key--list--wrapper px-3 py-3 d-flex align-items-center my-4'
+  className: 'key--list--wrapper px-3 py-3 d-flex align-items-center'
   childView: KeyChild
   template: require('./templates/key_selector')
   childViewContainer: 'ul'

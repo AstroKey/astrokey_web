@@ -4,7 +4,7 @@ mixin keyboardRow()
     block
 
 mixin keyboardKey(opts)
-  li.btn.btn-outline-light.keyboard--key( data-keycode=opts.keycode data-click='key' data-key=opts.key class=opts.css )
+  li.btn.btn-outline-light.keyboard--key( data-keycode=opts.keycode data-click='key' data-key=opts.key class=opts.css, title=opts.title )
     if opts.icon
       i.fa.fa-fw( class=opts.icon )
     else
@@ -14,7 +14,7 @@ mixin keyboardKey(opts)
         .plain= opts.key
 
       else if opts.alpha
-        .plain= opts.shift_key
+        .plain= opts.label || opts.shift_key
 
       else
-        .plain= opts.key
+        .plain= opts.label || opts.key

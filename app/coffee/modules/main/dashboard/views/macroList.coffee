@@ -6,14 +6,14 @@ class MacroChild extends Mn.LayoutView
 
   behaviors:
     SortableChild: {}
-    # Tooltips: {}
+    Tooltips: {}
 
   modelEvents:
     'change:position':  'render'
     'change:shifted':   'render'
 
-  # ui:
-  #   tooltip: '[data-toggle=tooltip]'
+  ui:
+    tooltip: '[data-toggle=tooltip]'
 
   events:
     'drag': 'onDrag'
@@ -23,18 +23,18 @@ class MacroChild extends Mn.LayoutView
     'click .key': 'removeMacro'
     'click [data-position]:not(.active)': 'onPositionClick'
 
-  # state: {
-  #   tooltipOnRender: false
-  # }
+  state: {
+    tooltipOnRender: false
+  }
 
-  # onRender: ->
-  #   return unless @state.tooltipOnRender
+  onRender: ->
+    return unless @state.tooltipOnRender
 
-  #   # Unsets tooltip flag
-  #   @state.tooltipOnRender = false
+    # Unsets tooltip flag
+    @state.tooltipOnRender = false
 
-  #   # Shows the tooltip
-  #   @ui.tooltip.tooltip('show')
+    # Shows the tooltip
+    @ui.tooltip.tooltip('show')
 
   onMouseOver: ->
     @$el.addClass('hovered')
@@ -57,10 +57,10 @@ class MacroChild extends Mn.LayoutView
   onPositionClick: (e) ->
 
     # Displays the tooltip after the view re-renders
-    # @state.tooltipOnRender = true
+    @state.tooltipOnRender = true
 
     # Clears active tooltips
-    # @clearTooltips()
+    @clearTooltips()
 
     # Caches clicked el
     el = $(e.currentTarget)
@@ -69,26 +69,41 @@ class MacroChild extends Mn.LayoutView
     position = el.data('position')
 
     # Determines next position
-    if position == -1
-      new_position = 1
-    if position == 0
-      new_position = -1
+
+    # KEY_DN -> KEY_UP
     if position == 1
-      new_position = 0
+      new_position = 2
+
+    # KEY_UP -> KEY_PR
+    if position == 2
+      new_position = 3
+
+    # KEY_PR -> KEY_DN
+    if position == 3
+      new_position = 1
 
     # Sets the position attribute on the model
     @model.set('position', new_position)
 
   templateHelpers: ->
     positions = [
-      { position: -1, css: 'fa-long-arrow-down', tooltip: 'Key Down' }
-      { position: 0, css: 'fa-arrows-v', tooltip: 'Key Down | Up' }
-      { position: 1, css: 'fa-long-arrow-up', tooltip: 'Key Up' }
+      { position: 3, css: 'fa-arrows-v', tooltip: 'Key Press' }
+      { position: 1, css: 'fa-long-arrow-down', tooltip: 'Key Down' }
+      { position: 2, css: 'fa-long-arrow-up', tooltip: 'Key Up' }
     ]
 
-    position = @model.get('position')
-    active_position = _.findWhere(positions, { position: position })
-    return { active_position }
+    if @model.get('delay')
+      active_position = { position: 16, css: 'fa-clock-o', tooltip: '100ms Delay' }
+      return { active_position }
+
+    else if @model.get('key_up')
+      active_position = { position: 255, css: 'fa-arrow-up', tooltip: 'Wait for key release' }
+      return { active_position }
+
+    else
+      position = @model.get('position')
+      active_position = _.findWhere(positions, { position: position })
+      return { active_position }
 
 # # # # #
 

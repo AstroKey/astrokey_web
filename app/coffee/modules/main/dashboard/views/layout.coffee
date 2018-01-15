@@ -6,18 +6,18 @@ EditorWrapper = require('./editorWrapper')
 
 class HelpView extends Marionette.LayoutView
   template: require './templates/help_view'
-  className: 'row'
+  className: 'row h-100 align-items-center'
 
 # # # # #
 
 class LayoutView extends Marionette.LayoutView
   template: require './templates/layout'
-  className: 'container-fluid d-flex flex-column w-100 h-100 justify-content-center align-items-center device--layout'
+  className: 'container-fluid d-flex flex-column w-100 h-100 device--layout'
 
   regions:
     deviceRegion:   '[data-region=device]'
     selectorRegion: '[data-region=selector]'
-    editorRegion:   '[data-region=editor]'
+    # editorRegion:   '[data-region=editor]'
 
   onRender: ->
 
@@ -27,7 +27,8 @@ class LayoutView extends Marionette.LayoutView
     # Instantiates a new DeviceLayout for connecting to an AstroKey
     # and selecting which key the user would like to edit
     deviceView = new DeviceLayout({ model: @model })
-    deviceView.on 'key:selected', (keyModel) => @showEditorSelector(keyModel)
+    deviceView.on 'key:selected', (keyModel) => @showEditorView(keyModel, 'macro')
+    # deviceView.on 'key:selected', (keyModel) => @showEditorSelector(keyModel)
     deviceView.on 'key:deselected', () => @showHelpView()
     @deviceRegion.show(deviceView)
 
@@ -62,7 +63,7 @@ class LayoutView extends Marionette.LayoutView
   showEditorView: (keyModel, editor) ->
 
     # Adjusts the CSS to display the EditorWrapper
-    @$el.addClass('active')
+    # @$el.addClass('active')
 
     # Reads macro from device
     # NOTE - this happens asynchronously
@@ -75,15 +76,18 @@ class LayoutView extends Marionette.LayoutView
 
     # Handles 'cancel' event
     editorWrapper.on 'cancel', =>
-      @$el.removeClass('active')
+      @selectorRegion.show new HelpView()
+    #   @$el.removeClass('active')
 
     # Handles 'save' event
     editorWrapper.on 'save', =>
-      # TODO - hit the KeyModel / DeviceModel to do the rest from here
-      @$el.removeClass('active')
+      @selectorRegion.show new HelpView()
+    #   # TODO - hit the KeyModel / DeviceModel to do the rest from here
+    #   @$el.removeClass('active')
 
     # Shows the EditorWrapper view in @editorRegion
-    @editorRegion.show(editorWrapper)
+    # @editorRegion.show(editorWrapper)
+    @selectorRegion.show(editorWrapper)
 
 # # # # #
 
